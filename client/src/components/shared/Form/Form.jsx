@@ -13,8 +13,9 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [website, setWebsite] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+
   return (
-    <div>
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
       <form
         onSubmit={(e) => {
           if (formType === "login")
@@ -34,72 +35,71 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             );
         }}
       >
-        <h1 className="text-center">{formTitle}</h1>
-        <hr />
-        <div className="d-flex mb-3">
-          <div className="form-check">
+        <h1 className="text-center text-3xl font-bold mb-4">{formTitle}</h1>
+        <hr className="mb-4" />
+        <div className="flex flex-row mb-4">
+          <div className="flex items-center mr-4">
             <input
               type="radio"
-              className="form-check-input"
+              className="form-radio h-5 w-5 text-indigo-600"
               name="role"
               id="donarRadio"
               value={"donar"}
               onChange={(e) => setRole(e.target.value)}
               defaultChecked
             />
-            <label htmlFor="adminRadio" className="form-check-label">
+            <label htmlFor="donarRadio" className="ml-2 text-gray-700">
               Donar
             </label>
           </div>
-          <div className="form-check ms-2">
+          <div className="flex items-center mr-4">
             <input
               type="radio"
-              className="form-check-input"
+              className="form-radio h-5 w-5 text-indigo-600"
               name="role"
               id="adminRadio"
               value={"admin"}
               onChange={(e) => setRole(e.target.value)}
             />
-            <label htmlFor="adminRadio" className="form-check-label">
+            <label htmlFor="adminRadio" className="ml-2 text-gray-700">
               Admin
             </label>
           </div>
-          <div className="form-check ms-2">
+          <div className="flex items-center mr-4">
             <input
               type="radio"
-              className="form-check-input"
+              className="form-radio h-5 w-5 text-indigo-600"
               name="role"
               id="hospitalRadio"
               value={"hospital"}
               onChange={(e) => setRole(e.target.value)}
             />
-            <label htmlFor="hospitalRadio" className="form-check-label">
+            <label htmlFor="hospitalRadio" className="ml-2 text-gray-700">
               Hospital
             </label>
           </div>
-          <div className="form-check ms-2">
+          <div className="flex items-center">
             <input
               type="radio"
-              className="form-check-input"
+              className="form-radio h-5 w-5 text-indigo-600"
               name="role"
               id="organisationRadio"
               value={"organisation"}
               onChange={(e) => setRole(e.target.value)}
             />
-            <label htmlFor="organisationRadio" className="form-check-label">
+            <label htmlFor="organisationRadio" className="ml-2 text-gray-700">
               Organisation
             </label>
           </div>
         </div>
         {/* switch statement */}
         {(() => {
-          //eslint-disable-next-line
           switch (true) {
             case formType === "login": {
               return (
                 <>
                   <InputType
-                    labelText={"email"}
+                    labelText={"Email"}
                     labelFor={"forEmail"}
                     inputType={"email"}
                     name={"email"}
@@ -133,11 +133,13 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   {role === "organisation" && (
                     <InputType
                       labelText={"Organisation Name"}
-                      labelFor={"fororganisationName"}
+                      labelFor={"forOrganisationName"}
                       inputType={"text"}
                       name={"organisationName"}
                       value={organisationName}
-                      onChange={(e) => setOrganisationName(e.target.value)}
+                      onChange={(e) =>
+                        setOrganisationName(e.target.value)
+                      }
                     />
                   )}
                   {role === "hospital" && (
@@ -152,7 +154,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
 
                   <InputType
-                    labelText={"email"}
+                    labelText={"Email"}
                     labelFor={"forEmail"}
                     inputType={"email"}
                     name={"email"}
@@ -168,7 +170,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <InputType
-                    labelText={"website"}
+                    labelText={"Website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
@@ -197,19 +199,26 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           }
         })()}
 
-        <div className="d-flex flex-row justify-content-between">
+        <div className="flex justify-between items-center">
           {formType === "login" ? (
             <p>
-              Not registerd yet ? Register
-              <Link to="/register"> Here !</Link>
+              Not registered yet? Register
+              <Link to="/register" className="text-blue-500 hover:text-blue-700 ml-1">
+                Here!
+              </Link>
             </p>
           ) : (
             <p>
-              ALready Usser Please
-              <Link to="/login"> Login !</Link>
+              Already a user? Please
+              <Link to="/login" className="text-blue-500 hover:text-blue-700 ml-1">
+                Login!
+              </Link>
             </p>
           )}
-          <button className="btn btn-primary" type="submit">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
             {submitBtn}
           </button>
         </div>

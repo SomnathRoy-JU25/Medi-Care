@@ -5,11 +5,11 @@ import moment from "moment";
 
 const Donar = () => {
   const [data, setData] = useState([]);
-  //find donar records
+  
+  // Find donar records
   const getDonars = async () => {
     try {
       const { data } = await API.get("/inventory/get-donars");
-      //   console.log(data);
       if (data?.success) {
         setData(data?.donars);
       }
@@ -24,26 +24,29 @@ const Donar = () => {
 
   return (
     <Layout>
-      <table className="table ">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((record) => (
-            <tr key={record._id}>
-              <td>{record.name || record.organisationName + " (ORG)"}</td>
-              <td>{record.email}</td>
-              <td>{record.phone}</td>
-              <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+      <div className="container mx-auto">
+        <h1 className="text-2xl font-bold my-4">Donar Records</h1>
+        <table className="table-auto w-full border-collapse border border-gray-200">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Phone</th>
+              <th className="px-4 py-2">Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data?.map((record) => (
+              <tr key={record._id} className="border-b border-gray-200">
+                <td className="px-4 py-2">{record.name || record.organisationName + " (ORG)"}</td>
+                <td className="px-4 py-2">{record.email}</td>
+                <td className="px-4 py-2">{record.phone}</td>
+                <td className="px-4 py-2">{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Layout>
   );
 };

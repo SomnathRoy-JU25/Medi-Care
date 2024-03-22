@@ -5,17 +5,18 @@ import Spinner from "../../components/shared/Spinner";
 
 const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
+  
   return (
     <>
-      {error && <span>{alert(error)}</span>}
+      {error && <span className="text-red-500">{alert(error)}</span>}
       {loading ? (
         <Spinner />
       ) : (
-        <div className="row g-0">
-          <div className="col-md-8 form-banner">
-            <img src="./assets/images/banner1.jpg" alt="loginImage" />
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between">
+          <div className="md:w-1/2 p-4">
+            <img src="./assets/images/banner1.jpg" alt="loginImage" className="w-full rounded-lg shadow-md" />
           </div>
-          <div className="col-md-4 form-container">
+          <div className="md:w-1/2 p-4">
             <Form
               formTitle={"Login Page"}
               submitBtn={"Login"}
