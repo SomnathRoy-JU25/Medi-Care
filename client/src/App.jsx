@@ -35,13 +35,13 @@ import AdminHome from "./pages/Admin/AdminHome";
 function App() {
   return (
     <div>
-      <Navbar />
+     <Navbar/>
       <div>
         <ToastContainer />
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login2" element={<Login2 />} />
+          <Route path="/login2" element={<Login2/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
