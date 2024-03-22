@@ -4,7 +4,7 @@ import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 // import { useSelector } from "react-redux";
 
 const RoomPage = () => {
-//   const { user } = useSelector((state) => state.profile)
+  // const { user } = useSelector((state) => state.profile)
   const { roomId } = useParams();
   const myMeeting = async (element) => {
     const appID = 2000152910;
@@ -15,7 +15,7 @@ const RoomPage = () => {
       serverSecret,
       roomId,
       Date.now().toString(), //userId
-      "Somnath Roy"          // user?.firstName + " " + user?.lastName
+      "Somnath Roy"          // user?.firstName + " " + user?.lastName User Name
     );
     
     // console.log(kitToken);
@@ -27,7 +27,7 @@ const RoomPage = () => {
       sharedLinks: [
         {
           nama: "Copy Link",
-          url: `http://localhost:3000/room/${roomId}`,
+          url: `http://localhost:5173/room/${roomId}`,
         },
       ],
       scenario: {
