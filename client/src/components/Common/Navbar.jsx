@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative w-full bg-white">
+    <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
