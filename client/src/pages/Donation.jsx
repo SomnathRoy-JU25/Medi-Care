@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 const Donation = () => {
   const { user } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
-  //find donar records
-  const getDonars = async () => {
+  
+  // Find donor records
+  const getDonations = async () => {
     try {
       const { data } = await API.post("/inventory/get-inventory-hospital", {
         filters: {
@@ -18,7 +19,6 @@ const Donation = () => {
       });
       if (data?.success) {
         setData(data?.inventory);
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -26,30 +26,31 @@ const Donation = () => {
   };
 
   useEffect(() => {
-    getDonars();
+    getDonations();
   }, []);
 
   return (
     <Layout>
       <div className="container mt-4">
-        <table className="table">
+        <h1 className="text-2xl font-bold mb-4">Donation Records</h1>
+        <table className="table w-full">
           <thead>
-            <tr>
-              <th scope="col">Blood Group</th>
-              <th scope="col">Inventory TYpe</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Email</th>
-              <th scope="col">Date</th>
+            <tr className="bg-gray-200">
+              <th className="px-4 py-2">Blood Group</th>
+              <th className="px-4 py-2">Inventory Type</th>
+              <th className="px-4 py-2">Quantity</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Date</th>
             </tr>
           </thead>
           <tbody>
             {data?.map((record) => (
-              <tr key={record._id}>
-                <td>{record.bloodGroup}</td>
-                <td>{record.inventoryType}</td>
-                <td>{record.quantity}</td>
-                <td>{record.email}</td>
-                <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+              <tr key={record._id} className="border-b border-gray-200">
+                <td className="px-4 py-2">{record.bloodGroup}</td>
+                <td className="px-4 py-2">{record.inventoryType}</td>
+                <td className="px-4 py-2">{record.quantity}</td>
+                <td className="px-4 py-2">{record.email}</td>
+                <td className="px-4 py-2">{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
               </tr>
             ))}
           </tbody>

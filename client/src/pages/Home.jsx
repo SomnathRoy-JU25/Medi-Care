@@ -2,6 +2,7 @@ import React from 'react'
 
 const Home = () => {
   return (
+<<<<<<< HEAD
     <div className="relative w-full bg-white">
       <div className="mx-auto max-w-7xl lg:px-8">
         <div className="flex flex-col justify-center px-4 py-10 lg:px-6">
@@ -51,6 +52,11 @@ const Home = () => {
         </div>
       </div>
     </div>
+=======
+    <>
+      
+    </>
+>>>>>>> 75671efdd0513357bcd13fb303150785b30465c9
   )
 }
 
