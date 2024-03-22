@@ -3,14 +3,14 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCATuNsY6od6UIdX7hIN_huALu3OOhLnec",
-  authDomain: "medi-care-353c5.firebaseapp.com",
-  databaseURL: "https://medi-care-353c5-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "medi-care-353c5",
-  storageBucket: "medi-care-353c5.appspot.com",
-  messagingSenderId: "738778873376",
-  appId: "1:738778873376:web:c0e521b4aa953e7a070645",
-  measurementId: "G-RJPJLCCQPE"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGEING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MESSAGEING_SENDER_ID
 };
 
 // Initialize Firebase
