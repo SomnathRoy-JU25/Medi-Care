@@ -2,48 +2,71 @@
 @tailwind components;
 @tailwind utilities;
  
-html,
-body {
-  overflow-x: hidden;
-}
-/* Footer Section Logo Style */
-.left-aligned-image {
-  float: left; /* or use flexbox or other CSS properties for alignment */
-  margin-left: -20px;
-}
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
 * {
-  scrollbar-width: auto;
-  scrollbar-color: #afb2bf;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 3px;
+/* ===========
+==== FORM
+=========== */
+
+.form-banner img {
+  height: 100%;
+  width: 100%;
 }
 
-*::-webkit-scrollbar-track {
-  background: #000814;
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #afb2bf;
-  border-radius: 10px;
-  visibility: hidden;
+/* =============
+====== laoder 
+=============== */
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-*:active::-webkit-scrollbar-thumb,
-*:focus::-webkit-scrollbar-thumb,
-*:hover::-webkit-scrollbar-thumb {
-  visibility: visible;
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-/* Hide default styling of details/summary */
-details > summary {
-  list-style: none;
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-details > summary::-webkit-details-marker {
-  display: none;
+
+/* ======================
+--------- navbar 
+=================== */
+
+.navbar {
+  background-color: black !important;
+  color: white !important;
+}
+.nav-link,
+.navbar-brand {
+  background-color: black !important;
+  color: white !important;
 }
