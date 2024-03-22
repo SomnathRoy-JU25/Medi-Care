@@ -11,7 +11,7 @@ const Login = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="row g-0 flex flex-row ">
+        <div className="row g-0">
           <div className="col-md-8 form-banner">
             <img src="./assets/images/banner1.jpg" alt="loginImage" />
           </div>
