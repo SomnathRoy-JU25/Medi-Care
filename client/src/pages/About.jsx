@@ -1,8 +1,6 @@
-'use client'
-
 import React from 'react'
 import { Menu, X, MapPin } from 'lucide-react'
-
+import Navbar from '../components/Common/Navbar'
 const locations = [
   {
     title: 'Bengaluru office',
@@ -81,6 +79,7 @@ const About = () => {
 
   return (
     <div>
+       <Navbar/>
       <div className="mx-auto max-w-7xl px-4">
         {/* Hero Map */}
         <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">

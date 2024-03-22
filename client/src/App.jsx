@@ -33,131 +33,124 @@ import AdminHome from "./pages/Admin/AdminHome";
 
 function App() {
   return (
-       <div className="flex min-h-screen w-screen flex-col font-inter">
-        <div>
-         {/* <Navbar /> */}
-        <div>
-        <div>
-        <ToastContainer />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login2" element={<Login2 />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <AdminHome />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/donar-list"
-              element={
-                <ProtectedRoute>
-                  <DonarList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/hospital-list"
-              element={
-                <ProtectedRoute>
-                  <HospitalList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/org-list"
-              element={
-                <ProtectedRoute>
-                  <OrgList />
-                </ProtectedRoute>
-              }
-            />
+    <div className="flex min-h-screen w-screen flex-col font-inter">
+          <div>
+            <ToastContainer />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login2" element={<Login2 />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminHome />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/donar-list"
+                element={
+                  <ProtectedRoute>
+                    <DonarList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/hospital-list"
+                element={
+                  <ProtectedRoute>
+                    <HospitalList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/org-list"
+                element={
+                  <ProtectedRoute>
+                    <OrgList />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/hospital"
-              element={
-                <ProtectedRoute>
-                  <Hospitals />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/analytics"
-              element={
-                <ProtectedRoute>
-                  <Analytics />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/consumer"
-              element={
-                <ProtectedRoute>
-                  <Consumer />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/donation"
-              element={
-                <ProtectedRoute>
-                  <Donation />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/orgnaisation"
-              element={
-                <ProtectedRoute>
-                  <OrganisationPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/donar"
-              element={
-                <ProtectedRoute>
-                  <Donar />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <HomePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
-          </Routes>
-        </div>
-          
-        </div>
-        <hr />
+              <Route
+                path="/hospital"
+                element={
+                  <ProtectedRoute>
+                    <Hospitals />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/analytics"
+                element={
+                  <ProtectedRoute>
+                    <Analytics />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/consumer"
+                element={
+                  <ProtectedRoute>
+                    <Consumer />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/donation"
+                element={
+                  <ProtectedRoute>
+                    <Donation />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/orgnaisation"
+                element={
+                  <ProtectedRoute>
+                    <OrganisationPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/donar"
+                element={
+                  <ProtectedRoute>
+                    <Donar />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <HomePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute>
+                    <Register />
+                  </PublicRoute>
+                }
+              />
+            </Routes>
+          </div>
         {/* <Footer /> */}
       </div>
-    </div>
   );
 }
 

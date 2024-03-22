@@ -12,7 +12,8 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.clear();
     alert("Logout Successful");
-    navigate("/login");
+    // navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -20,7 +21,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <BiDonateBlood className="text-red-500 text-3xl mr-2" />
-          <span className="text-white text-xl font-bold">Blood Bank App</span>
+          <span className="text-white text-xl font-bold">Donate Blood</span>
         </div>
         <ul className="flex items-center">
           <li className="mx-4">
