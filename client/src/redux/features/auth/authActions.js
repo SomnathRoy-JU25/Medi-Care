@@ -15,7 +15,7 @@ export const userLogin = createAsyncThunk(
       // Simulate a delay before redirecting
       setTimeout(() => {
         window.location.replace("/home");
-      }, 100); // Redirect after some time 
+      }, 400); // Redirect after some time 
       return data;
     } catch (error) {
       toast.error(error.message);
