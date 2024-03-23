@@ -41,6 +41,9 @@ h5,
 h6 {
   color: var(--bold-text-color);
 }
+.section-container{
+  @apply max-w-screen-2xl container mx-auto xl:px-24 px-4
+}
 
 .page-heading {
   font-size: 2rem;

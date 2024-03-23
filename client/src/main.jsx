@@ -15,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <App />
         <Toaster/>
+        <hr />
         <Footer/>
       </BrowserRouter>
     </Provider>
