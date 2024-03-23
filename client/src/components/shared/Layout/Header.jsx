@@ -60,7 +60,7 @@ const Header = () => {
           )}
           <li className="mx-4">
             <button
-              className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+              className="bg-gradient-to-r from-red-500 to-red-600 text-white py-2 px-4 rounded-md hover:from-red-600 hover:to-red-700 transition duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               onClick={handleLogout}
             >
               Logout

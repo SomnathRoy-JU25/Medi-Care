@@ -137,9 +137,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       inputType={"text"}
                       name={"organisationName"}
                       value={organisationName}
-                      onChange={(e) =>
-                        setOrganisationName(e.target.value)
-                      }
+                      onChange={(e) => setOrganisationName(e.target.value)}
                     />
                   )}
                   {role === "hospital" && (
@@ -203,20 +201,26 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           {formType === "login" ? (
             <p>
               Not registered yet? Register
-              <Link to="/register" className="text-blue-500 hover:text-blue-700 ml-1">
+              <Link
+                to="/register"
+                className="text-purple-500 hover:text-purple-700 hover:font-bold ml-1"
+              >
                 Here!
               </Link>
             </p>
           ) : (
             <p>
               Already a user? Please
-              <Link to="/login" className="text-blue-500 hover:text-blue-700 ml-1">
+              <Link
+                to="/login"
+                className="text-purple-500 hover:text-purple-700 hover:font-bold ml-1"
+              >
                 Login!
               </Link>
             </p>
           )}
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-purple-500 hover:bg-purple-800 font-md hover:font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             {submitBtn}

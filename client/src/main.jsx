@@ -6,14 +6,12 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import './App.css'
 import "./index.css";
-import Navbar from './components/Common/Navbar.jsx';
 import Footer from './components/Common/Footer.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Navbar/>
         <App />
         <Footer/>
       </BrowserRouter>

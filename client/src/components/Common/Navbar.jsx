@@ -22,7 +22,7 @@ const menuItems = [
   },
   {
     name: "Book Appointment",
-    href: "/login",
+    href: "/",
   },
 ];
 

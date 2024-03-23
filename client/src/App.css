@@ -21,7 +21,7 @@ header, nav{
 }
 
 .subtitle{
-  @apply text-red uppercase tracking-wide font-semibold text-lg;
+  @apply text-red-400 uppercase tracking-wide font-semibold text-lg;
 }
 
 .title{
