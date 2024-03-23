@@ -4,11 +4,11 @@ import { toast } from "react-hot-toast";
 
 export const userLogin = createAsyncThunk(
   "auth/login",
-  async ({ role, email, password }, { rejectWithValue }) => {
+  async ({ role, email, password }) => {
     try {
       const { data } = await API.post("/auth/login", { role, email, password });
       if (!data.success) {
-        throw new Error(data.message);
+        return toast.error(data.message);
       }
       toast.success("Login Successful", { duration: 2000 });
       localStorage.setItem("token", data.token);
@@ -18,8 +18,7 @@ export const userLogin = createAsyncThunk(
       }, 400); // Redirect after some time 
       return data;
     } catch (error) {
-      toast.error(error.message);
-      return rejectWithValue(error.message);
+      return toast.error(error.message);
     }
   }
 );
@@ -36,7 +35,7 @@ export const userRegister = createAsyncThunk(
       organisationName,
       address,
       hospitalName,
-      website,
+      // website,
     },
     { rejectWithValue }
   ) => {
@@ -50,11 +49,14 @@ export const userRegister = createAsyncThunk(
         organisationName,
         address,
         hospitalName,
-        website,
+        // website,
       });
       if (data.success) {
-        toast.success("User Registered Successfully");
-        window.location.replace("/login");
+        toast.success("User Registered Successfully",{duration:2000});
+        // window.location.replace("/login");
+        setTimeout(() => {
+          window.location.replace("/login");
+        }, 600); // Redirect after some time 
       }
       return data;
     } catch (error) {
@@ -66,14 +68,13 @@ export const userRegister = createAsyncThunk(
 
 export const getCurrentUser = createAsyncThunk(
   "auth/getCurrentUser",
-  async (_, { rejectWithValue }) => {
+  async (_,) => {
     try {
       const res = await API.get("/auth/current-user");
       toast.success("User data fetched");
       return res.data;
     } catch (error) {
-      toast.error(error.message);
-      return rejectWithValue(error.message);
+      return toast.error(error.message);
     }
   }
 );
