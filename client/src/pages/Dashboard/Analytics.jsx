@@ -49,23 +49,36 @@ const Analytics = () => {
     getBloodRecords();
   }, []);
 
+  // Function to chunk the data into arrays with 4 items per row
+  const chunkData = (array, size) => {
+    const chunkedArray = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunkedArray.push(array.slice(i, i + size));
+    }
+    return chunkedArray;
+  };
+
   return (
     <>
       <Header />
-      <div className="flex flex-wrap justify-center">
-        {data?.map((record, i) => (
-          <div
-            className={`m-4 p-4 max-w-xs rounded-lg shadow-md ${colors[i]}`}
-            key={i}
-          >
-            <div className="text-center mb-3">
-              <h1 className="text-lg font-bold text-white">{record.bloodGroup}</h1>
-              <p className="text-sm text-white">Total In: <b>{record.totalIn}</b> (ML)</p>
-              <p className="text-sm text-white">Total Out: <b>{record.totalOut}</b> (ML)</p>
-            </div>
-            <div className="text-center text-white">
-              <p>Total Available: <b>{record.availabeBlood}</b> (ML)</p>
-            </div>
+      <div className="flex flex-wrap justify-center ">
+        {chunkData(data, 4).map((chunk, chunkIndex) => (
+          <div className="flex" key={chunkIndex}>
+            {chunk.map((record, i) => (
+              <div
+                className={`m-4 p-4 max-w-xs rounded-lg shadow-md ${colors[(chunkIndex * 4 + i) % colors.length]}`}
+                key={i}
+              >
+                <div className="text-center mb-3">
+                  <h1 className="text-lg font-bold text-white">{record.bloodGroup}</h1>
+                  <p className="text-sm text-white">Total In: <b>{record.totalIn}</b> (ML)</p>
+                  <p className="text-sm text-white">Total Out: <b>{record.totalOut}</b> (ML)</p>
+                </div>
+                <div className="text-center text-white">
+                  <p className="text-gray-50 font-medium">Total Available: <b>{record.availabeBlood}</b> (ML)</p>
+                </div>
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -77,7 +90,7 @@ const Analytics = () => {
               <th className="px-4 py-2">Blood Group</th>
               <th className="px-4 py-2">Inventory Type</th>
               <th className="px-4 py-2">Quantity</th>
-              <th className="px-4 py-2">Donar Email</th>
+              <th className="px-4 py-2">Donor Email</th>
               <th className="px-4 py-2">Time & Date</th>
             </tr>
           </thead>
