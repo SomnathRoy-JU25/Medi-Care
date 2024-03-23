@@ -4,13 +4,13 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import './App.css'
+import "./styles/App.css";
 import "./index.css";
 import { Toaster } from 'react-hot-toast';
-import Footer from './components/Common/Footer.jsx';
+import Footer from './components/Home/Footer.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />
@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Footer/>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  //  </React.StrictMode>,
 )

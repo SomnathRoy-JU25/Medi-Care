@@ -1,36 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import API from "../../../services/API";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 export const userLogin = createAsyncThunk(
   "auth/login",
   async ({ role, email, password }, { rejectWithValue }) => {
     try {
       const { data } = await API.post("/auth/login", { role, email, password });
-      console.log(data);
-      if(!data.success){
-        throw new Error(data.message)
+      if (!data.success) {
+        throw new Error(data.message);
       }
-      toast.success("Login Successful");
+      toast.success("Login Successful", { duration: 2000 });
       localStorage.setItem("token", data.token);
-      window.location.replace("/home");
-      // if (data.success) {
-      //   alert(data.message);
-      //   localStorage.setItem("token", data.token);
-      //   window.location.replace("/home");
-      // }
+      // Simulate a delay before redirecting
+      setTimeout(() => {
+        window.location.replace("/home");
+      }, 100); // Redirect after some time 
+      return data;
     } catch (error) {
-      toast.error(error);
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-//register
 export const userRegister = createAsyncThunk(
   "auth/register",
   async (
@@ -59,40 +52,28 @@ export const userRegister = createAsyncThunk(
         hospitalName,
         website,
       });
-      if (data?.success) {
-        toast.success("User Registerd Successfully");
-        // alert("User Registerd Successfully");
+      if (data.success) {
+        toast.success("User Registered Successfully");
         window.location.replace("/login");
-       
       }
+      return data;
     } catch (error) {
-      console.log(error);
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-//current user
 export const getCurrentUser = createAsyncThunk(
   "auth/getCurrentUser",
-  async ({ rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const res = await API.get("/auth/current-user");
       toast.success("User data fetched");
-      if (res.data) {
-        return res?.data;
-      }
+      return res.data;
     } catch (error) {
-      console.log(error);
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
+      toast.error(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

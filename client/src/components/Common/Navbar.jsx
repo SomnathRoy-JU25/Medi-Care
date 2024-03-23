@@ -34,7 +34,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100 text-black">
+    <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100
+     text-black mt-0">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
@@ -44,7 +45,7 @@ const Navbar = () => {
           </span>
         </div>
         <div className="hidden grow items-start lg:flex">
-          <ul className="ml-12 inline-flex space-x-5 hover:cursor-pointer">
+          <ul className="ml-0 inline-flex space-x-5 hover:cursor-pointer"> {/* Adjusted margin-left */}
             {menuItems.map((item) => (
               <li className="text-blue" key={item.name}>
                 <a
