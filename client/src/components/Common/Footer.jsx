@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="flex h-full flex-col justify-between">
                 <div className="mb-4 inline-flex items-center">
                   <a href="/">
-                    <img className="h-30 w-30" src={logo} alt="" />
+                    <img className="h-30 w-30 " src={logo} alt="" />
                   </a>
                 </div>
               </div>
@@ -199,7 +199,7 @@ const Footer = () => {
                 </div>
                 <div className="w-auto p-1.5">
                   <a href="#">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400 text-red">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400 text-red-600">
                     <FaInstagram/>
                     </div>
                   </a>
