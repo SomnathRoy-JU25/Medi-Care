@@ -2,14 +2,14 @@ import React from "react";
 import Form from "../../components/shared/Form/Form";
 import { useSelector } from "react-redux";
 import Spinner from "../../components/shared/Spinner";
-import Navbar from "../../components/Common/Navbar";
+import BloodNavbar from "./BloodNavbar";
 
 const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
   
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <BloodNavbar />
       <div className="flex-grow flex items-center justify-center">
         {error && <span className="text-red-500">{alert(error)}</span>}
         {loading ? (

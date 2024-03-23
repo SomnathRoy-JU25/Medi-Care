@@ -1,226 +1,119 @@
 import React from "react";
-import logo from "/logo.png";
-import { FaInstagram } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import logo from "../../assets/images/Logo.jpg";
+import { FaInstagram, FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      <section className="relative overflow-hidden py-10">
-        <div className="relative z-10 mx-auto max-w-7xl px-4">
-          <div className="-m-6 flex flex-wrap">
-            <div className="w-full p-6 md:w-1/2 lg:w-5/12">
-              <div className="flex h-full flex-col justify-between">
-                <div className="mb-4 inline-flex items-center">
-                  <a href="/">
-                    <img className="h-30 w-30" src={logo} alt="" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-              <div className="h-full">
-                <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                  Company
-                </h3>
-                <ul>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Features
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Pricing
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Affiliate Program
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Press Kit
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-              <div className="h-full">
-                <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                  Support
-                </h3>
-                <ul>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Account
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Help
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Contact Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Customer Support
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="w-full p-6 md:w-1/2 lg:w-3/12">
-              <div className="h-full">
-                <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
-                  Legals
-                </h3>
-                <ul>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Terms &amp; Conditions
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                      href="#"
-                    >
-                      Licensing
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr />
-      <section className="relative overflow-hidden bg-white py-8">
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="-m-8 flex flex-wrap items-center justify-between">
-            <div className="w-auto p-8">
-              <a href="#">
-                <div className="inline-flex items-center">
-  
-                <div>
-                  <p className="mb-4  text-base font-medium">
-                    The Tailwind CSS Component library
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    &copy; Copyright 2022. All Rights Reserved by DevUI.
-                  </p>
-                </div>
-                </div>
+    <footer className="bg-gray-100 mb-0">
+      <div className="container mx-auto py-10 px-4 lg:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="w-full lg:w-1/2 lg:col-span-2">
+            <div className="flex items-center mb-8">
+              <a href="/">
+                <img className="h-20 w-30 rounded-full" src={logo} alt="Logo" />
               </a>
             </div>
-            <div className="w-auto p-8">
-              <ul className="-m-5 flex flex-wrap items-center">
-                <li className="p-5">
-                  <a
-                    className="font-medium text-gray-600 hover:text-gray-700"
-                    href="#"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className="p-5">
-                  <a
-                    className="font-medium text-gray-600 hover:text-gray-700"
-                    href="#"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li className="p-5">
-                  <a
-                    className="font-medium text-gray-600 hover:text-gray-700"
-                    href="#"
-                  >
-                    Return Policy
-                  </a>
-                </li>
-                <li className="p-5">
-                  <a
-                    className="font-medium text-gray-600 hover:text-gray-700"
-                    href="#"
-                  >
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
+            <p className="text-gray-700 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              nec urna magna.
+            </p>
+          </div>
+          <div className="w-full lg:w-1/4">
+            <h3 className="text-gray-800 text-lg font-semibold mb-4">
+              Company
+            </h3>
+            <ul className="text-gray-700">
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Features
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Pricing
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Affiliate Program
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900">
+                  Press Kit
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="w-full lg:w-1/4">
+            <h3 className="text-gray-800 text-lg font-semibold mb-4">
+              Support
+            </h3>
+            <ul className="text-gray-700">
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Account
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Help
+                </a>
+              </li>
+              <li className="mb-2">
+                <a href="#" className="hover:text-gray-900">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-900">
+                  Customer Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white border-t border-gray-200 justify-center items-center  flex flex-grow-0">
+        <div className="container mx-auto py-0 px-4 lg:px-0 justify-between ">
+          <div className="flex flex-wrap items-center justify-between">
+            <div className="w-full md:w-1/2 lg:w-auto mb-4 lg:mb-0">
+              <p className="text-gray-700">
+                &copy; Copyright 2024. All Rights Reserved.
+              </p>
             </div>
-            <div className="w-auto p-8">
-              <div className="-m-1.5 flex flex-wrap">
-                <div className="w-auto p-1.5">
-                  <a href="#">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
-                    <FaFacebookF />
-                    </div>
-                  </a>
-                </div>
-                <div className="w-auto p-1.5">
-                  <a href="#">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
-                    <FaXTwitter />
-                    </div>
-                  </a>
-                </div>
-                <div className="w-auto p-1.5">
-                  <a href="#">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
-                    <FaInstagram />
-                    </div>
-                  </a>
-                </div>
+
+            <div className="flex items-center space-x-4 ">
+              <div>
+                <a
+                  href="#"
+                  className="flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 hover:border-gray-400"
+                >
+                  <FaFacebookF className="text-gray-600" />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 hover:border-gray-400"
+                >
+                  <FaTwitterSquare className="text-gray-600" />
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 hover:border-gray-400"
+                >
+                  <FaInstagram className="text-gray-600" />
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </footer>
   );
 };
 
