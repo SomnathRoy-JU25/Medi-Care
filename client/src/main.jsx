@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import './App.css'
 import "./index.css";
+import { Toaster } from 'react-hot-toast';
 import Footer from './components/Common/Footer.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
+        <Toaster/>
         <Footer/>
       </BrowserRouter>
     </Provider>

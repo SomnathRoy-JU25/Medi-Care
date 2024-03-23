@@ -10,8 +10,6 @@ import Contact from "./pages/Contact";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
 import Donar from "./pages/Dashboard/Donar";
@@ -33,7 +31,6 @@ function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
           <div>
-            <ToastContainer />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login2" element={<Login2 />} />

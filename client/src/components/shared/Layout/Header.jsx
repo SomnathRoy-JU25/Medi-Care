@@ -2,7 +2,7 @@ import React from "react";
 import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import {toast} from "react-hot-toast";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -11,7 +11,8 @@ const Header = () => {
   // Logout handler
   const handleLogout = () => {
     localStorage.clear();
-    alert("Logout Successful");
+    toast.success("Logout Successful");
+    // alert("Logout Successful");
     // navigate("/login");
     navigate("/");
   };
