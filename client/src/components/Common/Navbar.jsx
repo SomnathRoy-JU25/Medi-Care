@@ -13,13 +13,17 @@ const menuItems = [
     href: "/about",
   },
   {
-    name: "Contact",
+    name: "AI Features",
     href: "/contact",
   },
   {
-    name : "Donate Blood",
-    href : "/login",
-  }
+    name: "Donate Blood",
+    href: "/login",
+  },
+  {
+    name: "Book Appointment",
+    href: "/login",
+  },
 ];
 
 const Navbar = () => {
@@ -30,7 +34,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
+    <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100 text-black">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
@@ -40,12 +44,12 @@ const Navbar = () => {
           </span>
         </div>
         <div className="hidden grow items-start lg:flex">
-          <ul className="ml-12 inline-flex space-x-8">
+          <ul className="ml-12 inline-flex space-x-5 hover:cursor-pointer">
             {menuItems.map((item) => (
-              <li key={item.name}>
-                <a 
+              <li className="text-blue" key={item.name}>
+                <a
                   href={item.href}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900 hover:cursor-pointer"
+                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm"
                 >
                   {item.name}
                   <span>
@@ -55,17 +59,31 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          <div className="px-4">
+            <button
+              type="button"
+              className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-slate-300"
+            >
+              <ul className="ml-1 inline-flex space-x-0 hover:cursor-pointer">
+                <li>
+                  <a className="inline-flex items-center text-sm font-semibold text-green-600 hover:text-red hover:cursor-pointer hover:text-sm">
+                    Emergency
+                  </a>
+                </li>
+              </ul>
+            </button>
+          </div>
         </div>
         <div className="hidden space-x-2 lg:block">
           <button
             type="button"
-            className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue"
           >
             <Link to="/signup">Sign Up</Link>
           </button>
           <button
             type="button"
-            className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="rounded-md border px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue"
           >
             <Link to="/login2">Log In</Link>
           </button>

@@ -78,7 +78,7 @@ const About = () => {
   }
 
   return (
-    <div>
+    <div className='section-container bg-gradient-to-r from-[#FAFAFA] from 0% to-[#FCFCFC] to-100%'>
        <Navbar/>
       <div className="mx-auto max-w-7xl px-4">
         {/* Hero Map */}
