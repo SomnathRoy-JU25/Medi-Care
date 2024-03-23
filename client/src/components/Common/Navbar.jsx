@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import logo from "/logo.png";
+import logo from "../../assets/images/Logo.jpg";
 import { Link } from "react-router-dom";
 
 const menuItems = [
@@ -22,7 +22,7 @@ const menuItems = [
   },
   {
     name: "Book Appointment",
-    href: "/",
+    href: "/login2",
   },
 ];
 
@@ -36,15 +36,19 @@ const Navbar = () => {
   return (
     <div className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100 text-black mt-0">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-12 lg:px-12">
-        <div className="inline-flex items-center space-x-2">
-          <span>
+        <div className="inline-flex items-center space-x-3">
+          <span className="bg-white rounded-full shadow-md">
             <a href="/">
-              <img className="h-20 w-30" src={logo} alt="" />
+              <img
+                className="h-20 w-30 rounded-full border border-gray-200"
+                src={logo}
+                alt="Logo"
+              />
             </a>
           </span>
         </div>
-        <div className="hidden grow items-start lg:flex">
-          <ul className="ml-0 inline-flex space-x-5 hover:cursor-pointer"> {/* Adjusted margin-left */}
+        <div className="hidden lg:flex items-center justify-center">
+          <ul className="ml-8 flex space-x-5 hover:cursor-pointer">
             {menuItems.map((item) => (
               <li className="text-blue" key={item.name}>
                 <a
@@ -62,7 +66,10 @@ const Navbar = () => {
           <div className="px-4">
             <button
               type="button"
-              className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-slate-300"
+              className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold
+               text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 
+               focus-visible:outline-offset-2 focus-visible:outline-black bg-slate-300
+               "
             >
               <ul className="ml-1 inline-flex space-x-0 hover:cursor-pointer">
                 <li>
