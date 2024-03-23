@@ -15,7 +15,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [phone, setPhone] = useState("");
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-16">
       <form
         onSubmit={(e) => {
           if (formType === "login")
@@ -31,13 +31,13 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               organisationName,
               address,
               hospitalName,
-              website
+              // website
             );
         }}
       >
         <h1 className="text-center text-3xl font-bold mb-4">{formTitle}</h1>
         <hr className="mb-4" />
-        <div className="flex flex-row mb-4">
+        <div className="flex flex-row mb-4 justify-center items-center">
           <div className="flex items-center mr-4">
             <input
               type="radio"
@@ -78,7 +78,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               Hospital
             </label>
           </div>
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <input
               type="radio"
               className="form-radio h-5 w-5 text-indigo-600"
@@ -90,7 +90,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             <label htmlFor="organisationRadio" className="ml-2 text-gray-700">
               Organisation
             </label>
-          </div>
+          </div> */}
         </div>
         {/* switch statement */}
         {(() => {
@@ -167,14 +167,14 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <InputType
+                  {/* <InputType
                     labelText={"Website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
-                  />
+                  /> */}
                   <InputType
                     labelText={"Address"}
                     labelFor={"forAddress"}

@@ -6,6 +6,7 @@ import Layout from "../components/shared/Layout/Layout";
 import API from "../services/API";
 import moment from "moment";
 import Modal from "../components/shared/modal/Modal"; // Import the Modal component
+import { IoMdAdd } from "react-icons/io";
 
 const HomePage = () => {
   const { loading, error, user } = useSelector((state) => state.auth);
@@ -37,12 +38,23 @@ const HomePage = () => {
         <Spinner />
       ) : (
         <div className="container mx-auto px-4 py-8">
-          <h4
-            className="text-lg font-semibold mb-4 cursor-pointer"
-            onClick={() => setShowModal(true)} // Toggle modal visibility on click
-          >
+          <h4>
             <i className="fas fa-plus text-green-500 mr-2"></i>
-            Add Inventory
+            <button
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white py-2 px-4 rounded-md
+                    hover:from-green-600 hover:to-green-700 transition duration-300 shadow-md hover:shadow-lg
+                    focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              onClick={() => setShowModal(true)} // Toggle modal visibility on click
+            >
+            <div className="flex flex-row justify-center items-center">
+              <div>
+              <IoMdAdd  size={25}/>
+              </div>
+              <div>
+                Add Inventory
+              </div>
+            </div>
+            </button>
           </h4>
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
@@ -91,7 +103,9 @@ const HomePage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     {record.quantity} (ML)
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{record.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {record.email}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
                   </td>
