@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import logo from "../../assets/images/Logo.jpg";
+import logo from "../../assets/images/Logo.png";
 import { Link } from "react-router-dom";
 
 const menuItems = [

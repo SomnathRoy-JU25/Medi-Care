@@ -65,7 +65,7 @@ const updateProfile = ({name, photoURL})=>{
 
   return (
     <AuthContext.Provider value={authInfo}>
-        {children}
+    {children}
     </AuthContext.Provider>
   );
 };

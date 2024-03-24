@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -13,7 +13,8 @@ const SignUp = () => {
     password: ""
   });
   const { fullName, email, password } = formData;
-  // const { user,signUpWithGmail} = useContext(AuthContext); 
+
+  const { signUpWithGmail} = useContext(AuthContext); 
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -37,7 +38,7 @@ const SignUp = () => {
   };
 
   const handleRegister = () => {
-    signUpWithGmail.then((result) =>{
+    signUpWithGmail().then((result) =>{
       const user = result.user;
       alert("Login Successful");
     }).catch((error) =>{
