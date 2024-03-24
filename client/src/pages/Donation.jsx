@@ -32,7 +32,7 @@ const Donation = () => {
   return (
 
     <Layout>
-      <div className="container mt-4">
+      <div className="container px-10">
         <h1 className="text-2xl font-bold mb-4">Donation Records</h1>
         <table className="table w-full">
           <thead>
