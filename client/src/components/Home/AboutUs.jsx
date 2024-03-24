@@ -5,10 +5,10 @@ import "../../styles/hero.css";
 const AboutUs = () => {
   return (
     <>
-      <section className="container px-20 ">
-        <h2 className="page-heading about-heading underline">About Us</h2>
+      <section className="container">
+        <h2 className="page-heading about-heading">About Us</h2>
         <div className="about">
-          <div className="hero-img radius">
+          <div className="hero-img">
             <img
               src={image}
               alt="hero"

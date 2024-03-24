@@ -4,6 +4,10 @@ const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const cookieParser = require("cookie-parser");
+const { cloudinaryConnect } = require("./config/cloudinary");
+const fileUpload = require("express-fileupload");
+
 //dot config
 dotenv.config();
 
@@ -15,7 +19,23 @@ const app = express();
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+	cors({
+		origin: "*",
+		credentials: true,
+	})
+);
+app.use(
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: "/tmp/",
+	})
+);
+
+// Connecting to cloudinary
+cloudinaryConnect();
+
 app.use(morgan("dev"));
 
 //routes
@@ -24,6 +44,8 @@ app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
 app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
+app.use("/api/v1/user", require("./routes/user"));
+app.use("/api/v1/profile", require("./routes/profileRoutes"));
 
 //port
 const PORT = process.env.PORT || 8080;
