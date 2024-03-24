@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Navbar from '../Common/Navbar';
 import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { handleRegister } from '../../services/authService';
+// import { handleRegister } from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
@@ -22,7 +22,7 @@ const Login = () => {
     }));
   };
 
-  // const {signupWithGmail} = useContext(AuthContext);
+  const {signUpWithGmail} = useContext(AuthContext);
 
   // *********** Handle Form Submission **************
   const handleOnSubmit = (e) => {
@@ -34,6 +34,15 @@ const Login = () => {
       email: "",
       password: "",
     });
+  };
+
+  const handleRegister = () => {
+    signUpWithGmail().then((result) =>{
+      const user = result.user;
+      alert("Login Successful");
+    }).catch((error) =>{
+      console.log(error);
+    })
   };
 
 
