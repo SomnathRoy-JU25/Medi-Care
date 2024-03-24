@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { signUp } from "../../services/operations/authAPI";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import Tab from "../../components/Common/Tab";
+import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { firstName, lastName, email, password, confirmPassword } = formData;
+
+  const { signUpWithGmail} = useContext(AuthContext); 
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -78,8 +82,19 @@ function SignupForm() {
     },
   ];
 
+  const handleRegister = () => {
+    signUpWithGmail().then((result) =>{
+      const user = result.user;
+      console.log(user);
+      toast.success("Login Successful");
+      navigate("/login2")
+    }).catch((error) =>{
+      console.log(error);
+    })
+  };
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-8">
       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
       <form onSubmit={handleOnSubmit} className="max-w-md mx-auto mt-6 space-y-6">
         <div className="flex flex-col space-y-2">
@@ -169,11 +184,18 @@ function SignupForm() {
         </div>
         <button
           type="submit"
-          className="btn-primary mt-6 w-full py-2 text-lg font-semibold text-white bg-purple-500 hover:bg-blue rounded-md transition duration-300 ease-in-out"
+          className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-blue hover:text-white focus:bg-gray-100 focus:text-black focus:outline-none"
         >
           Create Account
         </button>
       </form>
+      <button
+          type="submit"
+          onClick={handleRegister}
+          className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+        ><span className="mr-2 inline-block text-blue"><FcGoogle /></span>
+           Sign up with Google
+        </button>
     </div>
   );
 }
