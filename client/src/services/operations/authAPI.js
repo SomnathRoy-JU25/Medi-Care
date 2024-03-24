@@ -1,13 +1,12 @@
 import { toast } from "react-hot-toast"
 
-import { setLoading, setToken } from "../../slices/authSlice"
-// import { resetCart } from "../../slices/cartSlice"
-import { setUser } from "../../slices/profileSlice"
+import { setLoading, setToken } from "../../redux/features/auth/authSlice"
+import { setUser } from "../../redux/features/auth/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { endpoints } from "../apis"
 
 const {
-  SENDOTP_API,
+  // SENDOTP_API,
   SIGNUP_API,
   LOGIN_API,
   RESETPASSTOKEN_API,
@@ -105,6 +104,7 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
 
       dispatch(setUser({ ...response.data.user, image: userImage }))
+      console.log(response.data.token)
       localStorage.setItem("token", JSON.stringify(response.data.token)) // Refresh hole sob ure na jayega
       navigate("/user-dashboard")
     } catch (error) {
@@ -174,10 +174,9 @@ export function logout(navigate) {
   return (dispatch) => {
     dispatch(setToken(null))
     dispatch(setUser(null))
-    dispatch(resetCart())
     localStorage.removeItem("token")
     localStorage.removeItem("user")
-    toast.success("Logged Out")
+    toast.success("Logged Out",{duration:2000})
     navigate("/")
   }
 }

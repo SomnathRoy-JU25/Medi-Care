@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCurrentUser, userLogin, userRegister } from "./authActions";
 
-const token = localStorage.getItem("token")
-  ? localStorage.getItem("token")
-  : null;
+const token = JSON.parse(localStorage.getItem("token")) ? localStorage.getItem("token") : null;
 
 const initialState = {
   loading: false,
@@ -15,7 +13,14 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setToken(state, value) {
+      state.token = value.payload;
+    },
+    setLoading(state, value) {
+      state.loading = value.payload;
+    }
+  },
   extraReducers: (builder) => {
     // login user
     builder.addCase(userLogin.pending, (state) => {
@@ -60,4 +65,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setToken, setLoading } = authSlice.actions;
 export default authSlice;

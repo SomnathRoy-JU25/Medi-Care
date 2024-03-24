@@ -1,19 +1,24 @@
 import React from "react";
 import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import { setToken } from "../../../redux/features/auth/authSlice"
+import { setUser } from "../../../redux/features/auth/profileSlice"
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const location = useLocation();
-
+  const dispatch = useDispatch();
   // Logout handler
   const handleLogout = () => {
-    localStorage.clear();
-    toast.success("Logout Successful");
-    navigate("/");
+    dispatch(setToken(null))
+    dispatch(setUser(null))
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    toast.success("Logged Out",{duration:2000})
+    navigate("/")
   };
 
   return (

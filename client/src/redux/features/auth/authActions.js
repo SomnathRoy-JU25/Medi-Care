@@ -10,7 +10,7 @@ export const userLogin = createAsyncThunk(
       if (!data.success) {
         return toast.error(data.message);
       }
-      toast.success("Login Successful", { duration: 2000 });
+      toast.success("Login Successful", { duration: 1000 });
       localStorage.setItem("token", data.token);
       // Simulate a delay before redirecting
       setTimeout(() => {

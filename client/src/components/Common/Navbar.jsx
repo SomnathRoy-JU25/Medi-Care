@@ -2,6 +2,8 @@ import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import logo from "../../assets/images/Logo.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileDropdown from "../Auth/ProfileDropdown";
 
 const menuItems = [
   {
@@ -28,7 +30,7 @@ const menuItems = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+  const { token } = useSelector((state) => state.auth);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -81,20 +83,26 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        <div className="hidden space-x-2 lg:block">
-          <button
-            type="button"
-            className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue"
-          >
-            <Link to="/signup">Sign Up</Link>
-          </button>
-          <button
-            type="button"
-            className="rounded-md border px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue"
-          >
-            <Link to="/login2">Log In</Link>
-          </button>
+
+        <div className="hidden space-x-2 lg:block">  
+          {token === null && (
+          <Link to="/signup">
+            <button className = "rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue">
+              Sign Up
+            </button>
+          </Link>
+          )}
+ 
+          {token === null && (
+            <Link to="/login2">
+              <button className="rounded-md border px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue">
+               Log In
+              </button>
+            </Link>
+          )}
+          {token !== null && <ProfileDropdown />}
         </div>
+
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>
