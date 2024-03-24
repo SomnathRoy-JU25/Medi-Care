@@ -11,7 +11,7 @@ import Footer from './components/Home/Footer.jsx';
 import Navbar from './components/Common/Navbar.jsx';
 import AuthProvider from './contexts/AuthProvider.jsx';
 
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 
 // import { configureStore } from "@reduxjs/toolkit";
 // import rootReducer from "./reducer";
