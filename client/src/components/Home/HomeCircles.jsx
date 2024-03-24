@@ -4,7 +4,7 @@ import "../../styles/homecircles.css";
 
 const HomeCircles = () => {
   return (
-    <section className="container circles">
+    <section className="container circles px-20">
       <div className="circle">
         <CountUp
           start={0}
