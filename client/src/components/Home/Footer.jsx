@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="w-full">
       <div className="mx-auto flex max-w-6xl flex-col items-start space-x-8 md:flex-row">
         <div className="w-full px-4 md:w-1/2 lg:px-0">
-          <h1 className="max-w-sm text-3xl font-bold">Subscribe to our Newsletter</h1>
+          <h1 className="max-w-sm text-3xl font-bold">Subscribe to our MediCare.com</h1>
           <form action="" className="mt-4 inline-flex w-full items-center md:w-3/4">
             <input
               className="flex h-10 w-full rounded-md border border-black/20 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
@@ -62,12 +62,12 @@ const Footer = () => {
             </p>
               </li>
               <li className="p-5">
-                <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                <a className="font-medium text-gray-600 hover:text-blue" href="#">
                   Return Policy
                 </a>
               </li>
               <li className="p-5">
-                <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                <a className="font-medium text-gray-600 hover:text-blue" href="/contact">
                   Contact Us
                 </a>
               </li>

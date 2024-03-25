@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
+
 import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -23,10 +24,12 @@ import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
 
+
 //Video Call
 // import CallPage from "./components/VideoCallFeature/CallPage";
 // import RoomPage from "./components/VideoCallFeature/RoomPage";
 import UserDashboard from "./components/Dashboard/UserDashboard";
+import Privacy_policy from "./pages/Privacy_policy";
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
@@ -37,6 +40,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<Privacy_policy/>} />
           
           {/* Private Route - for Only Logged in User */}
           <Route path="/user-dashboard" element={<UserDashboard/>}/>
