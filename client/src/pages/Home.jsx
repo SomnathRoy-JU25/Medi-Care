@@ -6,7 +6,7 @@ import HomeCircles from "../components/Home/HomeCircles";
 
 const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen"> {/* Ensure minimum height to cover the entire screen */}
+    <div className="container px-10"> {/* Ensure minimum height to cover the entire screen */}
       <Navbar />
       <div className="flex-grow"> {/* Allow this div to take up remaining vertical space */}
         <Hero />
