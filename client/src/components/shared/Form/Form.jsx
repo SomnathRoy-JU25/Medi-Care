@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-import { handleLogin, handleRegister } from "../../../services/authService";
+import { userRegister , userLogin } from "../../../services/operations/authAPI";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
@@ -14,24 +16,30 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-16">
       <form
         onSubmit={(e) => {
+          e.preventDefault();
           if (formType === "login")
-            return handleLogin(e, email, password, role);
+          // return handleLogin(e,email,password,role);
+          dispatch(userLogin(role,email,password,navigate));
           else if (formType === "register")
-            return handleRegister(
-              e,
-              name,
-              role,
-              email,
-              password,
-              phone,
-              organisationName,
-              address,
-              hospitalName,
-              // website
+            dispatch(
+              userRegister(
+                name,
+                role,
+                email,
+                password,
+                phone,
+                organisationName,
+                address,
+                hospitalName,
+                // website
+                navigate
+              )
             );
         }}
       >

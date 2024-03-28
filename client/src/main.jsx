@@ -10,7 +10,14 @@ import Navbar from './components/Common/Navbar.jsx';
 
 import AuthProvider from './contexts/AuthProvider.jsx';
 import { Provider } from "react-redux";
-import store from "./redux/store.js";
+
+// import store from "./redux/store.js";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducer/index.js";
+
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>

@@ -19,7 +19,7 @@ const Modal = ({ setShowModal, user }) => {
       }
       const { data } = await API.post("/inventory/create-inventory", {
         email,
-        organisation: user?._id,
+        // organisation: user?._id,
         inventoryType,
         bloodGroup,
         quantity,

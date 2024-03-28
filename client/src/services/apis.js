@@ -8,6 +8,11 @@ export const endpoints = {
   LOGIN_API: BASE_URL + "/user/login",
   RESETPASSTOKEN_API: BASE_URL + "/user/reset-password-token",
   RESETPASSWORD_API: BASE_URL + "/user/reset-password",
+
+
+  SIGNUP_API_DONATE_BLOOD: BASE_URL + "/auth/register",
+  LOGIN_API_DONATE_BLOOD: "http://localhost:8080/api/v1/auth/login",
+  GET_USER_API : BASE_URL + "/auth/current-user",
 }
 
 // PROFILE ENDPOINTS

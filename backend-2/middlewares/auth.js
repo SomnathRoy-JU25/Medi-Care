@@ -2,6 +2,7 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const User = require("../models/User");
+const userModel = require("../models/userModel")
 dotenv.config();
 
 // This function is used as middleware to authenticate user requests
@@ -24,6 +25,7 @@ exports.auth = async (req, res, next) => {
 			console.log(decode);
 			// Storing the decoded JWT payload in the request object for further use
 			req.user = decode;
+			req.body.userId = decode.userId;
 		} catch (error) {
 			// If JWT verification fails, return 401 Unauthorized response
 			return res
@@ -42,6 +44,23 @@ exports.auth = async (req, res, next) => {
 	}
 };
 
+exports.isAdmin = async (req, res, next) => {
+	try {
+		const user = await userModel.findById(req.body.userId);
+
+        if (userDetails.accountType !== "Admin") {
+            return res.status(401).json({
+                success: false,
+                message: "This is a Protected Route for Admin",
+            });
+        }
+        next();
+    } catch (error) {
+        return res
+            .status(500)
+            .json({ success: false, message: `Admin Role Can't be Verified` });
+    }
+};
 exports.isUser = async (req, res, next) => {
 	try {
 		const userDetails = await User.findOne({ email: req.user.email });

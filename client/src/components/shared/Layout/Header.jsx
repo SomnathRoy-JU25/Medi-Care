@@ -3,11 +3,13 @@ import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
-import { setToken } from "../../../redux/features/auth/authSlice"
-import { setUser } from "../../../redux/features/auth/profileSlice"
+// import { setToken } from "../../../redux/features/auth/authSlice"
+// import { setUser } from "../../../redux/features/auth/profileSlice"
+import { setToken } from "../../../slices/authSlice";
+import { setUser } from "../../../slices/profileSlice";
 
 const Header = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -33,10 +35,10 @@ const Header = () => {
             <p className="text-white items-center flex space-x-2">
               <BiUserCircle className="text-2xl mr-1" />
               <span className="font-semibold text-pretty">
-                {user?.name || user?.hospitalName || user?.organisationName}
+                {user.user?.name || user.user?.hospitalName}
               </span>
               <span className="badge rounded-lg bg-gray-700 text-white text-md">
-                {user?.role}
+                {user.user?.role}
               </span>
             </p>
           </li>

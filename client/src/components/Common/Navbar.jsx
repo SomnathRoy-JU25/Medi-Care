@@ -101,7 +101,8 @@ const Navbar = () => {
               </button>
             </Link>
           )}
-          { (user !== null || token !== null ) && <ProfileDropdown />}
+          {/* { ( token !== null ) && !user.user.role !== ("donar" || "hospital" || "admin") && <ProfileDropdown />} */}
+          { ( token !== null ) && (user.accountType === "Doctor" || user.accountType === "User")  && <ProfileDropdown />}
         </div>
 
         <div className="lg:hidden">

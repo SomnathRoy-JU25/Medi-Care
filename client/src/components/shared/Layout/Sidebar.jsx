@@ -6,7 +6,7 @@ import "../../../styles/Layout.css";
 
 const Sidebar = () => {
   //GET USER STATE
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
 
   const location = useLocation();
 
@@ -14,33 +14,7 @@ const Sidebar = () => {
     <div>
       <div className="sidebar">
         <div className="menu">
-          {user?.role === "organisation" && (
-            <>
-              <div
-                className={`menu-item ${location.pathname === "/home" && "active"}`}
-              >
-                <i className="fa-solid fa-warehouse"></i>
-                <Link to="/home">Inventory</Link>
-              </div>
-              <div
-                className={`menu-item ${
-                  location.pathname === "/donar" && "active"
-                }`}
-              >
-                <i className="fa-solid fa-hand-holding-medical"></i>
-                <Link to="/donar">Donar</Link>
-              </div>
-              <div
-                className={`menu-item ${
-                  location.pathname === "/hospital" && "active"
-                }`}
-              >
-                <i className="fa-solid fa-hospital"></i>
-                <Link to="/hospital">Hospital</Link>
-              </div>
-            </>
-          )}
-          {user?.role === "admin" && (
+          {user.user?.role === "admin" && (
             <>
               <div
                 className={`menu-item ${
@@ -68,7 +42,7 @@ const Sidebar = () => {
               </div>
             </>
           )}
-          {(user?.role === "donar" || user?.role === "hospital") && (
+          {/* {(user.user?.role === "donar" || user?.role === "hospital") && (
             <div
               className={`menu-item ${
                 location.pathname === "/orgnaisation" && "active"
@@ -77,8 +51,8 @@ const Sidebar = () => {
               <i className="fa-sharp fa-solid fa-building-ngo"></i>
               <Link to="/orgnaisation">Orgnaisation</Link>
             </div>
-          )}
-          {user?.role === "hospital" && (
+          )} */}
+          {user.user?.role === "hospital" && (
             <div
               className={`menu-item ${
                 location.pathname === "/consumer" && "active"
@@ -88,7 +62,7 @@ const Sidebar = () => {
               <Link to="/consumer">Consumer</Link>
             </div>
           )}
-          {user?.role === "donar" && (
+          {user.user?.role === "donar" && (
             <div
               className={`menu-item ${
                 location.pathname === "/donation" && "active"

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import API from "../../services/API";
-import { getCurrentUser } from "../../redux/features/auth/authActions";
+// import { getCurrentUser } from "../../redux/features/auth/authActions";
+import { getCurrentUser } from "../../services/operations/authAPI";
+
 import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
