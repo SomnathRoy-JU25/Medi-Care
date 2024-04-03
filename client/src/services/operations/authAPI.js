@@ -86,7 +86,7 @@ export function login(email, password, navigate) {
       console.log(response.data.token);
       localStorage.setItem("token", JSON.stringify(response.data.token)); // Refresh hole sob ure na jayega
       localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage }));
-      navigate("/user-dashboard");
+      navigate("/dashboard/my-profile");
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
       toast.error("Login Failed");
@@ -170,10 +170,7 @@ export function userLogin(role, email, password, navigate) {
       if (!data.success) {
         return toast.error(data.message);
       }
-      
-      
-      toast.success("Login Successful", { duration: 1000 });
-      
+      toast.success("Login Successful", { duration: 1000 });  
       // Assuming the user data is in data.usermodel
       dispatch(setUser({...data.usermodel}));
       localStorage.setItem("token", data.token);

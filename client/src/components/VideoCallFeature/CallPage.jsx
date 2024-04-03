@@ -6,13 +6,13 @@ const CallPage = () => {
   const navigate = useNavigate();
 
   const handleJoinRoom = useCallback(() => {
-    navigate(`/room/${value}`);
+    navigate(`/dashboard/room/${value}`);
   }, [navigate, value]);
 
   
   return (
     <div className="flex flex-col lg:flex-col gap-2 justify-start">
-        <h1 className="text-3xl font-bold text-white">Enter Room Code to Join</h1>
+        <h1 className="text-3xl font-bold text-pink-500">Enter Room Code to Join</h1>
         <div className="flex flex-row justify-start">
        <input
          className="border border-gray-300 rounded-lg px-4 py-2 mr-2 focus:outline-none focus:border-blue-500"

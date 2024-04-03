@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { auth, isInstructor } = require("../middlewares/auth")
+const { auth } = require("../middlewares/auth")
 const {
   deleteAccount,
   updateProfile,
@@ -13,9 +13,9 @@ const {
 // ********************************************************************************************************
 // Delet User Account
 router.delete("/deleteProfile", auth, deleteAccount)
-router.put("/updateProfile", auth, updateProfile)
 router.get("/getUserDetails", auth, getAllUserDetails)
-router.put("/updateDisplayPicture", auth, updateDisplayPicture)
+router.put("/updateProfile",  updateProfile)
+router.put("/updateDisplayPicture", updateDisplayPicture)
 
 
 module.exports = router;

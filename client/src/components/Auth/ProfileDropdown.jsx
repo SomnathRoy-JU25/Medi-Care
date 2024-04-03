@@ -34,7 +34,7 @@ export default function ProfileDropdown() {
           className="absolute top-[118%] right-0 z-[1000] divide-y-[1px] divide-[#FBBF24] overflow-hidden rounded-md border-[1px] border-[#3B82F6] bg-[#93C5FD]"
           ref={ref}
         >
-          <Link to="/user-dashboard" onClick={() => setOpen(false)}>
+          <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
             <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-[#111827] hover:bg-[#6B7280] hover:text-[#F3F4F6]">
               <VscDashboard className="text-lg" />
               Dashboard

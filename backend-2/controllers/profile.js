@@ -1,5 +1,5 @@
 const Profile = require("../models/Profile")
-const User = require("../models/User")
+const normalUser = require("../models/User")
 const { uploadImageToCloudinary } = require("../utils/imageUploader")
 
 // Method for updating a profile
@@ -16,10 +16,10 @@ exports.updateProfile = async (req, res) => {
     const id = req.user.id
 
     // Find the profile by id
-    const userDetails = await User.findById(id)
+    const userDetails = await normalUser.findById(id)
     const profile = await Profile.findById(userDetails.additionalDetails)
 
-    const user = await User.findByIdAndUpdate(id, {
+    const user = await normalUser.findByIdAndUpdate(id, {
       fullName
     })
     
@@ -35,7 +35,7 @@ exports.updateProfile = async (req, res) => {
     await profile.save()
 
     // Find the updated user details
-    const updatedUserDetails = await User.findById(id)
+    const updatedUserDetails = await normalUser.findById(id)
       .populate("additionalDetails")
       .exec()
 
@@ -110,7 +110,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000
     )
     console.log(image)
-    const updatedProfile = await User.findByIdAndUpdate(
+    const updatedProfile = await normalUser.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },
       { new: true }
