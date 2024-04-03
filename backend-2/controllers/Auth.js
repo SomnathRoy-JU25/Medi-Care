@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const User = require("../models/User")
+const normalUser = require("../models/User")
 const jwt = require("jsonwebtoken")
 // const mailSender = require("../utils/mailSender")
 // const { passwordUpdated } = require("../mail/templates/passwordUpdate")
@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = await User.findOne({ email })
+    const existingUser = await normalUser.findOne({ email })
     if (existingUser) {
       return res.status(400).json({
         success: false,
@@ -62,7 +62,7 @@ exports.signup = async (req, res) => {
       contactNumber: null,
     })
 
-    const user = await User.create({
+    const user = await normalUser.create({
       firstName,
       lastName,
       email,
@@ -102,7 +102,7 @@ exports.login = async (req, res) => {
     }
 
     // Find user with provided email
-    const user = await User.findOne({ email }).populate("additionalDetails")
+    const user = await normalUser.findOne({ email }).populate("additionalDetails")
 
     // If user not found with provided email
     if (!user) {
@@ -124,6 +124,8 @@ exports.login = async (req, res) => {
       )
 
       // Save token to user document in database
+      // user = user.toObject();
+      // user.token = token;
       user.token = token
       user.password = undefined
       // Set cookie for token and return success response

@@ -57,7 +57,7 @@ exports.deleteAccount = async (req, res) => {
   try {
     const id = req.user.id
     console.log(id)
-    const user = await User.findById({ _id: id })
+    const user = await normalUser.findById({ _id: id })
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -66,7 +66,7 @@ exports.deleteAccount = async (req, res) => {
     }
 
     // Now Delete User
-    await User.findByIdAndDelete({ _id: id })
+    await normalUser.findByIdAndDelete({ _id: id })
     res.status(200).json({
       success: true,
       message: "User deleted successfully",

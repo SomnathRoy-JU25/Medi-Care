@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyAWziqh9C6SqaxR0cHeszAl2pxmMWf69To",
   // apiKey: import.meta.env.VITE_APIKEY,
   // authDomain: import.meta.env.VITE_AUTHDOMAIN,
   authDomain: "medi-care-d550b.firebaseapp.com",
