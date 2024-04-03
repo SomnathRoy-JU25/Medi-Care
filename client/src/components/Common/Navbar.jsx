@@ -37,32 +37,38 @@ const Navbar = () => {
   };
 
   return (
-    <div className="mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100 text-black mt-0">
+    <div
+      className="Navbar mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out
+    bg-primaryBG shadow-md bg-base-100 text-black mt-0 "
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-12 lg:px-12">
         <div className="inline-flex items-center space-x-9">
           <span className="bg-white rounded-full shadow-md">
-            <a href="/">
-              <img
-                className="h-20 w-30 rounded-full border border-gray-200"
-                src={logo}
-                alt="Logo"
-              />
-            </a>
+            <Link to="/">
+              <a>
+                <img
+                  className="h-20 w-30 rounded-full border border-gray-200"
+                  src={logo}
+                  alt="Logo"
+                />
+              </a>
+            </Link>
           </span>
         </div>
         <div className="hidden lg:flex items-center justify-center">
-          <ul className="ml-8 flex space-x-5 hover:cursor-pointer">
+          <ul className="ml-8 flex space-x-10 hover:cursor-pointer">
             {menuItems.map((item) => (
               <li className="text-blue" key={item.name}>
-                <a
-                  href={item.href}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm"
+                <Link to={item.href}>
+                <a className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue
+                hover:cursor-pointer hover:text-sm"
                 >
                   {item.name}
-                  <span>
+                  {/* <span>
                     <ChevronDown className="ml-2 h-4 w-4" />
-                  </span>
+                  </span> */}
                 </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -102,7 +108,10 @@ const Navbar = () => {
             </Link>
           )}
           {/* { ( token !== null ) && !user.user.role !== ("donar" || "hospital" || "admin") && <ProfileDropdown />} */}
-          { ( token !== null ) && (user.accountType === "Doctor" || user.accountType === "User")  && <ProfileDropdown />}
+          {token !== null &&
+            (user.accountType === "Doctor" || user.accountType === "User") && (
+              <ProfileDropdown />
+            )}
         </div>
 
         <div className="lg:hidden">
@@ -173,7 +182,7 @@ const Navbar = () => {
                       </button>
                     </Link>
                   )}
-                  {user !== null || token !== null && <ProfileDropdown />}
+                  {user !== null || (token !== null && <ProfileDropdown />)}
                 </div>
               </div>
             </div>

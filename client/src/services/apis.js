@@ -21,3 +21,10 @@ export const profileEndpoints = {
     GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
     GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
   }
+
+  export const settingsEndpoints = {
+    UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
+    UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
+    // CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
+    DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
+  }
