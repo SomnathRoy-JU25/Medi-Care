@@ -29,7 +29,7 @@ function SignupForm() {
 
   const { firstName, lastName, email, password, confirmPassword } = formData;
 
-  const { signUpWithGmail} = useContext(AuthContext); 
+  const { signUpWithGmail } = useContext(AuthContext);
 
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -83,22 +83,26 @@ function SignupForm() {
   ];
 
   const handleRegister = () => {
-    signUpWithGmail().then((result) =>{
-      const user = result.user;
-      console.log(user);
-      toast.success("Login Successful");
-      navigate("/login2")
-    }).catch((error) =>{
-      console.log(error);
-    })
+    signUpWithGmail()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successful");
+        navigate("/login2");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="gap-y-4">
       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
-      <form onSubmit={handleOnSubmit} className="max-w-md mx-auto mt-6 space-y-6">
+      <form onSubmit={handleOnSubmit} className="mt-0 flex w-full flex-col">
         <div className="flex flex-col space-y-2">
-          <label htmlFor="firstName" className="text-gray-700 font-semibold">First Name <sup className="text-red-600">*</sup></label>
+          <label htmlFor="firstName" className="text-gray-700 font-semibold">
+            First Name <sup className="text-red-600">*</sup>
+          </label>
           <input
             required
             type="text"
@@ -111,7 +115,9 @@ function SignupForm() {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label htmlFor="lastName" className="text-gray-700 font-semibold">Last Name <sup className="text-red-600">*</sup></label>
+          <label htmlFor="lastName" className="text-gray-700 font-semibold">
+            Last Name <sup className="text-red-600">*</sup>
+          </label>
           <input
             required
             type="text"
@@ -124,7 +130,9 @@ function SignupForm() {
           />
         </div>
         <div className="flex flex-col space-y-2">
-          <label htmlFor="email" className="text-gray-700 font-semibold">Email Address <sup className="text-red-600">*</sup></label>
+          <label htmlFor="email" className="text-gray-700 font-semibold">
+            Email Address <sup className="text-red-600">*</sup>
+          </label>
           <input
             required
             type="email"
@@ -137,7 +145,9 @@ function SignupForm() {
           />
         </div>
         <div className="flex flex-col space-y-2 relative">
-          <label htmlFor="password" className="text-gray-700 font-semibold">Create Password <sup className="text-red-600">*</sup></label>
+          <label htmlFor="password" className="text-gray-700 font-semibold">
+            Create Password <sup className="text-red-600">*</sup>
+          </label>
           <input
             required
             type={showPassword ? "text" : "password"}
@@ -160,7 +170,12 @@ function SignupForm() {
           </span>
         </div>
         <div className="flex flex-col space-y-2 relative">
-          <label htmlFor="confirmPassword" className="text-gray-700 font-semibold">Confirm Password <sup className="text-red-600">*</sup></label>
+          <label
+            htmlFor="confirmPassword"
+            className="text-gray-700 font-semibold"
+          >
+            Confirm Password <sup className="text-red-600">*</sup>
+          </label>
           <input
             required
             type={showConfirmPassword ? "text" : "password"}
@@ -182,20 +197,28 @@ function SignupForm() {
             )}
           </span>
         </div>
-        <button
-          type="submit"
-          className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-blue hover:text-white focus:bg-gray-100 focus:text-black focus:outline-none"
-        >
-          Create Account
-        </button>
+        <div className="flex flex-col space-y-2">
+          <button
+            type="submit"
+            className="relative inline-flex w-full items-center justify-center rounded-md border
+          border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all
+          duration-200 hover:bg-blue hover:text-white focus:bg-gray-100 focus:text-black 
+          focus:outline-none"
+          >
+            Create Account
+          </button>
+          <button
+            type="submit"
+            onClick={handleRegister}
+            className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+          >
+            <span className="mr-2 inline-block text-blue">
+              <FcGoogle />
+            </span>
+            Sign up with Google
+          </button>
+        </div>
       </form>
-      <button
-          type="submit"
-          onClick={handleRegister}
-          className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
-        ><span className="mr-2 inline-block text-blue"><FcGoogle /></span>
-           Sign up with Google
-        </button>
     </div>
   );
 }
