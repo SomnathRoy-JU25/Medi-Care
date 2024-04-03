@@ -33,9 +33,11 @@ import Dashboard from "./pages/Dashboard";
 import Privacy_policy from "./pages/Privacy_policy";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import Settings from "./components/Dashboard/Settings/index"
+import Navbar from "./components/Common/Navbar";
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
+     <Navbar/>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />

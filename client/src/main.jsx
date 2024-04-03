@@ -5,13 +5,9 @@ import { BrowserRouter } from "react-router-dom";
 import "./styles/App.css";
 import "./index.css";
 import { Toaster } from 'react-hot-toast';
-import Footer from './components/Home/Footer.jsx';
-import Navbar from './components/Common/Navbar.jsx';
-
 import AuthProvider from './contexts/AuthProvider.jsx';
 import { Provider } from "react-redux";
 
-// import store from "./redux/store.js";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducer/index.js";
 
@@ -24,11 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
     <Provider store={store}>
       <BrowserRouter>
-      <Navbar/>
         <App />
         <Toaster/>
-        <hr />
-        <Footer/>
       </BrowserRouter>
     </Provider>
     </AuthProvider>
