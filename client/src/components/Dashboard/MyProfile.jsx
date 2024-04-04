@@ -11,7 +11,7 @@ export default function MyProfile() {
   return (
     <>
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
-        Welcome User
+        Welcome {user?.accountType}
       </h1>
       <div className="flex items-center justify-between rounded-md border-[1px] border-slate-400 bg-slate-300 p-8 px-12">
         <div className="flex items-center gap-x-4">
@@ -36,29 +36,6 @@ export default function MyProfile() {
           <RiEditBoxLine />
         </IconBtn>
       </div>
-
-      {/* <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-slate-50 p-8 px-12">
-        <div className="flex w-full items-center justify-between">
-          <p className="text-lg font-semibold text-purple-5">About</p>
-          <IconBtn
-            text="Edit"
-            onclick={() => {
-              navigate("/dashboard/settings")
-            }}
-          >
-            <RiEditBoxLine />
-          </IconBtn>
-        </div>
-        <p
-          className={`${
-            user?.additionalDetails?.about
-              ? "text-richblack-5"
-              : "text-black-5"
-          } text-sm font-medium`}
-        >
-          {user?.additionalDetails?.about ?? "Write Something About Yourself"}
-        </p>
-      </div> */}
 
       <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-slate-400 bg-slate-300 p-8 px-12">
         <div className="flex w-full items-center justify-between">
