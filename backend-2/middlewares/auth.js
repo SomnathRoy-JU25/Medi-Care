@@ -1,8 +1,8 @@
 // Importing required modules
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-const User = require("../models/User");
-const userModel = require("../models/userModel")
+const userModel = require("../models/User");
+// const userModel = require("../models/userModel")
 dotenv.config();
 
 // This function is used as middleware to authenticate user requests
@@ -44,26 +44,26 @@ exports.auth = async (req, res, next) => {
 	}
 };
 
-exports.isAdmin = async (req, res, next) => {
-	try {
-		const user = await userModel.findById(req.body.userId);
+// exports.isAdmin = async (req, res, next) => {
+// 	try {
+// 		const user = await userModel.findById(req.body.userId);
 
-        if (userDetails.accountType !== "Admin") {
-            return res.status(401).json({
-                success: false,
-                message: "This is a Protected Route for Admin",
-            });
-        }
-        next();
-    } catch (error) {
-        return res
-            .status(500)
-            .json({ success: false, message: `Admin Role Can't be Verified` });
-    }
-};
+//         if (userDetails.accountType !== "Admin") {
+//             return res.status(401).json({
+//                 success: false,
+//                 message: "This is a Protected Route for Admin",
+//             });
+//         }
+//         next();
+//     } catch (error) {
+//         return res
+//             .status(500)
+//             .json({ success: false, message: `Admin Role Can't be Verified` });
+//     }
+// };
 exports.isUser = async (req, res, next) => {
 	try {
-		const userDetails = await User.findOne({ email: req.user.email });
+		const userDetails = await userModel.findOne({ email: req.user.email });
 
 		if (userDetails.accountType !== "User") {
 			return res.status(401).json({
@@ -81,7 +81,7 @@ exports.isUser = async (req, res, next) => {
 
 exports.isDoctor = async (req, res, next) => {
 	try {
-		const userDetails = await User.findOne({ email: req.user.email });
+		const userDetails = await userModel.findOne({ email: req.user.email });
 
 		if (userDetails.accountType !== "Doctor") {
 			return res.status(401).json({

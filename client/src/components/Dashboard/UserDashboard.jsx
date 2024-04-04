@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import { VscSignOut } from "react-icons/vsc";
 import { logout } from "../../services/operations/authAPI";
-import { IoVideocamOutline } from "react-icons/io5";
+// import { IoVideocamOutline } from "react-icons/io5";
+import { FcVideoCall } from "react-icons/fc";
 
 export default function SidebarFour() {
   const { user } = useSelector((state) => state.profile);
@@ -36,7 +37,7 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/addtoCall" ? "bg-gray-200" : ""
           }`}
         >
-          <IoVideocamOutline size={24} />
+          <FcVideoCall size={26} />
         </NavLink>
 
         <button
