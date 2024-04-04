@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
+// const appointRouter = require("./routes/appointRoutes");
 
 //dot config
 dotenv.config();
@@ -40,6 +41,7 @@ app.use(morgan("dev"));
 
 //routes
 // 1 test route
+// app.use("/api/appointment", appointRouter);
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
 app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
