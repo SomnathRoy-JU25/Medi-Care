@@ -6,6 +6,7 @@ import { VscSignOut } from "react-icons/vsc";
 import { logout } from "../../services/operations/authAPI";
 // import { IoVideocamOutline } from "react-icons/io5";
 import { FcVideoCall } from "react-icons/fc";
+import { FaUserDoctor } from "react-icons/fa6";
 
 export default function SidebarFour() {
   const { user } = useSelector((state) => state.profile);
@@ -28,6 +29,16 @@ export default function SidebarFour() {
           }`}
         >
           <Home size={24} />
+        </NavLink>
+
+        <NavLink
+          to={"/dashboard/book-appointment"}
+          onClick={() => handleNavLinkClick("/dashboard/book-appointment")}
+          className={`rounded-lg p-1.5 text-gray-700 transition-colors duration-200 focus:outline-none ${
+            activeNavLink === "/dashboard/book-appointment" ? "bg-gray-200" : ""
+          }`}
+        >
+          <FaUserDoctor size={26} />
         </NavLink>
 
         <NavLink

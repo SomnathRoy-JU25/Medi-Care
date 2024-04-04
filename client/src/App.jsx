@@ -33,9 +33,12 @@ import Dashboard from "./pages/Dashboard";
 import Privacy_policy from "./pages/Privacy_policy";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import Settings from "./components/Dashboard/Settings/index"
+import Navbar from "./components/Common/Navbar";
+import BookAppointment from "./components/Dashboard/BookAppointment";
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
+     <Navbar/>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -44,6 +47,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<Privacy_policy />} />
+          
           {/* Private Route - for Only Logged in User */}
           <Route
             element={
@@ -56,7 +60,7 @@ function App() {
             <Route path="dashboard/addtoCall" element={<CallPage />} />
             <Route path="dashboard/room/:roomId" element={<RoomPage />} />
             <Route path="dashboard/settings" element={<Settings />} />
-
+            <Route path="/dashboard/book-appointment" element={<BookAppointment />} />
             <Route path="/dashboard/user-dashboard" element={<UserDashboard />} />
           </Route>
 

@@ -1,40 +1,25 @@
-// import { FcGoogle } from "react-icons/fc"
-import { useSelector } from "react-redux"
-import LoginForm from "./LoginForm"
-import SignupForm from "./SignupForm"
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
 function Template({ title, description1, description2, image, formType }) {
-  // const { loading } = useSelector((state) => state.auth)
-  
   return (
-    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col-reverse justify-between gap-y-12 py-12 
-        md:flex-row md:gap-y-0 md:gap-x-12">
-          <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">
-            <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-purple-5">
-              {title}
-            </h1>
-            <p className="mt-4 text-[1.125rem] leading-[1.625rem]">
-              <span className="text-purple-5">{description1}</span>{" "}
-              <span className="font-edu-sa font-bold italic text-blue-100">
-                {description2}
-              </span>
-            </p>
-            {formType === "signup" ? <SignupForm /> : <LoginForm />}
-          </div>
-          <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
-            <img
-              src={image}
-              alt="Students"
-              width={700}
-              height={700}
-              loading="lazy"
-              className="absolute -top-3 right-4 z-10 pt-36"
-            />
-          </div>
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between">
+        <div className="lg:w-1/2">
+          <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-purple-5">{title}</h1>
+          <p className="text-lg lg:text-xl text-gray-700 mb-8">{description1} <span className="italic font-semibold text-blue-600">{description2}</span></p>
+          {formType === "signup" ? <SignupForm /> : <LoginForm />}
         </div>
+        <div className="lg:w-1/2">
+          <img
+            src={image}
+            alt="Students"
+            className="rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Template
+export default Template;

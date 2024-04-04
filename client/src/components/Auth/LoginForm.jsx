@@ -53,10 +53,10 @@ function LoginForm() {
       <div className="gap-y-4">
         <form
           onSubmit={handleOnSubmit}
-          className="mt-6 flex w-full flex-col gap-y-4"
+          className="mt-0 flex w-full flex-col"
         >
-          <label className="w-full">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-5">
+          <label className="relative w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-500">
               Email Address <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -66,38 +66,45 @@ function LoginForm() {
               value={email}
               onChange={handleOnChange}
               placeholder="Enter email address"
-              className="form-style w-full"
+              className="input-style w-full h-10 rounded-lg p-2 
+              border-b border-slate-700 hover:border-purple-500 focus:border-purple-500"
             />
           </label>
-          <label className="relative">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-5">
+
+          <label className="relative w-full">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-500">
               Password <sup className="text-pink-200">*</sup>
             </p>
-            <input
-              required
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={handleOnChange}
-              placeholder="Enter Password"
-              className="form-style w-full !pr-10  rounded-md"
-            />
-            <span
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+            <div className="relative">
+              <input
+                required
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={handleOnChange}
+                placeholder="Enter Password"
+                className="input-style w-full h-10 rounded-lg p-2 
+                border-b border-slate-700 hover:border-purple-500 focus:border-purple-500"
+              />
+              <span
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
+              >
+                {showPassword ? (
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                ) : (
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                )}
+              </span>
+            </div>
+            <Link
+              to="/forgot-password"
+              className="mt-1 ml-auto max-w-max text-xs text-blue-500"
             >
-              {showPassword ? (
-                <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
-                <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
-            </span>
-            <Link to="/forgot-password">
-              <p className="mt-1 ml-auto max-w-max text-xs text-blue">
-                Forgot Password
-              </p>
+              Forgot Password
             </Link>
           </label>
+
           <button
             type="submit"
             className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
