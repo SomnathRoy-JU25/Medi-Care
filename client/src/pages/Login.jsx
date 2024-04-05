@@ -78,7 +78,7 @@ function Login() {
       <Template
         title="Welcome Back"
         description1="Welcome back to MediCare. Log in to access your personalized healthcare experience."
-        // description2="Your Health is in your hand."
+        description2="Your Health is in your hand."
         image={loginImg}
         formType="login"
       />

@@ -53,7 +53,7 @@ function LoginForm() {
       <div className="gap-y-4">
         <form
           onSubmit={handleOnSubmit}
-          className="mt-0 flex w-full flex-col"
+          className="flex w-full flex-col"
         >
           <label className="relative w-full">
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-500">

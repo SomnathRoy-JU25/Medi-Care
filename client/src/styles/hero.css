@@ -27,6 +27,8 @@
 
 .hero-img img {
   width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.15);
 }
 
 .about {

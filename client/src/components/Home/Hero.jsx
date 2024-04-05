@@ -1,26 +1,23 @@
 import React from "react";
-import image from "../../assets/images/heroimg.jpg";
 import "../../styles/hero.css";
+import SwiperCompo from "./SwiperCompo";
 
 const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-content">
         <h1>
-          Your Health, <br />
-          Our Responsibility
+          MediCare : <br />
+          Your Partner in Health and Well-being.
         </h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          tenetur doloremque molestias repellat minus asperiores in aperiam
-          dolor, quaerat praesentium.
+          MediCare provides expert medical support, aiming to minimize
+          discomfort and empower individuals on their path to health. Our team
+          delivers personalized care for a comforting experience.
         </p>
       </div>
-      <div className="hero-img">
-        <img
-          src={image}
-          alt="hero"
-        />
+      <div className="hero-img w-52">
+        <SwiperCompo />
       </div>
     </section>
   );

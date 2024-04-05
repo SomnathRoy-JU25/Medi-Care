@@ -38,8 +38,8 @@ const Navbar = () => {
 
   return (
     <div
-      className="Navbar mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out
-    bg-primaryBG shadow-md bg-base-100 text-black mt-0 "
+      className="Navbar mx-auto top-0 left-0 right-0 transition-all duration-300 ease-in-out
+    bg-primaryBG shadow-md bg-base-100 text-black w-full static"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-12 lg:px-12">
         <div className="inline-flex items-center space-x-9">
