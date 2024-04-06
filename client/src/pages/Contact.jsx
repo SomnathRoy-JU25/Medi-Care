@@ -1,15 +1,46 @@
-import React from 'react'
-import { Menu, X, MapPin } from 'lucide-react'
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const form = useRef();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    // Your EmailJS service ID, template ID, and Public Key
+    const serviceId = "service_2f4fgpc";
+    const templateId = "template_9eyxt3n";
+    const publicKey = "Yjs_nJCazcZoLQ6KA";
+
+    // Create a new object that contains dynamic template params
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_name: "Somnath",
+      message: message,
+    };
+
+    // Send the email using EmailJS
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        toast.success("Email sent successfully");
+        console.log("Email sent successfully!", response);
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((error) => {
+        toast.error("An error has occurred");
+        console.error("Error sending email:", error);
+      });
+  };
   return (
-    <div className='container px-10'>
+    <div className="container px-10 -mt-5">
       <div className="mx-auto max-w-7xl px-4">
         {/* Hero Map */}
         <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
@@ -22,8 +53,9 @@ const Contact = () => {
             Love to hear from you
           </p>
           <p className="mx-auto max-w-4xl text-center text-base text-gray-600 md:text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore veritatis voluptates
-            neque itaque repudiandae sint, explicabo assumenda quam ratione placeat?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+            veritatis voluptates neque itaque repudiandae sint, explicabo
+            assumenda quam ratione placeat?
           </p>
         </div>
         <div className="mx-auto max-w-7xl py-12 md:py-24">
@@ -31,11 +63,17 @@ const Contact = () => {
             {/* contact from */}
             <div className="flex items-center justify-center">
               <div className="px-2 md:px-12">
-                <p className="text-2xl font-bold text-gray-900 md:text-4xl">Get in touch</p>
+                <p className="text-2xl font-bold text-gray-900 md:text-4xl">
+                  Get in touch
+                </p>
                 <p className="mt-4 text-lg text-gray-600">
                   Our friendly team would love to hear from you.
                 </p>
-                <form action="" className="mt-8 space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  ref={form}
+                  className="mt-8 space-y-4"
+                >
                   <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
                     <div className="grid w-full  items-center gap-1.5">
                       <label
@@ -45,10 +83,15 @@ const Contact = () => {
                         First Name
                       </label>
                       <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2
+                        text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400
+                        focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700
+                        dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="text"
                         id="first_name"
                         placeholder="First Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div className="grid w-full  items-center gap-1.5">
@@ -59,7 +102,10 @@ const Contact = () => {
                         Last Name
                       </label>
                       <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2
+                        text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400
+                        focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700
+                        dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="text"
                         id="last_name"
                         placeholder="Last Name"
@@ -74,10 +120,15 @@ const Contact = () => {
                       Email
                     </label>
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2
+                        text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400
+                        focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700
+                        dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       type="text"
                       id="email"
                       placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="grid w-full  items-center gap-1.5">
@@ -88,7 +139,10 @@ const Contact = () => {
                       Phone number
                     </label>
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2
+                        text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400
+                        focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700
+                        dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       type="tel"
                       id="phone_number"
                       placeholder="Phone number"
@@ -102,14 +156,19 @@ const Contact = () => {
                       Message
                     </label>
                     <textarea
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2
+                        text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400
+                        focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700
+                        dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       id="message"
                       placeholder="Leave us a message"
                       cols={3}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                     />
                   </div>
                   <button
-                    type="button"
+                    type="submit"
                     className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Send Message
@@ -119,14 +178,14 @@ const Contact = () => {
             </div>
             <img
               alt="Contact us"
-              className="hidden max-h-full w-full rounded-lg object-cover lg:block"
+              className="hidden max-h-full w-full rounded-3xl object-cover lg:block"
               src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&h=800&q=80"
             />
           </div>
         </div>
       </div>
-      </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Contact
+export default Contact;
