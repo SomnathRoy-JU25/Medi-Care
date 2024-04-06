@@ -19,7 +19,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mt-16">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
       <form
         onSubmit={(e) => {
           e.preventDefault();

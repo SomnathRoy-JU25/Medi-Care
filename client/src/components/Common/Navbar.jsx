@@ -16,7 +16,7 @@ const menuItems = [
   },
   {
     name: "AI Features",
-    href: "/contact",
+    href: "/dashboard/ai-chat_bot",
   },
   {
     name: "Donate Blood",

@@ -35,6 +35,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute";
 import Settings from "./components/Dashboard/Settings/index"
 import Navbar from "./components/Common/Navbar";
 import BookAppointment from "./components/Dashboard/BookAppointment";
+import AIChatBot from "./components/AIChat-Bot/AIChatBot";
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
@@ -62,6 +63,8 @@ function App() {
             <Route path="dashboard/settings" element={<Settings />} />
             <Route path="/dashboard/book-appointment" element={<BookAppointment />} />
             <Route path="/dashboard/user-dashboard" element={<UserDashboard />} />
+            {/* AI Chat Bot */}
+            <Route path="/dashboard/ai-chat_bot" element={<AIChatBot/>} />
           </Route>
 
           <Route
