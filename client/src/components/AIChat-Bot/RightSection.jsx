@@ -3,7 +3,7 @@ import chatbot from "../../assets/chat-bot.jpg";
 import { HashLoader } from "react-spinners";
 import { useSelector } from "react-redux";
 
-const API_KEY = import.meta.env.NEXT_PUBLIC_GEMINI_API;
+const API_KEY = import.meta.env.MEDICARE_APP_GEMINI_API;
 
 const RightSection = () => {
   const { user } = useSelector((state) => state.profile);
