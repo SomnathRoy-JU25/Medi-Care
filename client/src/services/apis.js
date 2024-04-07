@@ -1,17 +1,16 @@
-const BASE_URL = "http://localhost:8080/api/v1"
-// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = import.meta.env.MEDICARE_APP_BASE_URL;
 
 // AUTH ENDPOINTS
 export const endpoints = {
   SENDOTP_API: BASE_URL + "/auth/sendotp",
-  SIGNUP_API: "http://localhost:8080/api/v1/user/signup",
+  SIGNUP_API: BASE_URL + "/user/signup",
   LOGIN_API: BASE_URL + "/user/login",
   RESETPASSTOKEN_API: BASE_URL + "/user/reset-password-token",
   RESETPASSWORD_API: BASE_URL + "/user/reset-password",
 
 
   SIGNUP_API_DONATE_BLOOD: BASE_URL + "/auth/register",
-  LOGIN_API_DONATE_BLOOD: "http://localhost:8080/api/v1/auth/login",
+  LOGIN_API_DONATE_BLOOD: BASE_URL + "/auth/login",
   GET_USER_API : BASE_URL + "/auth/current-user",
 }
 

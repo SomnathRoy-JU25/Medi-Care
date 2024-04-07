@@ -15,7 +15,7 @@ import PublicRoute from "./components/Routes/PublicRoute";
 import Donar from "./pages/Dashboard/Donar";
 import Hospitals from "./pages/Dashboard/Hospitals";
 import Consumer from "./pages/Dashboard/Consumer";
-import Donation from "./pages/Donation";
+import Donation from "./pages/Dashboard/Donation";
 import Analytics from "./pages/Dashboard/Analytics";
 import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
