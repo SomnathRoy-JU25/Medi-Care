@@ -3,7 +3,7 @@ import SignupForm from "./SignupForm";
 
 function Template({ title, description1, description2, image, formType }) {
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div className="bg-gray-100 h-full w-screen flex justify-center items-center px-20">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
         <div className="lg:w-1/2">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-purple-5">{title}</h1>
