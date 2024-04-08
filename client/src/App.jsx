@@ -6,6 +6,7 @@ import Login2 from "./pages/Login";
 import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Contact from "./components/Home/Contact";
+import Emergency from "./pages/Emergency";
 
 import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
@@ -44,7 +45,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          
+          <Route path="/emergency" element={<Emergency />} />
           {/* Private Route - for Only Logged in User */}
           <Route
             element={

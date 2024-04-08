@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import logo from "../../assets/images/Logo.png";
-import { Link } from "react-router-dom";
+import { Link , NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileDropdown from "../Auth/ProfileDropdown";
 
@@ -25,6 +25,10 @@ const menuItems = [
   {
     name: "Book Appointment",
     href: "/dashboard/book-appointment",
+  },
+  {
+    name: "Emergency",
+    href: "/emergency",
   },
 ];
 
@@ -72,7 +76,8 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="px-4">
+          {/* <div className="px-4">
+            <NavLink></NavLink>
             <button
               type="button"
               className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold
@@ -88,7 +93,7 @@ const Navbar = () => {
                 </li>
               </ul>
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="hidden space-x-2 lg:block">
