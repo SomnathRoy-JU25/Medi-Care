@@ -89,7 +89,7 @@ const Contact = () => {
                         dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="text"
                         id="first_name"
-                        placeholder="First Name"
+                        placeholder="Jone"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
@@ -108,7 +108,7 @@ const Contact = () => {
                         dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                         type="text"
                         id="last_name"
-                        placeholder="Last Name"
+                        placeholder="Deo"
                       />
                     </div>
                   </div>
@@ -126,7 +126,7 @@ const Contact = () => {
                         dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       type="text"
                       id="email"
-                      placeholder="Email"
+                      placeholder="jonedeo@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -145,7 +145,7 @@ const Contact = () => {
                         dark:text-gray-800 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                       type="tel"
                       id="phone_number"
-                      placeholder="Phone number"
+                      placeholder="+91 9564XXXXXX"
                     />
                   </div>
                   <div className="grid w-full  items-center gap-1.5">

@@ -166,7 +166,12 @@ export function userLogin(role, email, password, navigate) {
     const toastId = toast.loading("Loading...");
     dispatch(setLoading(true));
     try {
-      const { data } = await API.post("/auth/login", { role, email, password });
+      const {data} = await apiConnector("POST", LOGIN_API_DONATE_BLOOD, {
+        role,
+        email,
+        password,
+      });
+      // const { data } = await API.post("/auth/login", { role, email, password });
       if (!data.success) {
         return toast.error(data.message);
       }

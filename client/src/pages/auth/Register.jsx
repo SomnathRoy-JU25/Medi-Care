@@ -2,14 +2,12 @@ import React from "react";
 import Form from "../../components/shared/Form/Form";
 import { useSelector } from "react-redux";
 import Spinner from "../../components/shared/Spinner";
-import BloodNavbar from "./BloodNavbar";
 
 const Register = () => {
   const { loading, error } = useSelector((state) => state.auth);
   
   return (
     <div className="min-h-screen flex flex-col">
-      <BloodNavbar />
       <div className="flex-grow flex items-center justify-center">
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full">
           <div className="md:w-1/2 p-4">

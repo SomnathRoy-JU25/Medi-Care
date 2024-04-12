@@ -1,18 +1,15 @@
-import React from "react";
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import logo from "../../assets/images/Logo.png";
-import { Link , NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileDropdown from "../Auth/ProfileDropdown";
-
+import { AIFeatureLinks } from "./AIFeatureLinks";
+import { BsChevronDown } from "react-icons/bs";
+import logo from "../../assets/images/Logo.png";
+import { Menu, X, ChevronRight } from "lucide-react";
 const menuItems = [
   {
     name: "Home",
     href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
   },
   {
     name: "AI Features",
@@ -30,72 +27,86 @@ const menuItems = [
     name: "Emergency",
     href: "/emergency",
   },
+  {
+    name: "About Us",
+    href: "/about",
+  },
 ];
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div
-      className="Navbar mx-auto top-0 left-0 right-0 transition-all duration-300 ease-in-out
-    bg-primaryBG shadow-md bg-base-100 text-black w-full static"
-    >
+    <div className="Navbar mx-auto top-0 left-0 right-0 transition-all duration-300 ease-in-out bg-primaryBG shadow-md bg-base-100 text-black w-full static">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-12 lg:px-12">
         <div className="inline-flex items-center space-x-9">
           <span className="bg-white rounded-full shadow-md">
             <Link to="/">
-              <a>
-                <img
-                  className="h-20 w-30 rounded-full border border-gray-200"
-                  src={logo}
-                  alt="Logo"
-                />
-              </a>
+              <img
+                className="h-20 w-30 rounded-full border border-gray-200"
+                src={logo}
+                alt="Logo"
+              />
             </Link>
           </span>
         </div>
         <div className="hidden lg:flex items-center justify-center">
           <ul className="ml-8 flex space-x-10 hover:cursor-pointer">
             {menuItems.map((item) => (
-              <li className="text-blue" key={item.name}>
-                <Link to={item.href}>
-                <a className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue
-                hover:cursor-pointer hover:text-sm"
-                >
-                  {item.name}
-                  {/* <span>
-                    <ChevronDown className="ml-2 h-4 w-4" />
-                  </span> */}
-                </a>
-                </Link>
+              <li
+                className="text-blue relative"
+                key={item.name}
+                onMouseEnter={() =>
+                  item.name === "AI Features" && setIsMenuOpen(true)
+                }
+                onMouseLeave={() =>
+                  item.name === "AI Features" && setIsMenuOpen(false)
+                }
+              > 
+                {item.name === "AI Features" ? (
+                  <>
+                    <span className="space-x-1 inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm">
+                      <div>{item.name}</div>
+                      <div>
+                        <BsChevronDown size={16}/>
+                      </div>
+                    </span>
+                    {isMenuOpen && (
+                      <div className="relative">
+                        <div className="absolute top-full w-64 bg-white shadow-lg rounded-2xl 
+                        overflow-auto z-10">
+                          {AIFeatureLinks.map((link) => (
+                            <Link
+                              key={link.title}
+                              to={link.path}
+                              className="block px-4 py-3 text-sm text-gray-800 hover:bg-gray-400
+                              font-normal transition-colors duration-200 border-purple-800
+                              hover:text-purple-800 hover:font-bold"
+                            >
+                              {link.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link to={item.href}>
+                    <a className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm">
+                      {item.name}
+                    </a>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
-          {/* <div className="px-4">
-            <NavLink></NavLink>
-            <button
-              type="button"
-              className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold
-               text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 
-               focus-visible:outline-offset-2 focus-visible:outline-black bg-slate-300
-               "
-            >
-              <ul className="ml-1 inline-flex space-x-0 hover:cursor-pointer">
-                <li>
-                  <a className="inline-flex items-center text-sm font-semibold text-green-600 hover:text-red hover:cursor-pointer hover:text-sm">
-                    Emergency
-                  </a>
-                </li>
-              </ul>
-            </button>
-          </div> */}
         </div>
-
         <div className="hidden space-x-2 lg:block">
           {token === null && (
             <Link to="/signup">
@@ -104,7 +115,6 @@ const Navbar = () => {
               </button>
             </Link>
           )}
-
           {token === null && (
             <Link to="/login2">
               <button className="rounded-md border px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue">
@@ -112,13 +122,11 @@ const Navbar = () => {
               </button>
             </Link>
           )}
-          {/* { ( token !== null ) && !user.user.role !== ("donar" || "hospital" || "admin") && <ProfileDropdown />} */}
           {token !== null &&
             (user.accountType === "Doctor" || user.accountType === "User") && (
               <ProfileDropdown />
             )}
         </div>
-
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>
@@ -197,4 +205,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
