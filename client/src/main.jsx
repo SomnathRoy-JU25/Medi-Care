@@ -16,7 +16,7 @@ const store = configureStore({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <AuthProvider>
     <Provider store={store}>
       <BrowserRouter>
@@ -25,5 +25,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </BrowserRouter>
     </Provider>
     </AuthProvider>
-  //  </React.StrictMode>,
+   </React.StrictMode>,
 )
