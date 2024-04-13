@@ -4,16 +4,16 @@ export const AIFeatureLinks = [
       path: "/dashboard/ai-chat_bot",
     },
     {
-      title: "AI Recomendations",
+      title: "AI Health Predictions",
       path: '/dashboard/ai-chat_bot',
     },
     {
-      title: "AI Predictor",
-      path: "/dashboard/ai-chat_bot",
+      title: "AI Health Education",
+      path: "/",
     },
     {
-      title: "AI Diet Plan",
-      path: "/dashboard/ai-chat_bot",
+      title: "Voice-enabled Health Assistance ",
+      path: "/",
     },
   ];
   

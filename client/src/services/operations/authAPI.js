@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
 // import { setLoading, setToken } from "../../redux/features/auth/authSlice"
 // import { setUser } from "../../redux/features/auth/profileSlice"
 
@@ -183,7 +183,7 @@ export function userLogin(role, email, password, navigate) {
       navigate("/home");
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 400);
       return data;
     } catch (error) {
       console.log("LOGIN API ERROR............", error);
@@ -264,15 +264,27 @@ export function userRegister(
   };
 }
 
-export const getCurrentUser = createAsyncThunk(
-  "auth/getCurrentUser",
-  async () => {
-    try {
-      const res = await API.get("/auth/current-user");
-      toast.success("User data fetched");
-      return res.data;
-    } catch (error) {
-      return toast.error(error.message);
-    }
+
+export const getCurrentUser = async () => {
+  try {
+    const res = await API.get("/auth/current-user");
+    toast.success("User data fetched");
+    return res.data;
+  } catch (error) {
+    toast.error(error.message);
+    throw error; // Rethrow the error so that the caller can handle it appropriately
   }
-);
+};
+
+// export const getCurrentUser = createAsyncThunk(
+//   "auth/getCurrentUser",
+//   async () => {
+//     try {
+//       const res = await API.get("/auth/current-user");
+//       toast.success("User data fetched");
+//       return res.data;
+//     } catch (error) {
+//       return toast.error(error.message);
+//     }
+//   }
+// );

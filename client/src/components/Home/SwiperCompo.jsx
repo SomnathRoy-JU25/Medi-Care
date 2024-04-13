@@ -21,7 +21,7 @@ const SwiperCompo = () => {
           loop={true}
           freeMode={true}
           autoplay={{
-            delay: 1000,
+            delay: 1200,
             disableOnInteraction: false,
           }}
           modules={[FreeMode, Pagination, Autoplay]}
