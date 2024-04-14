@@ -1,14 +1,12 @@
 import React from "react";
 import { ChevronRight } from 'lucide-react'
-import logo from "../../assets/images/Logo.png";
-import { FaInstagram, FaFacebookF, FaTwitterSquare } from "react-icons/fa";
+// import { FaInstagram, FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import { GiHealthNormal } from "react-icons/gi";
 
 const Footer = () => {
   return (
-    
-    <footer className="w-full">
-      <div className="mx-auto flex max-w-6xl flex-col items-start space-x-8 md:flex-row">
+    <footer className="w-screen bg-gray-300 -mb-8 p-3 overflow-auto">
+      <div className="mt-7 mx-auto flex max-w-6xl flex-col items-start space-x-8 md:flex-row">
         <div className="w-full px-4 md:w-1/2 lg:px-0">
           <h1 className="max-w-sm text-3xl font-bold">Subscribe to our MediCare.com</h1>
           <form action="" className="mt-4 inline-flex w-full items-center md:w-3/4">

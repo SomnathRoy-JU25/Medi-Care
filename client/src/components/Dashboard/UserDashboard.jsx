@@ -9,7 +9,6 @@ import { FcVideoCall } from "react-icons/fc";
 import { FaUserDoctor } from "react-icons/fa6";
 import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
 
-
 export default function SidebarFour() {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ export default function SidebarFour() {
         >
           <FcVideoCall size={26} />
         </NavLink>
-        
+
         <NavLink
           to={"/dashboard/ai-chat_bot"}
           onClick={() => handleNavLinkClick("/dashboard/ai-chat_bot")}
@@ -63,16 +62,14 @@ export default function SidebarFour() {
           <HiMiniChatBubbleBottomCenterText size={26} />
         </NavLink>
 
-        <button
+        <NavLink
           onClick={() => {
             dispatch(logout(navigate));
           }}
-          className="py-2 text-sm font-medium text-richblack-300"
+          className={`rounded-lg p-1.5 text-gray-700 transition-colors duration-200 focus:outline-none`}
         >
-          <div className="flex items-center gap-x-2">
-            <VscSignOut size={24} />
-          </div>
-        </button>
+          <VscSignOut size={26} />
+        </NavLink>
       </div>
 
       <div className="flex flex-col items-center space-y-4 mb-6">
@@ -86,7 +83,13 @@ export default function SidebarFour() {
           <Settings size={24} />
         </NavLink>
 
-        <NavLink to={"/dashboard/my-profile"}>
+        <NavLink
+          to={"/dashboard/my-profile"}
+          onClick={() => handleNavLinkClick("/dashboard/my-profile")}
+          className={`rounded-lg p-1.5 text-gray-700 transition-colors duration-200 focus:outline-none ${
+            activeNavLink === "/dashboard/my-profile" ? "bg-gray-200" : ""
+          }`}
+        >
           <img
             className="h-8 w-8 rounded-full object-cover"
             src={user?.image}
