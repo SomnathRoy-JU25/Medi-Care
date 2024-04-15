@@ -260,3 +260,11 @@ details > summary::-webkit-details-marker {
   background-color: #edf2f7;
 }
 
+.photo{
+  filter: grayscale(100%);
+}
+
+.photo:hover{
+  filter: grayscale(0%);
+  transition: ease-in-out;
+}

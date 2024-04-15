@@ -1,31 +1,32 @@
 import React from "react";
 import image from "../../assets/images/aboutimg.jpg";
 import "../../styles/hero.css";
-
+import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
     <>
       <section className="container">
-        <h2 className="page-heading about-heading">About Us</h2>
-        <div className="about">
-          <div className="hero-img">
-            <img
-              src={image}
-              alt="hero"
-            />
+        <Link to={"/about"}>
+          <h2 className="page-heading about-heading">About Us</h2>
+          <div className="about mt-8">
+            <div className="hero-img w-0">
+              <img src={image} alt="hero" />
+            </div>
+            <div className="hero-content">
+              <p>
+                "Medi-Care is dedicated to revolutionizing the healthcare
+                experience by seamlessly integrating cutting-edge technology
+                with compassionate, personalized care. Our platform offers a
+                wide range of services, from convenient doctor consultations to
+                life-saving emergency medical aid, all designed to empower
+                individuals to take control of their health and well-being. With
+                our AI-powered health assistance and blood donation
+                coordination, we strive to make accessing quality healthcare
+                easier and more efficient for everyone."
+              </p>
+            </div>
           </div>
-          <div className="hero-content">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Quibusdam tenetur doloremque molestias repellat minus asperiores
-              in aperiam dolor, quaerat praesentium. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Voluptatibus, repudiandae! Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Provident
-              quibusdam doloremque ex? Officia atque ab dolore? Tempore totam
-              non ea!
-            </p>
-          </div>
-        </div>
+        </Link>
       </section>
     </>
   );
