@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "City Hospital",
+        "latitude": 22.567,
+        "longitude": 88.365
+    },
+    {
+        "id": 2,
+        "name": "Community Medical Center",
+        "latitude": 22.570,
+        "longitude": 88.355
+    },
+    {
+        "id": 3,
+        "name": "Regional Hospital",
+        "latitude": 22.575,
+        "longitude": 88.370
+    },
+    {
+        "id": 4,
+        "name": "Metro Health Center",
+        "latitude": 22.580,
+        "longitude": 88.360
+    },
+    {
+        "id": 5,
+        "name": "Sunrise Medical Center",
+        "latitude": 22.565,
+        "longitude": 88.375
+    },
+    {
+        "id": 6,
+        "name": "Greenwood Hospital",
+        "latitude": 22.572,
+        "longitude": 88.355
+    },
+    {
+        "id": 7,
+        "name": "Pinecrest General Hospital",
+        "latitude": 22.578,
+        "longitude": 88.368
+    },
+    {
+        "id": 8,
+        "name": "Oceanview Medical Center",
+        "latitude": 22.580,
+        "longitude": 88.352
+    }
+]
