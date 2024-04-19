@@ -7,6 +7,8 @@ import { login } from "../../services/operations/authAPI";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import { setUser } from "../../slices/profileSlice";
+import { setToken } from "../../slices/authSlice";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -41,20 +43,34 @@ function LoginForm() {
         const user = result.user;
         console.log(user);
         toast.success("Login Successful");
-        navigate("/user-dashboard");
+        dispatch(setToken(user.accessToken)); 
+        const userImage = user?.photoURL ? 
+        user.image:`https://api.dicebear.com/5.x/initials/svg?seed=${user?.displayName.split("")[0]} ${user?.displayName.split(" ")[1]}`;
+        dispatch(setUser({
+          displayName: user.displayName,
+          image: user?.photoURL,
+          email: user.email,
+          accountType: user.accountType || "User" // Set accountType to "USER" by default if not available
+        }));
+        console.log(user.accessToken); // Accessing accessToken from stsTokenManager
+        localStorage.setItem("token", JSON.stringify(user.accessToken)); // Saving accessToken from stsTokenManager
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ displayName: user.displayName, image: user.photoURL, email: user.email,
+            accountType: user.accountType || "User" }) // Adjusted saving displayName and image
+        );
+        navigate("/dashboard/my-profile");
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 
   return (
     <div>
       <div className="gap-y-4">
-        <form
-          onSubmit={handleOnSubmit}
-          className="flex w-full flex-col"
-        >
+        <form onSubmit={handleOnSubmit} className="flex w-full flex-col">
           <label className="relative w-full">
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-purple-500">
               Email Address <sup className="text-pink-200">*</sup>
@@ -116,7 +132,10 @@ function LoginForm() {
           <button
             type="submit"
             onClick={handleRegister}
-            className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+            className="relative inline-flex w-full items-center justify-center rounded-md border
+            border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all 
+            duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black 
+            focus:outline-none"
           >
             <span className="mr-2 inline-block text-blue">
               <FcGoogle />

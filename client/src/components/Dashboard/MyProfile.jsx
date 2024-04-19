@@ -17,12 +17,12 @@ export default function MyProfile() {
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
-            alt={`profile-${user?.firstName}`}
+            alt={`profile-${user?.firstName || user?.displayName}`}
             className="aspect-square w-[78px] rounded-full object-cover"
           />
           <div className="space-y-1">
             <p className="text-lg font-semibold text-gray-900">
-              {user?.firstName + " " + user?.lastName}
+            {(user?.firstName || user?.displayName.split(" ")[0] + " " + (user?.lastName || user?.displayName.split(" ")[1]))}
             </p>
             <p className="text-sm text-gray-600">{user?.email}</p>
           </div>
@@ -56,7 +56,7 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-gray-800">First Name</p>
               <p className="text-sm font-medium text-gray-950">
-                {user?.firstName}
+              {(user?.firstName || user?.displayName.split(" ")[0])}
               </p>
             </div>
             <div>
@@ -76,7 +76,7 @@ export default function MyProfile() {
             <div>
               <p className="mb-2 text-sm text-gray-800">Last Name</p>
               <p className="text-sm font-medium text-gray-950">
-                {user?.lastName}
+                {user?.lastName || user?.displayName.split(" ")[1]}
               </p>
             </div>
             <div>
