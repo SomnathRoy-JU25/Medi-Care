@@ -33,7 +33,8 @@ import PrivateRoute from "./components/Auth/PrivateRoute";
 import Settings from "./components/Dashboard/Settings/index";
 import Navbar from "./components/Common/Navbar";
 import BookAppointment from "./components/Dashboard/BookAppointment";
-import AIChatBot from "./components/AIChat-Bot/AIChatBot";
+import AIChatBot from "./components/AI Features/AIChat-Bot/AIChatBot";
+import VoiceEnableHeathCare from "./components/AI Features/Voice-enable-health-assistance/VoiceEnableHeathCare";
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
@@ -45,6 +46,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/emergency" element={<Emergency />} />
+        <Route path="/voice-enable-health-assistance" element={<VoiceEnableHeathCare />} />
         {/* Private Route - for Only Logged in User */}
         <Route
           element={

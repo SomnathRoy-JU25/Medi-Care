@@ -13,7 +13,7 @@ export const AIFeatureLinks = [
     },
     {
       title: "Voice-enabled Health Assistance ",
-      path: "/",
+      path: "/voice-enable-health-assistance",
     },
   ];
   

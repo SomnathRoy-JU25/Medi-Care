@@ -1,62 +1,69 @@
 import React, { createContext, useEffect, useState } from "react";
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import app from "../firebase/firebase.config";
-
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-const GoogleProvider =  new GoogleAuthProvider();
+const GoogleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-//   create an account
-   const createUser = (email, password) => {
-       return createUserWithEmailAndPassword(auth, email, password);
-   }
+  // create an account
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-//    signup with gmail account
-   const signUpWithGmail = () => {
-       return signInWithPopup(auth, GoogleProvider);
-   }
+  // signup with gmail account
+  const signUpWithGmail = () => {
+    return signInWithPopup(auth, GoogleProvider);
+  };
 
   //  signup with account facebook
-   const signUpWithFacebook = () => {
-       return signInWithPopup(auth, FacebookAuthProvider);
-   }
+  const signUpWithFacebook = () => {
+    return signInWithPopup(auth, FacebookAuthProvider);
+  };
 
-//    login email & password
- const login = (email, password)=>{
-    return signInWithEmailAndPassword(auth, email, password)
- }
+  //    login email & password
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-//  logout
-const logOut  = ()=>{
-     signOut(auth)
-}
+  //  logout
+  const logOut = () => {
+    signOut(auth);
+  };
 
-// updateProfile
+  // updateProfile
 
-const updateProfile = ({name, photoURL})=>{
-       return updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photoURL
-       })   
-}
+  const updateProfile = ({ name, photoURL }) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  };
 
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-       if(currentUser){
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
         setUser(currentUser);
         setLoading(false);
-       }else{
-        
-       }
+      } else {
+      }
     });
     return () => {
-        return unsubscribe();
-    }
-  }, []);   
+      return unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,
@@ -65,14 +72,11 @@ const updateProfile = ({name, photoURL})=>{
     login,
     logOut,
     updateProfile,
-    signUpWithFacebook
-
+    signUpWithFacebook,
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-    {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

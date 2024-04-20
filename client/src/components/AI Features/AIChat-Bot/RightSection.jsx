@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import chatbot from "../../assets/chat-bot.jpg";
+import chatbot from "../../../assets/chat-bot.jpg";
 import { HashLoader } from "react-spinners";
 import { useSelector } from "react-redux";
 
