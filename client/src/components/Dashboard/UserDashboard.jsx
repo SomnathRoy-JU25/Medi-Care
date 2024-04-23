@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Home, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
-import { VscSignOut } from "react-icons/vsc";
 import { logout } from "../../services/operations/authAPI";
-// import { IoVideocamOutline } from "react-icons/io5";
-import { FcVideoCall } from "react-icons/fc";
+import { IoVideocam } from "react-icons/io5";
 import { FaUserDoctor } from "react-icons/fa6";
 import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
+import { SiGooglehome } from "react-icons/si";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function SidebarFour() {
   const { user } = useSelector((state) => state.profile);
@@ -20,8 +20,8 @@ export default function SidebarFour() {
   };
 
   return (
-    <div className="flex h-auto w-16 flex-col items-center overflow-y-auto border-r bg-white py-8">
-      <div className="flex flex-1 flex-col items-center space-y-6 ">
+    <div className="flex h-auto w-16 flex-col items-center overflow-y-auto border-r bg-white py-2">
+      <div className="flex flex-1 flex-col items-center space-y-5 ">
         <NavLink
           to={"/dashboard/my-profile"}
           onClick={() => handleNavLinkClick("/dashboard/my-profile")}
@@ -29,18 +29,19 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/my-profile" ? "bg-gray-200" : ""
           }`}
         >
-          <Home size={24} />
+          <SiGooglehome size={24} />
         </NavLink>
-
+        
         <NavLink
-          to={"/dashboard/book-appointment"}
-          onClick={() => handleNavLinkClick("/dashboard/book-appointment")}
+          to={"/dashboard/home-page"}
+          onClick={() => handleNavLinkClick("/dashboard/home-page")}
           className={`rounded-lg p-1.5 text-gray-700 transition-colors duration-200 focus:outline-none ${
-            activeNavLink === "/dashboard/book-appointment" ? "bg-gray-200" : ""
+            activeNavLink === "/dashboard/home-page" ? "bg-gray-200" : ""
           }`}
         >
           <FaUserDoctor size={26} />
         </NavLink>
+
 
         <NavLink
           to={"/dashboard/addtoCall"}
@@ -49,7 +50,7 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/addtoCall" ? "bg-gray-200" : ""
           }`}
         >
-          <FcVideoCall size={26} />
+          <IoVideocam size={26} />
         </NavLink>
 
         <NavLink
@@ -68,7 +69,7 @@ export default function SidebarFour() {
           }}
           className={`rounded-lg p-1.5 text-gray-700 transition-colors duration-200 focus:outline-none`}
         >
-          <VscSignOut size={26} />
+          <FaSignOutAlt size={26} />
         </NavLink>
       </div>
 

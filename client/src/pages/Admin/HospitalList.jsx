@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Container from "../../components/shared/Layout/Container";
 import moment from "moment";
 import API from "../../services/API";
 
@@ -39,7 +39,7 @@ const HospitalList = () => {
   };
 
   return (
-    <Layout>
+    <Container>
       <div className="container mx-auto">
         <table className="table border border-gray-300 mt-4">
           <thead className="bg-gray-200">
@@ -71,7 +71,7 @@ const HospitalList = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

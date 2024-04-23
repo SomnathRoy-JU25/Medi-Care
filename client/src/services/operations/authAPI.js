@@ -85,6 +85,7 @@ export function login(email, password, navigate) {
       dispatch(setUser({ ...response.data.user, image: userImage }));
       console.log(response.data.token);
       localStorage.setItem("token", JSON.stringify(response.data.token)); // Refresh hole sob ure na jayega
+      // localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify({ ...response.data.user, image: userImage }));
       navigate("/dashboard/my-profile");
     } catch (error) {

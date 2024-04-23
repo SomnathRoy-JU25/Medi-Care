@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const userModel = require("../models/User");
 // const userModel = require("../models/userModel")
+const User = require("../models/User");
 dotenv.config();
 
 // This function is used as middleware to authenticate user requests
@@ -10,6 +11,7 @@ exports.auth = async (req, res, next) => {
 	try {
 		// Extracting JWT from request cookies, body or header
 		const token =
+		    // req.headers['authorization'].split(" ")[1] ||
 			req.cookies.token ||
 			req.body.token ||
 			req.header("Authorization").replace("Bearer ", "");
@@ -44,23 +46,41 @@ exports.auth = async (req, res, next) => {
 	}
 };
 
-// exports.isAdmin = async (req, res, next) => {
-// 	try {
-// 		const user = await userModel.findById(req.body.userId);
+exports.isAdmin = async (req, res, next) => {
+	try {
+		const user = await User.findOne({email: req.user.email});
 
-//         if (userDetails.accountType !== "Admin") {
-//             return res.status(401).json({
-//                 success: false,
-//                 message: "This is a Protected Route for Admin",
-//             });
-//         }
-//         next();
-//     } catch (error) {
-//         return res
-//             .status(500)
-//             .json({ success: false, message: `Admin Role Can't be Verified` });
-//     }
-// };
+        if (user.isAdmin !== true) {
+            return res.status(401).json({
+                success: false,
+                message: "This is a Protected Route for Admin",
+            });
+        }
+        next();
+    } catch (error) {
+        return res
+            .status(500)
+            .json({ success: false, message: `Admin Role Can't be Verified` });
+    }
+};
+
+exports.isDoc = async (req, res, next) => {
+	try {
+		const user = await User.findOne({email: req.user.email});
+
+        if (user.isDoctor !== true) {
+            return res.status(401).json({
+                success: false,
+                message: "This is a Protected Route for Admin",
+            });
+        }
+        next();
+    } catch (error) {
+        return res
+            .status(500)
+            .json({ success: false, message: `Admin Role Can't be Verified` });
+    }
+};
 exports.isUser = async (req, res, next) => {
 	try {
 		const userDetails = await userModel.findOne({ email: req.user.email });

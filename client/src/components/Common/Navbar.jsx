@@ -21,7 +21,7 @@ const menuItems = [
   },
   {
     name: "Book Appointment",
-    href: "/dashboard/book-appointment",
+    href: "/dashboard/home-page",
   },
   {
     name: "Emergency",

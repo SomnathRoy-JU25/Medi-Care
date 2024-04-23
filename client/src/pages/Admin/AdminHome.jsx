@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Container from "../../components/shared/Layout/Container";
 import { useSelector } from "react-redux";
 
 const AdminHome = () => {
   const { user } = useSelector((state) => state.auth);
   return (
-    <Layout>
+    <Container>
       <div className="container mx-auto">
         <div className="mt-4">
           <h1 className="text-2xl">
@@ -18,7 +18,7 @@ const AdminHome = () => {
           </p>
         </div>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

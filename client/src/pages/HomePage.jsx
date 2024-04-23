@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/shared/Spinner";
-import Layout from "../components/shared/Layout/Layout";
+import Container from "../components/shared/Layout/Container";
 import API from "../services/API";
 import moment from "moment";
 import Modal from "../components/shared/modal/Modal"; // Import the Modal component
@@ -31,7 +31,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Layout>
+    <Container>
       {user?.role === "admin" && navigate("/admin")}
       {error && <span>{alert(error)}</span>}
       {loading ? (
@@ -117,7 +117,7 @@ const HomePage = () => {
           {showModal && <Modal setShowModal={setShowModal} user={user} />}
         </div>
       )}
-    </Layout>
+    </Container>
   );
 };
 

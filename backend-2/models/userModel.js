@@ -16,17 +16,6 @@ const userSchema = new mongoose.Schema(
         return false;
       },
     },
-
-    // organisationName: {
-    //   type: String,
-    //   required: function () {
-    //     if (this.role === "organisation") {
-    //       return true;
-    //     }
-    //     return false;
-    //   },
-    // },
-
     hospitalName: {
       type: String,
       required: function () {
@@ -63,4 +52,4 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("blood-donate-user", userSchema);

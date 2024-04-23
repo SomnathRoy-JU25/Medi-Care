@@ -1,6 +1,6 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Container from "../../components/shared/Layout/Container";
 import API from "../../services/API";
 import { useSelector } from "react-redux";
 
@@ -31,7 +31,7 @@ const Donation = () => {
 
   return (
 
-    <Layout>
+    <Container>
       <div className="container px-10">
         <h1 className="text-2xl font-bold mb-4">Donation Records</h1>
         <table className="table w-full">
@@ -57,7 +57,7 @@ const Donation = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

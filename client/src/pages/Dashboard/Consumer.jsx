@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Container from "../../components/shared/Layout/Container";
 import moment from "moment";
 import API from "../../services/API";
 import { useSelector } from "react-redux";
@@ -30,7 +30,7 @@ const Consumer = () => {
   }, []);
 
   return (
-    <Layout>
+    <Container>
       <div className="container mx-auto mt-8">
         <h2 className="text-xl font-semibold mb-4">Consumer Records</h2>
         <table className="min-w-full divide-y divide-gray-200">
@@ -56,7 +56,7 @@ const Consumer = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

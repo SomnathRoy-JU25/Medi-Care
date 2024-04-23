@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Container from "../../components/shared/Layout/Container";
 import API from "../../services/API";
 import moment from "moment";
 
@@ -23,7 +23,7 @@ const Donar = () => {
   }, []);
 
   return (
-    <Layout>
+    <Container>
       <div className="container mx-auto">
         <h1 className="text-2xl font-bold my-4">Donar Records</h1>
         <table className="table-auto w-full border-collapse border border-gray-200">
@@ -47,7 +47,7 @@ const Donar = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </Container>
   );
 };
 

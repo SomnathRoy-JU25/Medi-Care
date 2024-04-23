@@ -70,6 +70,10 @@ exports.signup = async (req, res) => {
       accountType: accountType,
       additionalDetails: profileDetails._id,
       image: "",
+      isDoctor : false,
+      isAdmin : false,
+      notification : [],
+      seennotification : [],
     })
 
     return res.status(200).json({
