@@ -1,63 +1,57 @@
-import { Form, Input, Col, Row, TimePicker, message } from "antd";
 import React from "react";
+import { Form, Input, Col, Row, TimePicker, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { showLoading, hideLoading } from '../redux/features/alertSlice'
 import { setLoading } from "../../../slices/authSlice";
-// import axios from 'axios'
 import moment from "moment";
 import Layout from "../../Common/Layout";
 import { apiConnector } from "../../../services/apiConnector";
 import { userEndpoints } from "../../../services/apis";
 const { APPLY_DOCTOR } = userEndpoints;
+
 const ApplyDoctor = () => {
   const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleFinish = async (values) => {
     try {
       dispatch(setLoading(true));
+
+      // Format timings correctly before sending to the server
+      const formattedTimings = values.timings.map((time) =>
+        moment(time).format("HH:mm")
+      );
+
       const res = await apiConnector(
         "POST",
         APPLY_DOCTOR,
         {
           ...values,
           userId: user._id,
-          timings: [
-            moment(values.timings[0].format("HH:mm")),
-            moment(values.timings[1].format("HH:mm")),
-          ],
+          timings: formattedTimings,
         },
         {
           Authorization: `Bearer ${token}`,
         }
       );
-      // const res = await axios.post(
-      //     'http://localhost:8080/api/v1/user/apply-doctor',
-      //     { ...values, userId: user._id,
-      //         timings:[
-      //             moment(values.timings[0].format('HH:mm')),
-      //             moment(values.timings[1].format('HH:mm'))
-      //         ] }, {
-      //     headers: {
-      //         Authorization: `Bearer ${localStorage.getItem('token')}`
-      //     }
-      // })
-      dispatch(setLoading(true));
+
+      dispatch(setLoading(false));
+
       if (res.data.success) {
         message.success(res.data.message);
         navigate("/dashboard/home-page");
       } else {
-        message.error("success: false");
         message.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
       dispatch(setLoading(false));
-      message.error("Somthing went wrong.");
+      message.error("Something went wrong.");
     }
   };
+
   return (
     <Layout>
       <h1 className="text-center">Apply doctor</h1>
@@ -66,57 +60,60 @@ const ApplyDoctor = () => {
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="firstName"
+              label="First Name"
               name="firstName"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your first name!' }]}
             >
-              <Input type="text" placeholder="your FirstName"></Input>
+              <Input placeholder="Your First Name" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="lastName"
+              label="Last Name"
               name="lastName"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your last name!' }]}
             >
-              <Input type="text" placeholder="your Lastname"></Input>
+              <Input placeholder="Your Last Name" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="phone"
+              label="Phone"
               name="phone"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your phone number!' }]}
             >
-              <Input type="text" placeholder="phone"></Input>
+              <Input placeholder="Phone" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="email"
+              label="Email"
               name="email"
               required
-              rules={[{ required: true }]}
+              rules={[
+                { required: true, message: 'Please enter your email!' },
+                { type: 'email', message: 'Please enter a valid email address!' }
+              ]}
             >
-              <Input type="text" placeholder="email"></Input>
+              <Input placeholder="Email" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
-            <Form.Item label="website" name="website">
-              <Input type="text" placeholder="website"></Input>
+            <Form.Item label="Website" name="website">
+              <Input placeholder="Website" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="address"
+              label="Address"
               name="address"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your address!' }]}
             >
-              <Input type="text" placeholder="address"></Input>
+              <Input placeholder="Address" />
             </Form.Item>
           </Col>
         </Row>
@@ -125,42 +122,42 @@ const ApplyDoctor = () => {
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="specialization"
+              label="Specialization"
               name="specialization"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your specialization!' }]}
             >
-              <Input type="text" placeholder="your specialization"></Input>
+              <Input placeholder="Your Specialization" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="experience"
+              label="Experience"
               name="experience"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your experience!' }]}
             >
-              <Input type="text" placeholder="your experience"></Input>
+              <Input placeholder="Your Experience" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="fees"
+              label="Fees"
               name="fees"
               required
-              rules={[{ required: true }]}
+              rules={[{ required: true, message: 'Please enter your fees!' }]}
             >
-              <Input type="text" placeholder="fees"></Input>
+              <Input placeholder="Fees" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="timings"
+              label="Timings"
               name="timings"
               required
-              rules={[{ required: true }]}
+              rules={[{ type: 'array', required: true, message: 'Please select timings!' }]}
             >
-              <TimePicker.RangePicker format="HH:mm"></TimePicker.RangePicker>
+              <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
           </Col>
         </Row>

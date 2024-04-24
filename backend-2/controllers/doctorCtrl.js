@@ -62,10 +62,16 @@ exports.getDoctorByIdController = async (req, res) => {
 
 exports.doctorAppointmentController = async (req, res) => {
   try {
-    const doctor = await doctorModel.findOne({ userId: req.body.userId });
-    // const appointments = await appointmentModel.find({ doctorId: doctor._id });
-    const appointments = await appointmentModel.find();
-    // console.log(appointments);
+    let appointments;
+    // const {isDoctorTrue} = req.body;
+    // if (isDoctorTrue) {
+    //   appointments = await appointmentModel.find();
+    // } else {
+    //    const doctor = await doctorModel.findOne({ userId: req.body.userId });
+    //    appointments = await appointmentModel.find({ doctorId: doctor._id });
+    // }
+    appointments = await appointmentModel.find();
+    console.log(appointments);
     res.status(200).send({
       success: true,
       message: "Doctor appointments fetched",
@@ -83,23 +89,39 @@ exports.doctorAppointmentController = async (req, res) => {
 
 exports.updateStatusController = async (req, res) => {
   try {
-    const { appoinmentsId, status } = req.body;
-    const appointments = await appointmentModel.findByIdAndUpdate(
-      appoinmentsId,
+    const { appointmentId, status } = req.body;
+    const appointment = await appointmentModel.findByIdAndUpdate(
+      appointmentId,
       { status }
     );
-    const user = await userModel.findOne({ _id: appointments.userId });
-    const notification = user.notification;
-    notification.push({
+
+    if (!appointment) {
+      return res.status(404).send({
+        success: false,
+        message: "Appointment not found",
+      });
+    }
+
+    const user = await userModel.findById(appointment.userId); // Use findById instead of findOne
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    user.notification.push({
       type: "Status-updated",
-      message: `your appointments has been updated ${status}`,
-      onClickPath: "/doctor-appointments",
+      message: `Your appointment has been ${status}`,
+      onClickPath: "/dashboard/doctor-appointments",
     });
+
     await user.save();
+
     res.status(200).send({
       success: true,
-      message: "Doctor appointments updated " + status,
-      data: appointments,
+      message: `Doctor appointment has been ${status}`,
+      data: appointment,
     });
   } catch (error) {
     console.log(error);

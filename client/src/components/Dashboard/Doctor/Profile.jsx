@@ -11,8 +11,8 @@ import { setLoading } from "../../../slices/authSlice";
 import moment from "moment";
 import { doctorEndpoints } from "../../../services/apis";
 import { apiConnector } from "../../../services/apiConnector";
+import { toast } from "react-hot-toast";
 const { UPDATE_DOCTOR_PROFILE, GET_DOCTOR_INFO } = doctorEndpoints;
-
 
 const Profile = () => {
   const { user } = useSelector((state) => state.profile);
@@ -37,15 +37,15 @@ const Profile = () => {
             moment(values.timings[1].format("HH:mm")),
           ],
         },
-        {  
+        {
           Authorization: `Bearer ${token}`,
         }
       );
-     
+
       dispatch(setLoading(false));
       if (res.data.success) {
-        message.success(res.data.message);
-        navigate("/");
+        toast.success(res.data.message);
+        navigate("/dashboard/home-page");
       } else {
         message.error("success: false");
         message.error(res.data.message);
@@ -53,7 +53,7 @@ const Profile = () => {
     } catch (error) {
       console.log(error);
       dispatch(setLoading(false));
-      message.error("Somthing went wrong.");
+      toast.error("Somthing went wrong.");
     }
   };
   //getDocDetails
@@ -63,12 +63,12 @@ const Profile = () => {
         "POST",
         GET_DOCTOR_INFO,
         { userId: user._id },
-        {  
+        {
           Authorization: `Bearer ${token}`,
         }
       );
       console.log(res);
-    
+
       if (res.data.success) {
         setDoctor(res.data.data);
       }

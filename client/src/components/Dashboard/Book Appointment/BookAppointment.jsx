@@ -40,15 +40,7 @@ const BookAppointment = () => {
           Authorization: `Bearer ${token}`,
         }
       );
-      //   const res = await axios.post(
-      //     "http://localhost:8080/api/v1/doctor/getDoctorById",
-      //     { doctorId: params.doctorId },
-      //     {
-      //       headers: {
-      //         Authorization: "Bearer " + localStorage.getItem("token"),
-      //       },
-      //     }
-      //   );
+    
       if (res.data.success) {
         setDoctor(res.data.data);
       }
@@ -85,23 +77,7 @@ const BookAppointment = () => {
           Authorization: `Bearer ${token}`,
         }
       );
-      // const res = await axios.post(
-      //   "http://localhost:8080/api/v1/user/book-appointment",
-      //   {
-      //     doctorId: params.doctorId,
-      //     userId: user._id,
-      //     doctorInfo: {
-      //       name: doctor.firstName + " " + doctor.lastName,
-      //       phone: doctor.phone,
-      //     },
-      //     userInfo: user,
-      //     date: date,
-      //     time: time,
-      //   },
-      //   {
-      //     Authorization: `Bearer ${token}`,
-      //   }
-      // );
+    
       dispatch(setLoading(false));
       if (res.data.success) {
         toast.success("Appointment booked successfully");

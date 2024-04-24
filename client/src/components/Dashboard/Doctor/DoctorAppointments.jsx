@@ -5,18 +5,24 @@ import { apiConnector } from "../../../services/apiConnector";
 import { useSelector } from "react-redux";
 import { doctorEndpoints } from "../../../services/apis";
 import { Table, message } from "antd";
+import { toast } from "react-hot-toast";
 
 const { GET_ALL_DOCTOR_APPOINTMENTS, UPDATE_DOCTOR_STATUS } = doctorEndpoints;
 
 const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const { token } = useSelector((state) => state.auth);
-
+  const { user } = useSelector((state) => state.profile);
   const getAppointments = async () => {
     try {
-      const res = await apiConnector("GET", GET_ALL_DOCTOR_APPOINTMENTS, {
-        Authorization: `Bearer ${token}`,
-      });
+      const res = await apiConnector(
+        "GET",
+        GET_ALL_DOCTOR_APPOINTMENTS,
+        { userId: user._id, isDoctorTrue: user.isDoctor },
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      );
       console.log(res);
       if (res.data.success) {
         setAppointments(res.data.data);
@@ -44,13 +50,14 @@ const DoctorAppointments = () => {
           Authorization: `Bearer ${token}`,
         }
       );
+      console.log(res);
       if (res.data.success) {
-        message.success(res.data.message);
+        toast.success(res.data.message);
         getAppointments();
       }
     } catch (error) {
       console.error(error);
-      message.error("Failed to update status");
+      toast.error("Failed to update status");
     }
   };
 
@@ -91,13 +98,13 @@ const DoctorAppointments = () => {
           {record.status === "pending" && (
             <>
               <button
-                className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
+                className="bg-green-500 hover:bg-purple-600 text-white py-2 px-4 rounded"
                 onClick={() => handleStatus(record, "approved")}
               >
                 Approve
               </button>
               <button
-                className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                className="bg-red-500 hover:bg-red-900 text-white py-2 px-4 rounded"
                 onClick={() => handleStatus(record, "rejected")}
               >
                 Reject

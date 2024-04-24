@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Settings } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import { logout } from "../../services/operations/authAPI";
 import { IoVideocam } from "react-icons/io5";
 import { FaUserDoctor } from "react-icons/fa6";
-import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
-import { SiGooglehome } from "react-icons/si";
+import { BsChatTextFill } from "react-icons/bs";
+import { GoHomeFill } from "react-icons/go";
 import { FaSignOutAlt } from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
 
 export default function SidebarFour() {
   const { user } = useSelector((state) => state.profile);
@@ -29,7 +29,7 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/my-profile" ? "bg-gray-200" : ""
           }`}
         >
-          <SiGooglehome size={24} />
+          <GoHomeFill size={27} />
         </NavLink>
         
         <NavLink
@@ -60,7 +60,7 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/ai-chat_bot" ? "bg-gray-200" : ""
           }`}
         >
-          <HiMiniChatBubbleBottomCenterText size={26} />
+          <BsChatTextFill size={26} />
         </NavLink>
 
         <NavLink
@@ -81,7 +81,7 @@ export default function SidebarFour() {
             activeNavLink === "/dashboard/settings" ? "bg-gray-200" : ""
           }`}
         >
-          <Settings size={24} />
+          <IoSettings size={26} />
         </NavLink>
 
         <NavLink

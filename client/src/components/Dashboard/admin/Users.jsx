@@ -6,22 +6,14 @@ import { apiConnector } from "../../../services/apiConnector";
 import { useSelector } from "react-redux";
 const { GET_ALL_USERS } = adminEndpoints;
 
-
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const {token} = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const getUsers = async () => {
     try {
       const res = await apiConnector("GET", GET_ALL_USERS, {
         Authorization: `Bearer ${token}`,
       });
-      // const res = await axios.get(
-      //   '/api/v1/admin/getAllUsers',
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem('token')}`
-      //     },
-      //   })
       if (res.data.success) {
         setUsers(res.data.data);
       }

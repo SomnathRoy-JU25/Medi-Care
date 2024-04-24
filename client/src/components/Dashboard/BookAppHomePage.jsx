@@ -9,7 +9,7 @@ const { GET_ALL_DOCTORS } = userEndpoints;
 import { useSelector } from "react-redux";
 import { apiConnector } from "../../services/apiConnector";
 
-const DashboardHomePage = () => {
+const BookAppHomePage = () => {
   const { token } = useSelector((state) => state.auth);
   const [doctors, setDoctors] = useState([]);
   // login user data
@@ -18,7 +18,7 @@ const DashboardHomePage = () => {
       const res = await apiConnector("GET", GET_ALL_DOCTORS, {
         Authorization: `Bearer ${token}`,
       });
-
+      console.log(res);
       if (res.data.success) {
         setDoctors(res.data.data);
       }
@@ -39,4 +39,4 @@ const DashboardHomePage = () => {
   );
 };
 
-export default DashboardHomePage;
+export default BookAppHomePage;

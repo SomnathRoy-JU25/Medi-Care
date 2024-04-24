@@ -39,7 +39,7 @@ import AIHealthEducation from "./components/AI Features/AI Health Education/AIHe
 
 // Doctor Appointments
 import Appointments from "./components/Dashboard/Book Appointment/Appointments";
-import DashboardHomePage from "./components/Dashboard/DashboardHomePage";
+import BookAppHomePage from "./components/Dashboard/BookAppHomePage";
 import ApplyDoctor from "./components/Dashboard/Book Appointment/ApplyDoctor";
 import Doctors from "./components/Dashboard/admin/Doctor";
 import Users from "./components/Dashboard/admin/Users";
@@ -80,7 +80,7 @@ function App() {
           <Route path="/dashboard/ai-chat_bot" element={<AIChatBot />} />
 
           {/* Booking Appointments Features */}
-          <Route path="/dashboard/home-page" element={<DashboardHomePage />} />
+          <Route path="/dashboard/home-page" element={<BookAppHomePage />} />
           <Route
             path="/dashboard/doctor/book-appointment/:doctorId"
             element={<BookAppointment />}

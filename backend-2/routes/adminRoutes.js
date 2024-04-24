@@ -12,7 +12,7 @@ const adminMiddleware = require("../middlewares/adminMiddleware");
 const {
   getAllUsersController,
   getAllDoctorsController,
-  chnageAccountStatusController,
+  changeAccountStatusController,
 } = require("../controllers/adminCtrl");
 
 
@@ -27,7 +27,7 @@ router.get("/getAllUsers",  getAllUsersController);
 router.get("/getAllDoctors",  getAllDoctorsController);
 
 // POST account status
-router.post("/changeAccountStatus",  chnageAccountStatusController);
+router.post("/changeAccountStatus", auth, isAdmin, changeAccountStatusController);
 
 
 //GET || DONAR LIST

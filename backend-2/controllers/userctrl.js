@@ -109,7 +109,7 @@ exports.deleteNotificationController = async (req, res) => {
 exports.getAllDoctorsController = async (req, res) => {
   try {
     const doctors = await doctorModel.find({ status: "approved" });
-
+    // console.log(doctors);
     res.status(201).send({
       success: true,
       message: "Doctor list fetched successfully",
