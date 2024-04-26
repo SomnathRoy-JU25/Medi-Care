@@ -9,7 +9,7 @@ export const AIFeatureLinks = [
     // },
     {
       title: "AI Health Education",
-      path: "/ai-health-education",
+      path: "/dashboard/predict_disease",
     },
     {
       title: "Voice-enabled Health Assistance ",

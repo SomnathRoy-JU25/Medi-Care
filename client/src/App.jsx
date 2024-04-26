@@ -61,7 +61,7 @@ function App() {
           path="/voice-enable-health-assistance"
           element={<VoiceEnableHeathCare />}
         />
-        <Route path="/ai-health-education" element={<AIHealthEducation />} />
+      
 
         {/* Private Route - for Only Logged in User */}
         <Route
@@ -70,11 +70,12 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           }
-        >
-          <Route path="dashboard/my-profile" element={<MyProfile />} />
-          <Route path="dashboard/addtoCall" element={<CallPage />} />
-          <Route path="dashboard/room/:roomId" element={<RoomPage />} />
-          <Route path="dashboard/settings" element={<Settings />} />
+        > 
+          <Route path="/dashboard/predict_disease" element={<AIHealthEducation />} />
+          <Route path="/dashboard/my-profile" element={<MyProfile />} />
+          <Route path="/dashboard/addtoCall" element={<CallPage />} />
+          <Route path="/dashboard/room/:roomId" element={<RoomPage />} />
+          <Route path="/dashboard/settings" element={<Settings />} />
           <Route path="/dashboard/user-dashboard" element={<UserDashboard />} />
           {/* AI Chat Bot */}
           <Route path="/dashboard/ai-chat_bot" element={<AIChatBot />} />

@@ -189,7 +189,7 @@ const RightSection = () => {
                   <h2 className="font-semibold">
                     {msg.role === "user" ? "You" : "MEDICARE Bot"}
                   </h2>
-                  <p>{msg.parts[0].text}</p>
+                  <p className="text-black">{msg.parts[0].text}</p>
                 </div>
               </div>
             ))}

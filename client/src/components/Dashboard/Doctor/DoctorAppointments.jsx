@@ -18,11 +18,12 @@ const DoctorAppointments = () => {
       const res = await apiConnector(
         "GET",
         GET_ALL_DOCTOR_APPOINTMENTS,
-        { userId: user._id, isDoctorTrue: user.isDoctor },
+        {id : user._id},
         {
           Authorization: `Bearer ${token}`,
         }
       );
+      
       console.log(res);
       if (res.data.success) {
         setAppointments(res.data.data);
@@ -80,8 +81,9 @@ const DoctorAppointments = () => {
       key: "date",
       render: (date, record) => (
         <span>
-          {moment(date).format("DD-MM-YYYY")} &nbsp;
-          {moment(record.time).format("HH:mm")}
+          {moment(record.createdAt).format("DD-MM-YYYY hh:mm A")}
+          {/* {moment(date).format("DD-MM-YYYY")} &nbsp; */}
+          {/* {moment(record.time).format("HH:mm")}  */}
         </span>
       ),
     },
@@ -106,6 +108,16 @@ const DoctorAppointments = () => {
               <button
                 className="bg-red-500 hover:bg-red-900 text-white py-2 px-4 rounded"
                 onClick={() => handleStatus(record, "rejected")}
+              >
+                Reject
+              </button>
+            </>
+          )}
+          {record.status === "approved" && (
+            <>
+              <button
+                className="bg-red-500 hover:bg-red-900 text-white py-2 px-4 rounded"
+                onClick={() => handleStatus(record, "pending")}
               >
                 Reject
               </button>

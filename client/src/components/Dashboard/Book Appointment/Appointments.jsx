@@ -5,16 +5,16 @@ import { Table, Tag } from "antd";
 import { userEndpoints } from "../../../services/apis";
 import { apiConnector } from "../../../services/apiConnector";
 import { useSelector } from "react-redux";
-const {GET_USER_APPOINTMENTS} = userEndpoints;
+const { GET_USER_APPOINTMENTS } = userEndpoints;
 
 const Appointments = () => {
   const [appoinments, setAppointments] = useState([]);
-  const {token} = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const getAppointments = async () => {
     try {
-      const res = apiConnector("GET",GET_USER_APPOINTMENTS,{
+      const res = apiConnector("GET", GET_USER_APPOINTMENTS, {
         Authorization: `Bearer ${token}`,
-      })
+      });
       if (res.data.success) {
         setAppointments(res.data.data);
       }

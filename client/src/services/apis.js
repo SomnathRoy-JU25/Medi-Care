@@ -53,3 +53,7 @@ export const doctorEndpoints = {
   UPDATE_DOCTOR_PROFILE : BASE_URL + "/doctor/updateProfile",
   GET_DOCTOR_INFO : BASE_URL + "/doctor/getDoctorInfo",
 };
+
+export const AIEndpoints = {
+  PREDICT_DISEASE : BASE_URL + "/user/predict_disease",
+}

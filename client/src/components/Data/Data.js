@@ -14,17 +14,16 @@ export const userMenu = [
       path: "/dashboard/apply-doctor",
       icon: "fa-solid fa-user-doctor",
     },
+    {
+      name: "AI Tools",
+      path: "/dashboard/predict_disease",
+      icon: "fa-solid fa-code-branch",
+    },
     // {
     //   name: "Profile",
     //   path: "/dashboard/doctor/profile/:id",
     //   icon: "fa-solid fa-user",
     // },
-    // {
-    //   name: "AI Tools",
-    //   path: `/ai-tools`,
-    //   icon: "fa-solid fa-code-branch",
-    // },
-
   ];
 
   // admin menu

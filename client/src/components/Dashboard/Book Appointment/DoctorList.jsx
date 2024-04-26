@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import moment from "moment";
 const DoctorList = ({ doctor }) => {
     const navigate = useNavigate()
     return (
@@ -20,7 +20,9 @@ const DoctorList = ({ doctor }) => {
                     <span className="font-semibold">Fees:</span> {doctor.fees}
                 </p>
                 <p>
-                    <span className="font-semibold">Timings:</span> {doctor.timings[0]} to {doctor.timings[1]}
+                    {/* <span className="font-semibold">Timings:</span> {doctor.timings[0]} to {doctor.timings[1]} */}
+                    {/* <span className="font-semibold">Timings:</span> 24 × 7 */}
+                    <span className="font-semibold">Timings:</span> {moment(doctor.createdAt).format("hh:mm A")} to {moment(doctor.updatedAt).format("23:59")}
                 </p>
             </div>
         </div>

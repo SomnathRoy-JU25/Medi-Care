@@ -1,8 +1,8 @@
 const userModel = require("../models/User");
 const doctorModel = require("../models/doctorModel");
 const appointmentModel = require("../models/appointmentModel");
+const axios = require("axios");
 const moment = require("moment");
-
 
 exports.authcontroller = async (req, res) => {
   try {
@@ -26,7 +26,8 @@ exports.authcontroller = async (req, res) => {
       .send({ success: false, message: `Auth Controller ${error.message}` });
   }
 };
-// Apply DOctor CTRL
+
+// Apply Doctor CTRL
 exports.applyDoctorController = async (req, res) => {
   try {
     const newDoctor = await doctorModel({ ...req.body, status: "pending" });
@@ -41,7 +42,7 @@ exports.applyDoctorController = async (req, res) => {
       data: {
         doctorId: newDoctor._id,
         name: newDoctor.firstName + " " + newDoctor.lastName,
-        onClickPath: "/admin/doctors",
+        onClickPath: "/dashboard/admin/doctors",
       },
     });
     console.log("applydoctor controller after push");
@@ -84,6 +85,7 @@ exports.GetAllNotificationController = async (req, res) => {
     });
   }
 };
+
 exports.deleteNotificationController = async (req, res) => {
   try {
     const user = await userModel.findOne({ _id: req.body.userId });
@@ -106,6 +108,7 @@ exports.deleteNotificationController = async (req, res) => {
     });
   }
 };
+
 exports.getAllDoctorsController = async (req, res) => {
   try {
     const doctors = await doctorModel.find({ status: "approved" });
@@ -129,7 +132,10 @@ exports.getAllDoctorsController = async (req, res) => {
 exports.bookAppointmentController = async (req, res) => {
   try {
     // Validate date and time formats
-    if (!moment(req.body.date, "DD-MM-YYYY", true).isValid() || !moment(req.body.time, "HH:mm", true).isValid()) {
+    if (
+      !moment(req.body.date, "DD-MM-YYYY", true).isValid() ||
+      !moment(req.body.time, "HH:mm", true).isValid()
+    ) {
       return res.status(400).send({
         success: false,
         message: "Invalid date or time format",
@@ -159,7 +165,7 @@ exports.bookAppointmentController = async (req, res) => {
     });
 
     await user.save();
-    
+
     res.status(201).send({
       success: true,
       message: "Appointment booked successfully",
@@ -242,12 +248,13 @@ exports.bookingAvailabilityController = async (req, res) => {
     });
   }
 };
+
 exports.userAppointmentsController = async (req, res) => {
   try {
     const appointments = await appointmentModel.find({
       userId: req.body.userId,
     });
-     
+
     res.status(201).send({
       success: true,
       message: "Appointment list fetched",
@@ -263,23 +270,25 @@ exports.userAppointmentsController = async (req, res) => {
   }
 };
 
-// const PredictDiseaseController = async(req,res)=>{
-//   try {
-//     console.log(req.body)
-//     const result=await axios.post(
-//       'http://127.0.0.1:2024/api/predict',req.body)
-//       console.log(result.data)
-//     res.status(201).send({
-//       success: true,
-//       result: result.data,
-//       message: "success",
-//     });
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).send({
-//       success: false,
-//       error,
-//       message: "error",
-//     });
-//   }
-// }
+exports.PredictDiseaseController = async (req, res) => {
+  try {
+    console.log(req.body);
+    const result = await axios.post(
+      "http://127.0.0.1:2024/api/predict",
+      req.body
+    );
+    console.log(result.data);
+    res.status(201).send({
+      success: true,
+      result: result.data,
+      message: "success",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      error,
+      message: "error",
+    });
+  }
+};

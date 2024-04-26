@@ -18,7 +18,6 @@ const ApplyDoctor = () => {
   const handleFinish = async (values) => {
     try {
       dispatch(setLoading(true));
-
       // Format timings correctly before sending to the server
       const formattedTimings = values.timings.map((time) =>
         moment(time).format("HH:mm")

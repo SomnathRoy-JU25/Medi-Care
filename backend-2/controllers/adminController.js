@@ -66,8 +66,8 @@ const getOrgListController = async (req, res) => {
     });
   }
 };
-// =======================================
 
+// =======================================
 //DELETE DONAR
 const deleteDonarController = async (req, res) => {
   try {
