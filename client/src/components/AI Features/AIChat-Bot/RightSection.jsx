@@ -221,7 +221,7 @@ const RightSection = () => {
             onKeyPress={handleKeyPress}
             value={message}
             className="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue 
-            transition duration-300 ease-in-out text-gray-800 placeholder-gray-500 
+            transition duration-300 ease-in-out text-gray-800 placeholder-gray-800 
             hover:border-blue focus:ring-2 focus:ring-blue"
           />
 

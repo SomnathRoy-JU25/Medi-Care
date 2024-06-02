@@ -281,7 +281,7 @@ exports.PredictDiseaseController = async (req, res) => {
     res.status(201).send({
       success: true,
       result: result.data,
-      message: "success",
+      message: "Success",
     });
   } catch (error) {
     console.log(error);

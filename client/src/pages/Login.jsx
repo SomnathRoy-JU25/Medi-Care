@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 import loginImg from "../assets/images/login.jpg"
 import Template from "../components/Auth/Template"
-// import { login } from "../services/operations/authAPI"
+import { login } from "../services/operations/authAPI"
 
 function Login() {
   const [showDemo, setShowDemo] = useState(true)
@@ -16,10 +16,11 @@ function Login() {
     <>
 
       {/* test login ID */}
-      {/* <div
+      <div
         className={`${
           showDemo ? "" : "hidden"
-        } absolute right-[10%] top-52 z-20 -rotate-[20deg] items-center justify-center bg-richblack-400 p-6 md:right-[50%] md:top-32 `}
+        } absolute right-[10%] top-52 z-20 -rotate-[20deg] items-center justify-center bg-slate-500
+        p-6 md:right-[48%] md:top-36 `}
       >
         <div className="relative flex flex-col gap-2">
           <div
@@ -46,34 +47,34 @@ function Login() {
             </svg>
           </div>
           <div className=" flex flex-col gap-y-2">
-            <p className="flex items-center text-2xl font-extrabold text-richblack-5">
-              Take a Demo &nbsp; <BsLightningChargeFill size={20} />
+            <p className="flex items-center text-2xl font-extrabold text-gray-100">
+              Take a Demo &nbsp; <BsLightningChargeFill size={25} color="yellow"/>
             </p>
-            <div>
-              <button
-                onClick={() => {
-                  dispatch(login("somnathroy9564@gmail.com", "1234", navigate))
-                }}
-                className="mb-1 mt-4 flex rounded-md bg-yellow-100 px-4 py-2 font-semibold text-richblack-900"
-              >
-                <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
-                Click here for Instructor Demo
-              </button>
-            </div>
             <div>
               <button
                 onClick={() => {
                   dispatch(login("somnathroy0340@gmail.com", "1234", navigate))
                 }}
-                className="flex rounded-md bg-yellow-100 px-4 py-2 font-semibold text-richblack-900"
+                className="mb-1 mt-4 flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900"
               >
                 <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
-                Click here for Student Demo
+                Click here for Doctor Demo
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  dispatch(login("albiyaroy123@gmail.com", "123456", navigate))
+                }}
+                className="flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900"
+              >
+                <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
+                Click here for User Demo
               </button>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       <Template
         title="Welcome Back"

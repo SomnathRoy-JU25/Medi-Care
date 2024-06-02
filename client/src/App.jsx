@@ -7,7 +7,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Contact from "./components/Home/Contact";
 import Emergency from "./pages/Emergency";
-
+// Blood Donation Features
 import HomePage from "./pages/HomePage";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -21,10 +21,6 @@ import Analytics from "./pages/Dashboard/Analytics";
 import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import AdminHome from "./pages/Admin/AdminHome";
-
-//Video Call
-import CallPage from "./components/VideoCallFeature/CallPage";
-import RoomPage from "./components/VideoCallFeature/RoomPage";
 
 import UserDashboard from "./components/Dashboard/UserDashboard";
 import MyProfile from "./components/Dashboard/MyProfile";
@@ -46,6 +42,11 @@ import Users from "./components/Dashboard/admin/Users";
 import Profile from "./components/Dashboard/Doctor/Profile";
 import DoctorAppointments from "./components/Dashboard/Doctor/DoctorAppointments";
 import NotificationPage from "./components/Dashboard/Book Appointment/NotificationPage";
+
+// Real Time Video Call Features
+import LobbyScreen from "./components/VideoCallFeature/screens/LobbyScreen";
+import RoomPage from "./components/VideoCallFeature/screens/RoomPage";
+
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
@@ -73,7 +74,7 @@ function App() {
         > 
           <Route path="/dashboard/predict_disease" element={<AIHealthEducation />} />
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
-          <Route path="/dashboard/addtoCall" element={<CallPage />} />
+          <Route path="/dashboard/addtoCall" element={<LobbyScreen />} />
           <Route path="/dashboard/room/:roomId" element={<RoomPage />} />
           <Route path="/dashboard/settings" element={<Settings />} />
           <Route path="/dashboard/user-dashboard" element={<UserDashboard />} />

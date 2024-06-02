@@ -51,7 +51,7 @@ router.post("/login", login);
 router.post("/signup", signup);
 
 // POST || predict disease
-router.post("/predict_disease", auth, PredictDiseaseController);
+router.post("/predict_disease", PredictDiseaseController);
 
 // Export the router for use in the main application
 module.exports = router;

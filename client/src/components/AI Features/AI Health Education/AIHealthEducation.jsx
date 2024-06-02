@@ -1,17 +1,18 @@
-import React,{ useState } from 'react'
-import Layout from "../../Common/Layout"
-import { Select,message } from 'antd';
-import axios from 'axios'
-import { AIEndpoints } from '../../../services/apis';
-import useSelection from 'antd/es/table/hooks/useSelection';
+import React, { useState } from "react";
+import Layout from "../../Common/Layout";
+import { Select, Button } from "antd";
+import axios from "axios";
+import { AIEndpoints } from "../../../services/apis";
+import useSelection from "antd/es/table/hooks/useSelection";
+import { toast } from "react-hot-toast";
 const { PREDICT_DISEASE } = AIEndpoints;
 const AIHealthEducation = () => {
-    //let selections=[]
-    //let predictedDisease
-    const {token} = useSelection((state) => state.auth);
-    const [selections, setSelections] = useState([]);
-    const [predictedDisease, setPredictedDisease] = useState("");
-    const symptoms = [
+  //let selections=[]
+  //let predictedDisease
+  const { token } = useSelection((state) => state.auth);
+  const [selections, setSelections] = useState([]);
+  const [predictedDisease, setPredictedDisease] = useState("");
+  const symptoms = [
         'nodal_skin_eruptions', 'continuous_sneezing', 'shivering', 'chills', 'joint_pain', 'stomach_pain', 'acidity',
         'ulcers_on_tongue', 'muscle_wasting', 'vomiting', 'burning_micturition', 'spotting_ urination', 'fatigue',
         'weight_gain', 'anxiety', 'cold_hands_and_feets', 'mood_swings', 'weight_loss', 'restlessness', 'lethargy',
@@ -34,53 +35,66 @@ const AIHealthEducation = () => {
         'history_of_alcohol_consumption', 'fluid_overload.0', 'blood_in_sputum', 'prominent_veins_on_calf', 'palpitations',
         'painful_walking', 'pus_filled_pimples', 'blackheads', 'scurring', 'skin_peeling', 'silver_like_dusting',
         'small_dents_in_nails', 'inflammatory_nails', 'blister', 'red_sore_around_nose', 'yellow_crust_ooze'
-    ];
-    const getResult= async()=>{
-        try {
-            
-            const res = await axios.post(
-                PREDICT_DISEASE,{selections},  {
-                Authorization: `Bearer ${token}`,
-            })
-            if (res.data.success) {
-                message.success(res.data.message)
-                setPredictedDisease(res.data.result.predictedDisease);
-                console.log(`predicted disease: ${res.data.result.predictedDisease}`)
-            } else {
-                setPredictedDisease("error in prediction");
-            }
-        } catch (error) {
-            console.log(error)
+  ];
+  const getResult = async () => {
+    try {
+      const res = await axios.post(
+        PREDICT_DISEASE,
+        { selections },
+        {
+          Authorization: `Bearer ${token}`,
         }
+      );
+      if (res.data.success) {
+        toast.success(res.data.message);
+        setPredictedDisease(res.data.result.predictedDisease);
+        console.log(`predicted disease: ${res.data.result.predictedDisease}`);
+      } else {
+        setPredictedDisease("error in prediction");
+      }
+    } catch (error) {
+      console.log(error);
     }
-    const options = symptoms.map(symptom => ({
-        label: symptom,
-        value: symptom
-    }));
-    
+  };
+  const options = symptoms.map((symptom) => ({
+    label: symptom,
+    value: symptom,
+  }));
 
-    const onChange = (value) => {
-        setSelections(value);
-    };
-    return (
-        <Layout>
-            <h1 className='m-2'>Ai tools</h1>
-            <Select
-                mode="multiple"
-                allowClear
-                style={{
-                    width: '40%',
-                    margin: '2px'
-                }}
-                placeholder="Please select Symptoms"
-                onChange={onChange}
-                options={options}
-            />
-            <button className='btn btn-primary' onClick={getResult} >Submit</button>
-            <p className="result m-2">{predictedDisease}</p>
+  const onChange = (value) => {
+    setSelections(value);
+  };
 
-        </Layout>
-    )
-}
+  const onCancel = () => {
+    setPredictedDisease("");
+    setSelections([]);
+  };
+  return (
+    <Layout>
+      <h1 className="ai-heading text-3xl text-start pl-3 font-bold">AI Disease Predictor</h1>
+      <Select
+        mode="multiple"
+        allowClear
+        style={{ width: "40%", margin: "10px" }}
+        placeholder="Please select symptoms"
+        onChange={onChange}
+        options={options}
+      />
+      <div className="ai-buttons flex flex-row  gap-4 pl-3">
+        <Button type="primary" onClick={getResult}>
+          Submit
+        </Button>
+        <Button onClick={onCancel}>Cancel</Button>
+      </div>
+      <p className="result text-3xl font-semibold mt-4 justify-between text-center rounded-lg  p-4 text-white ">
+       {predictedDisease !== null && ( // Render the Disease paragraph only when predictedDisease is not null
+        <p className="result text-3xl font-semibold mt-4 justify-between text-center rounded-lg bg-blue p-4 text-white ">
+          Disease : {predictedDisease}
+        </p>
+      )}
+      </p>
+    </Layout>
+  );
+};
 
-export default AIHealthEducation
+export default AIHealthEducation;

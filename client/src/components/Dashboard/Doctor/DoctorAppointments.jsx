@@ -13,6 +13,7 @@ const DoctorAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
+  // Fetch All Appointments
   const getAppointments = async () => {
     try {
       const res = await apiConnector(
