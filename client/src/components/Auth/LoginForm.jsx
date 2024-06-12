@@ -43,21 +43,35 @@ function LoginForm() {
         const user = result.user;
         console.log(user);
         toast.success("Login Successful");
-        dispatch(setToken(user.accessToken)); 
-        const userImage = user?.photoURL ? 
-        user.image:`https://api.dicebear.com/5.x/initials/svg?seed=${user?.displayName.split("")[0]} ${user?.displayName.split(" ")[1]}`;
-        dispatch(setUser({
-          displayName: user.displayName,
-          image: user?.photoURL,
-          email: user.email,
-          accountType: user.accountType || "User" // Set accountType to "USER" by default if not available
-        }));
+        dispatch(setToken(user.accessToken));
+        const userImage = user?.photoURL
+          ? user.image
+          : `https://api.dicebear.com/5.x/initials/svg?seed=${
+              user?.displayName.split("")[0]
+            } ${user?.displayName.split(" ")[1]}`;
+        dispatch(
+          setUser({
+            displayName: user.displayName,
+            image: user?.photoURL,
+            email: user.email,
+            accountType: user.accountType || "User", // Set accountType to "USER" by default if not available
+            isDoctor: false,
+            isAdmin: false,
+            notification: [0],
+            seennotification: [],
+            // uid : user.uid
+          })
+        );
         console.log(user.accessToken); // Accessing accessToken from stsTokenManager
         localStorage.setItem("token", JSON.stringify(user.accessToken)); // Saving accessToken from stsTokenManager
         localStorage.setItem(
           "user",
-          JSON.stringify({ displayName: user.displayName, image: user.photoURL, email: user.email,
-            accountType: user.accountType || "User" }) // Adjusted saving displayName and image
+          JSON.stringify({
+            displayName: user.displayName,
+            image: user.photoURL,
+            email: user.email,
+            accountType: user.accountType || "User",
+          }) // Adjusted saving displayName and image
         );
         navigate("/dashboard/my-profile");
       })
@@ -65,7 +79,6 @@ function LoginForm() {
         console.log(error);
       });
   };
-  
 
   return (
     <div>
@@ -123,7 +136,9 @@ function LoginForm() {
 
           <button
             type="submit"
-            className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+            className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 
+             hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none
+             hover:scale-95 transition-all duration-300"
           >
             Sign In
           </button>
@@ -132,10 +147,8 @@ function LoginForm() {
           <button
             type="submit"
             onClick={handleRegister}
-            className="relative inline-flex w-full items-center justify-center rounded-md border
-            border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all 
-            duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black 
-            focus:outline-none"
+            className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700  hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black 
+            focus:outline-none hover:scale-95 transition-all duration-300"
           >
             <span className="mr-2 inline-block text-blue">
               <FcGoogle />

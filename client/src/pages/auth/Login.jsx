@@ -56,7 +56,7 @@ const Login = () => {
                 onClick={() => {
                   dispatch(userLogin("donar","albiyaroy123@gmail.com", "123456", navigate));
                 }}
-                className="mb-1 mt-4 flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900"
+                className="mb-1 mt-4 flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900 hover:scale-95 transition-all duration-300"
               >
                 <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
                 Click here for Donor Demo
@@ -67,7 +67,7 @@ const Login = () => {
                 onClick={() => {
                   dispatch(userLogin("admin","mrbossroy2003@gmail.com", "1234", navigate));
                 }}
-                className="flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900"
+                className="flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900 hover:scale-95 transition-all duration-300"
               >
                 <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
                 Click here for Admin Demo
@@ -78,7 +78,7 @@ const Login = () => {
                 onClick={() => {
                   dispatch(userLogin("hospital","somnathroy0340@gmail.com", "1234", navigate));
                 }}
-                className="flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900"
+                className="flex rounded-md bg-yellow-100 px-4 py-2 font-bold text-gray-900 hover:scale-95 transition-all duration-300"
               >
                 <TbCornerDownRightDouble className="hidden text-2xl text-richblack-900 md:block" />
                 Click here for Hospital Demo

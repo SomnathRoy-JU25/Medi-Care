@@ -110,14 +110,18 @@ const Navbar = () => {
         <div className="hidden space-x-2 lg:block">
           {token === null && (
             <Link to="/signup">
-              <button className="rounded-full bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue">
+              <button className="rounded-md border bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 
+              hover:scale-75 transition-all duration-300">
                 Sign Up
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/login2">
-              <button className="rounded-md border px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-blue">
+              <button className="rounded-md border px-3 py-2 font-bold font-sans text-gray-800
+                    bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB]
+                    text-[13px] sm:text-[16px] shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+                    hover:shadow-none hover:scale-75 transition-all duration-300">
                 Log In
               </button>
             </Link>

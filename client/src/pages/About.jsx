@@ -32,7 +32,8 @@ const users = [
   },
   {
     name: "Somnath Roy",
-    image: "https://i.ibb.co/djQdt9L/MyPics.jpg",
+    // image: "https://i.ibb.co/djQdt9L/MyPics.jpg",
+    image : "https://i.ibb.co/q18nQ6y/My-Photo-AI.png",
     position: "MERN Stack developer",
   },
   {
