@@ -14,7 +14,6 @@
     "@reduxjs/toolkit": "^2.2.2",
     "antd": "^5.16.2",
     "axios": "^1.6.8",
-    "dotenv": "^16.4.5",
     "firebase": "^10.9.0",
     "lucide-react": "^0.361.0",
     "moment": "^2.30.1",
