@@ -62,14 +62,19 @@ exports.getDoctorByIdController = async (req, res) => {
 
 exports.doctorAppointmentController = async (req, res) => {
   try {
+    // ****** Old versions ******
+    // let appointments;
+    // if (req.user.isDoctor) {
+    //   const doctor = await doctorModel.findOne(req.body.id);
+    //   appointments = await appointmentModel.find({ doctorId: doctor._id });
+    // } else {
+    //   const user = await userModel.findById(req.body.id);
+    //   appointments = await appointmentModel.find(user);
+    // }
+    // ******** New Version *******
     let appointments;
-    if (req.user.isDoctor) {
-      const doctor = await doctorModel.findOne(req.body.id);
-      appointments = await appointmentModel.find({ doctorId: doctor._id });
-    } else {
-      const user = await userModel.findById(req.body.id);
-      appointments = await appointmentModel.find(user);
-    }
+    appointments = await appointmentModel.find(); // For Google Users Can see appointment
+
     // console.log(appointments);
     res.status(200).send({
       success: true,

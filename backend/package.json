@@ -8,7 +8,7 @@
     "server": "nodemon index.js",
     "client": "npm start --prefix ./client",
     "start": "cd ../client && npm run dev",
-    "dev": "concurrently -n \"client,backend-2\" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\""
+    "dev": "concurrently -n \"client,backend \" -c \"bgBlue,bgYellow\" \"npm start\" \"npm run server\""
   },
   "author": "Somnath Roy",
   "license": "ISC",

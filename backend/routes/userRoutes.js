@@ -32,7 +32,8 @@ router.get("/user-appointments", userAppointmentsController);
 router.post("/book-appointment", bookAppointmentController);
 
 //BOOKING Availability
-router.post("/booking-availability", auth, bookingAvailabilityController);
+// router.post("/booking-availability", auth, bookingAvailabilityController);
+router.post("/booking-availability", bookingAvailabilityController);
 
 // notification || POST
 router.post("/get-all-notification", GetAllNotificationController);
@@ -51,7 +52,7 @@ router.post("/login", login);
 router.post("/signup", signup);
 
 // POST || predict disease
-router.post("/predict_disease", PredictDiseaseController);
+// router.post("/predict_disease", PredictDiseaseController);
 
 // Export the router for use in the main application
 module.exports = router;

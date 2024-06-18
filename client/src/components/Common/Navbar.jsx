@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileDropdown from "../Auth/ProfileDropdown";
-import { AIFeatureLinks } from "./AIFeatureLinks";
+import { FeatureLinks } from "./FeatureLinks";
 import { BsChevronDown } from "react-icons/bs";
 import logo from "../../assets/images/Logo.png";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -12,8 +12,8 @@ const menuItems = [
     href: "/",
   },
   {
-    name: "AI Features",
-    href: "/dashboard/ai-chat_bot",
+    name: "Main Features",      // previously AI Features 😥
+    // href: "/dashboard/ai-chat_bot",
   },
   {
     name: "Donate Blood",
@@ -63,15 +63,15 @@ const Navbar = () => {
                 className="text-blue relative"
                 key={item.name}
                 onMouseEnter={() =>
-                  item.name === "AI Features" && setIsMenuOpen(true)
+                  item.name === "Main Features" && setIsMenuOpen(true)
                 }
                 onMouseLeave={() =>
-                  item.name === "AI Features" && setIsMenuOpen(false)
+                  item.name === "Main Features" && setIsMenuOpen(false)
                 }
               > 
-                {item.name === "AI Features" ? (
+                {item.name === "Main Features" ? (
                   <>
-                    <span className="space-x-1 inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm">
+                    <span className="space-x-1 inline-flex items-center text-sm font-semibold text-gray-800 hover:text-purple-800 hover:cursor-pointer hover:text-sm">
                       <div>{item.name}</div>
                       <div>
                         <BsChevronDown size={16}/>
@@ -81,7 +81,7 @@ const Navbar = () => {
                       <div className="relative">
                         <div className="absolute top-full w-64 bg-white shadow-lg rounded-2xl 
                         overflow-auto z-10">
-                          {AIFeatureLinks.map((link) => (
+                          {FeatureLinks.map((link) => (
                             <Link
                               key={link.title}
                               to={link.path}
@@ -98,7 +98,7 @@ const Navbar = () => {
                   </>
                 ) : (
                   <Link to={item.href}>
-                    <a className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-blue hover:cursor-pointer hover:text-sm">
+                    <a className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-purple-800 hover:cursor-pointer hover:text-sm">
                       {item.name}
                     </a>
                   </Link>

@@ -30,8 +30,6 @@ import Settings from "./components/Dashboard/Settings/index";
 import Navbar from "./components/Common/Navbar";
 import BookAppointment from "./components/Dashboard/Book Appointment/BookAppointment";
 import AIChatBot from "./components/AI Features/AIChat-Bot/AIChatBot";
-import VoiceEnableHeathCare from "./components/AI Features/Voice-enable-health-assistance/VoiceEnableHeathCare";
-import AIHealthEducation from "./components/AI Features/AI Health Education/AIHealthEducation";
 
 // Doctor Appointments
 import Appointments from "./components/Dashboard/Book Appointment/Appointments";
@@ -47,6 +45,9 @@ import NotificationPage from "./components/Dashboard/Book Appointment/Notificati
 import LobbyScreen from "./components/VideoCallFeature/screens/LobbyScreen";
 import RoomPage from "./components/VideoCallFeature/screens/RoomPage";
 
+// Diseases Predictors Home Page
+import DiseasePredictorPage from "./components/Disease Predictor/DiseasePredictorHome";
+
 function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col font-inter">
@@ -58,11 +59,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/emergency" element={<Emergency />} />
-        <Route
-          path="/voice-enable-health-assistance"
-          element={<VoiceEnableHeathCare />}
-        />
-      
 
         {/* Private Route - for Only Logged in User */}
         <Route
@@ -71,8 +67,8 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           }
-        > 
-          <Route path="/dashboard/predict_disease" element={<AIHealthEducation />} />
+        >
+          <Route path="/dashboard/predict_disease" element={<DiseasePredictorPage />} />
           <Route path="/dashboard/my-profile" element={<MyProfile />} />
           <Route path="/dashboard/addtoCall" element={<LobbyScreen />} />
           <Route path="/dashboard/room/:roomId" element={<RoomPage />} />
@@ -83,10 +79,7 @@ function App() {
 
           {/* Booking Appointments Features */}
           <Route path="/dashboard/home-page" element={<BookAppHomePage />} />
-          <Route
-            path="/dashboard/doctor/book-appointment/:doctorId"
-            element={<BookAppointment />}
-          />
+          <Route path="/dashboard/doctor/book-appointment/:doctorId" element={<BookAppointment />} />
           <Route path="/dashboard/apply-doctor" element={<ApplyDoctor />} />
           <Route path="/dashboard/appointments" element={<Appointments />} />
 
@@ -95,108 +88,28 @@ function App() {
           <Route path="/dashboard/admin/users" element={<Users />} />
 
           <Route path="/dashboard/doctor/profile/:id" element={<Profile />} />
-          <Route
-            path="/dashboard/doctor-appointments"
-            element={<DoctorAppointments />}
-          />
-          <Route
-            path="/dashboard/notification"
-            element={<NotificationPage />}
-          />
+          <Route path="/dashboard/doctor-appointments" element={<DoctorAppointments />} />
+          <Route path="/dashboard/notification" element={<NotificationPage />} />
         </Route>
 
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminHome />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/donar-list"
-          element={
-            <ProtectedRoute>
-              <DonarList />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/hospital-list"
-          element={
-            <ProtectedRoute>
-              <HospitalList />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/hospital"
-          element={
-            <ProtectedRoute>
-              <Hospitals />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/analytics"
-          element={
-            <ProtectedRoute>
-              <Analytics />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/consumer"
-          element={
-            <ProtectedRoute>
-              <Consumer />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/donation"
-          element={
-            <ProtectedRoute>
-              <Donation />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/donar"
-          element={
-            <ProtectedRoute>
-              <Donar />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-          }
-        />
+        {/* ProtectedRoute For Blood Donation Features*/}
+        <Route>
+          <Route path="/admin" element= {<ProtectedRoute> <AdminHome /></ProtectedRoute>} />
+          <Route path="/donar-list" element= {<ProtectedRoute> <DonarList/> </ProtectedRoute>} />
+          <Route path="/hospital-list" element={<ProtectedRoute> <HospitalList /> </ProtectedRoute>} />
+          <Route path="/hospital" element={<ProtectedRoute> <Hospitals /> </ProtectedRoute>} />
+          <Route path="/analytics" element={<ProtectedRoute> <Analytics/> </ProtectedRoute>} />
+          <Route path="/consumer" element={<ProtectedRoute> <Consumer/> </ProtectedRoute>} />
+          <Route path="/donation" element={<ProtectedRoute> <Donation /> </ProtectedRoute>} />
+          <Route path="/donar" element={ <ProtectedRoute> <Donar /> </ProtectedRoute> } />
+          <Route path="/home" element={<ProtectedRoute> <HomePage /> </ProtectedRoute>} />
+        </Route>
+        {/* PublicRoute For Blood Donation Features*/}
+        <Route>
+          <Route path="/login" element={<PublicRoute> <Login /> </PublicRoute>} />
+          <Route path="/register" element={<PublicRoute> <Register /> </PublicRoute>} />
+        </Route>
       </Routes>
-      {/* <Footer /> */}
     </div>
   );
 }

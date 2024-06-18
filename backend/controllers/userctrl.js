@@ -179,38 +179,7 @@ exports.bookAppointmentController = async (req, res) => {
   }
 };
 
-// exports.bookAppointmentController = async (req, res) => {
-//   try {
-//     req.body.date = moment(req.body.date, 'DD-MM-YYYY').toISOString()
-//     req.body.time = moment(req.body.time, 'HH:mm').toISOString()
-//     req.body.status = 'pending'
-//     const newAppointment = new appointmentModel(req.body)
-//     newAppointment
-//     await newAppointment.save()
-
-//     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
-//     user.notification.push({
-//       type: 'New Appointment request',
-//       message: `A new appointment request from ${req.body.userInfo.name}`,
-//       onClickPath: '/user/appointments'
-//     })
-//     await user.save()
-//     res.status(201).send({
-//       success: true,
-//       message: "Appointment booked successfully",
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send({
-//       success: false,
-//       error,
-//       message: "Error while booking appoinment",
-//     });
-//   }
-// };
-
 //  bookingAvailabilityController
-
 exports.bookingAvailabilityController = async (req, res) => {
   try {
     const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
@@ -270,25 +239,25 @@ exports.userAppointmentsController = async (req, res) => {
   }
 };
 
-exports.PredictDiseaseController = async (req, res) => {
-  try {
-    console.log(req.body);
-    const result = await axios.post(
-      "http://127.0.0.1:2024/api/predict",
-      req.body
-    );
-    console.log(result.data);
-    res.status(201).send({
-      success: true,
-      result: result.data,
-      message: "Success",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      error,
-      message: "error",
-    });
-  }
-};
+// exports.PredictDiseaseController = async (req, res) => {
+//   try {
+//     console.log(req.body);
+//     const result = await axios.post(
+//       "http://127.0.0.1:2024/api/predict",
+//       req.body
+//     );
+//     console.log(result.data);
+//     res.status(201).send({
+//       success: true,
+//       result: result.data,
+//       message: "Success",
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send({
+//       success: false,
+//       error,
+//       message: "error",
+//     });
+//   }
+// };

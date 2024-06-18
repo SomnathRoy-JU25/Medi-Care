@@ -21,7 +21,8 @@ router.post("/updateProfile", auth, isDoc, UpdateProfileController);
 router.post("/getDoctorById", getDoctorByIdController);
 
 //Get || Appointments
-router.get("/doctor-appointments", auth, doctorAppointmentController);
+// router.get("/doctor-appointments", auth, doctorAppointmentController); // Previous Route
+router.get("/doctor-appointments", doctorAppointmentController);
 
 // POST || update appointment status
 router.post("/update-status", auth, isDoc, updateStatusController);

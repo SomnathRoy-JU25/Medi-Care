@@ -15,7 +15,7 @@ export const userMenu = [
       icon: "fa-solid fa-user-doctor",
     },
     {
-      name: "AI Tools",
+      name: "Health Predictor",
       path: "/dashboard/predict_disease",
       icon: "fa-solid fa-code-branch",
     },

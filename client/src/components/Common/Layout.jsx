@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
         {/* Content */}
         <div className="w-3/4 bg-gray-200 p-6">
           <div className="flex justify-between items-center mb-4">
-            <Badge count={user?.notification.length} onClick={() => { navigate('/dashboard/notification') }}>
+            <Badge count={user?.notification.length || 0} onClick={() => { navigate('/dashboard/notification') }}>
               <IoMdNotifications size={25} className="text-gray-600" />
             </Badge>
             <Link to="/dashboard/doctor/profile/:id" className="text-gray-800">{user?.name}</Link>
