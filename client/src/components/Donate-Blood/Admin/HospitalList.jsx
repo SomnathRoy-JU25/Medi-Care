@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Container from "../../components/shared/Layout/Container";
+import Container from "../../shared/Layout/Container";
 import moment from "moment";
-import API from "../../services/API";
+import API from "../../../services/API";
 
-const DonarList = () => {
+const HospitalList = () => {
   const [data, setData] = useState([]);
   
-  // Find donar records
-  const getDonars = async () => {
+  // Find hospital records
+  const getHospitals = async () => {
     try {
-      const { data } = await API.get("/admin/donar-list");
+      const { data } = await API.get("/admin/hospital-list");
       if (data?.success) {
-        setData(data?.donarData);
+        setData(data?.hospitalData);
       }
     } catch (error) {
       console.log(error);
@@ -19,18 +19,18 @@ const DonarList = () => {
   };
 
   useEffect(() => {
-    getDonars();
+    getHospitals();
   }, []);
 
   // DELETE FUNCTION
   const handelDelete = async (id) => {
     try {
       let answer = window.prompt(
-        "Are you sure you want to delete this donar?",
+        "Are you sure you want to delete this hospital?",
         "Sure"
       );
       if (!answer) return;
-      const { data } = await API.delete(`/admin/delete-donar/${id}`);
+      const { data } = await API.delete(`/admin/delete-hospital/${id}`);
       alert(data?.message);
       window.location.reload();
     } catch (error) {
@@ -54,7 +54,7 @@ const DonarList = () => {
           <tbody>
             {data?.map((record) => (
               <tr key={record._id}>
-                <td className="px-4 py-2">{record.name || record.organisationName + " (ORG)"}</td>
+                <td className="px-4 py-2">{record.hospitalName}</td>
                 <td className="px-4 py-2">{record.email}</td>
                 <td className="px-4 py-2">{record.phone}</td>
                 <td className="px-4 py-2">{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
@@ -75,4 +75,4 @@ const DonarList = () => {
   );
 };
 
-export default DonarList;
+export default HospitalList;

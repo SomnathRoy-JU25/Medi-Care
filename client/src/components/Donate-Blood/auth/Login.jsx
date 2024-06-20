@@ -1,8 +1,8 @@
 import React from "react";
-import Form from "../../components/shared/Form/Form";
+import Form from "../../shared/Form/Form";
 import { useSelector } from "react-redux";
-import Spinner from "../../components/shared/Spinner";
-import {userLogin} from "../../services/operations/authAPI";
+import Spinner from "../../shared/Spinner";
+import { userLogin } from "../../../services/operations/authAPI";
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useState } from "react";

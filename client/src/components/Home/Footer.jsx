@@ -1,6 +1,5 @@
 import React from "react";
 import { ChevronRight } from 'lucide-react'
-// import { FaInstagram, FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import { GiHealthNormal } from "react-icons/gi";
 
 const Footer = () => {
@@ -60,7 +59,7 @@ const Footer = () => {
             </p>
               </li>
               <li className="p-5">
-                <a className="font-medium text-gray-600 hover:text-blue" href="#">
+                <a className="font-medium text-gray-600 hover:text-blue" href="/return-policy">
                   Return Policy
                 </a>
               </li>
@@ -74,7 +73,7 @@ const Footer = () => {
           <div className="w-auto p-8">
             <div className="-m-1.5 flex flex-wrap">
               <div className="w-auto p-1.5">
-                <a href="#">
+                <a href="*">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                     <svg
                       width="8"
@@ -92,7 +91,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="w-auto p-1.5">
-                <a href="#">
+                <a href="*">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                     <svg
                       width="14"
@@ -110,7 +109,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="w-auto p-1.5">
-                <a href="#">
+                <a href="*">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                     <svg
                       width="16"

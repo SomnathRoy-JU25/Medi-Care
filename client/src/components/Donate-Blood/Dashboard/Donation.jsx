@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import Container from "../../components/shared/Layout/Container";
-import API from "../../services/API";
+import Container from "../../shared/Layout/Container";
+import API from "../../../services/API";
 import { useSelector } from "react-redux";
 
 const Donation = () => {

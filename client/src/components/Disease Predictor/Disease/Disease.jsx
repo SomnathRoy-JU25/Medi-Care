@@ -1,62 +1,72 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./Disease.css";
-// import InfoIcon from "@material-ui/icons/Info";
-class Disease extends Component {
-  // State
-  state = {
-    patientInfo: this.props.patientInfo,
-    disease_with_possibility: this.props.disease_with_possibility,
-  };
 
-  get_current_html = () => {
-    const filtered_list = this.state.disease_with_possibility.filter((e) => {
-      return e.possibility > 0;
-    });
-    filtered_list.sort((a, b) => -a.possibility.localeCompare(b.possibility, undefined, { numeric: true }) || a.name.localeCompare(b.name));
-    return filtered_list.length !== 0 ? (
+const Disease = ({ patientInfo, disease_with_possibility, gender, age }) => {
+  const [filteredDiseaseList, setFilteredDiseaseList] = useState([]);
+
+  useEffect(() => {
+    const filteredList = disease_with_possibility.filter(
+      (e) => e.possibility > 0
+    );
+    filteredList.sort(
+      (a, b) =>
+        -a.possibility.localeCompare(b.possibility, undefined, {
+          numeric: true,
+        }) || a.name.localeCompare(b.name)
+    );
+    setFilteredDiseaseList(filteredList);
+  }, [disease_with_possibility]);
+
+  const getCurrentHtml = () => {
+    return filteredDiseaseList.length !== 0 ? (
       <div className="grid-row width-full DiseaseComponent">
         <div className="col-12 tablet:grid-col-12 patientInfo">
-          <h3>Patient gender: {this.props.gender}</h3>
-          <h3>Patient age: {this.props.age}</h3>
+          <h3>Patient gender: {gender}</h3>
+          <h3>Patient age: {age}</h3>
         </div>
         <div className="col-12 tablet:grid-col-12 patientQuestions">
-          {this.state.patientInfo.map((key, id) => (
+          {patientInfo.map((item, id) => (
             <div className="singleQuestion" key={id}>
-              <p>{key.question}</p>
-              <p>{key.answer}</p>
+              <p>{item.question}</p>
+              <p>{item.answer}</p>
             </div>
           ))}
         </div>
         <div className="col-12 tablet:grid-col-12 DiagnosisReport">
           <h2>Diagnosis Report</h2>
-          {filtered_list.map((key, id) => (
+          {filteredDiseaseList.map((disease, id) => (
             <div className="reportDiv" key={id}>
               <div className="display-flex flex-row flex-justify flex-wrap">
                 <div className="display-flex flex-align-center titleReport">
-                  <h4>{key.name}</h4>
-                  <a href={`https://en.wikipedia.org/wiki/${key.name}`} title={"wikipedia"} rel="noopener noreferrer" target="blank">
+                  <h4>{disease.name}</h4>
+                  <a
+                    href={`https://en.wikipedia.org/wiki/${disease.name}`}
+                    title={"wikipedia"}
+                    rel="noopener noreferrer"
+                    target="blank"
+                  >
                     i
                   </a>
                 </div>
                 <div className="display-flex flex-align-center Possibility">
                   <p>
-                    Possibility <span>{key.possibility}%</span>
+                    Possibility <span>{disease.possibility}%</span>
                   </p>
                   <div className="possibilityProgressBar">
-                    <div style={{ width: `${key.possibility}%` }}></div>
+                    <div style={{ width: `${disease.possibility}%` }}></div>
                   </div>
                 </div>
               </div>
               <div className="diseaseSymptoms">
                 <h4>Disease Symptoms</h4>
                 <ul>
-                  {key.disease_symptom.sort().map((item, index) => {
-                    return key.symptom_user_has.includes(item) ? (
+                  {disease.disease_symptom.sort().map((symptom, index) => {
+                    return disease.symptom_user_has.includes(symptom) ? (
                       <li key={index} className="active">
-                        {item}
+                        {symptom}
                       </li>
                     ) : (
-                      <li key={index}>{item}</li>
+                      <li key={index}>{symptom}</li>
                     );
                   })}
                 </ul>
@@ -64,24 +74,30 @@ class Disease extends Component {
             </div>
           ))}
         </div>
-        <div>Always visit a doctor if you have any symptoms of a disease or call your local hospital</div>
+        <div>
+          Always visit a doctor if you have any symptoms of a disease or call
+          your local hospital
+        </div>
       </div>
     ) : (
       <React.Fragment>
         <div className="grid-row width-full DiseaseComponent">
           <div className="col-12 tablet:grid-col-12 patientInfo">
-            <h3>Patient gender: Male</h3>
-            <h3>Patient age: 71</h3>
+            <h3>Patient gender: {gender}</h3>
+            <h3>Patient age: {age}</h3>
           </div>
-          <p> Cannot determine possible diseases due to lack of symptoms. Please retry the analysis with actual symptoms or call your local hospital if it is an emergency.</p>
+          <p>
+            {" "}
+            Cannot determine possible diseases due to lack of symptoms. Please
+            retry the analysis with actual symptoms or call your local hospital
+            if it is an emergency.
+          </p>
         </div>
       </React.Fragment>
     );
   };
 
-  render() {
-    return <React.Fragment>{this.get_current_html()}</React.Fragment>;
-  }
-}
+  return <React.Fragment>{getCurrentHtml()}</React.Fragment>;
+};
 
 export default Disease;
