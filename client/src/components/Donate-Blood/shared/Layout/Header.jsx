@@ -3,10 +3,9 @@ import { BiDonateBlood, BiUserCircle } from "react-icons/bi";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
-// import { setToken } from "../../../redux/features/auth/authSlice"
-// import { setUser } from "../../../redux/features/auth/profileSlice"
-import { setToken } from "../../../slices/authSlice";
-import { setUser } from "../../../slices/profileSlice";
+
+import { setToken } from "../../../../slices/authSlice";
+import { setUser } from "../../../../slices/profileSlice";
 
 const Header = () => {
   const { user } = useSelector((state) => state.profile);

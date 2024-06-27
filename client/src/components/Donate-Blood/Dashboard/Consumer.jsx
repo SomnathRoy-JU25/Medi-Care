@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "../../shared/Layout/Container";
+import Container from "../shared/Layout/Container";
 import moment from "moment";
 import API from "../../../services/API";
 import { useSelector } from "react-redux";

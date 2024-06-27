@@ -43,8 +43,8 @@ import Doctors from "./components/Dashboard/admin/Doctor";
 import Users from "./components/Dashboard/admin/Users";
 
 // Real Time Video Call Features
-import LobbyScreen from "./components/VideoCallFeature/screens/LobbyScreen";
-import RoomPage from "./components/VideoCallFeature/screens/RoomPage";
+import LobbyScreen from "./components/WebRTC/screens/LobbyScreen";
+import RoomPage from "./components/WebRTC/screens/RoomPage";
 
 // Diseases Predictors Home Page
 import DiseasePredictorPage from "./components/Disease Predictor/DiseasePredictorHome";

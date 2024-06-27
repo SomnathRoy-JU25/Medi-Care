@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-import { userRegister , userLogin } from "../../../services/operations/authAPI";
+import { userRegister, userLogin } from "../../../../services/operations/authAPI";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

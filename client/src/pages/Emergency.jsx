@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from "./Data/nearest-hospitals.json";
+import data from "../components/Data/nearest-hospitals.json";
 import { toast } from "react-hot-toast";
 
 // Function to calculate the distance between two geographical coordinates

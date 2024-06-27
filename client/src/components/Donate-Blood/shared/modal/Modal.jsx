@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputType from "../Form/InputType";
-import API from "../../../services/API";
+import API from "../../../../services/API";
 import { toast } from "react-hot-toast";
 
 const Modal = ({ setShowModal, user }) => {

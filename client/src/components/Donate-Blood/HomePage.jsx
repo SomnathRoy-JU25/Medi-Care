@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../shared/Spinner";
-import Container from "../shared/Layout/Container";
+import Spinner from "./shared/Spinner";
+import Container from "./shared/Layout/Container";
 import API from "../../services/API";
 import moment from "moment";
-import Modal from "../shared/modal/Modal"; // Import the Modal component
+import Modal from "./shared/modal/Modal"; // Import the Modal component
 import { IoMdAdd } from "react-icons/io";
 
 const HomePage = () => {

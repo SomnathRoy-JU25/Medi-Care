@@ -1,7 +1,4 @@
 import { toast } from "react-hot-toast";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { setLoading, setToken } from "../../redux/features/auth/authSlice"
-// import { setUser } from "../../redux/features/auth/profileSlice"
 
 import { setLoading, setToken} from "../../slices/authSlice";
 import { setUser } from "../../slices/profileSlice";
@@ -196,30 +193,6 @@ export function userLogin(role, email, password, navigate) {
     dispatch(setLoading(false));
   };
 }
-
-// export const userLogin = createAsyncThunk(
-//   "auth/login",
-//   async ({ role, email, password}) => {
-//     // const dispatch = useDispatch();
-//     try {
-//       const { data } = await API.post("/auth/login", { role, email, password });
-//       if (!data.success) {
-//         return toast.error(data.message);
-//       }
-//       toast.success("Login Successful", { duration: 1000 });
-//       // dispatch(setUser({data}));
-//       dispatch(setUser(data));
-//       localStorage.setItem("token", data.token);
-//       // Simulate a delay before redirecting
-//       setTimeout(() => {
-//         window.location.replace("/home");
-//       }, 400); // Redirect after some time 
-//       return data;
-//     } catch (error) {
-//       return toast.error(error.message);
-//     }
-//   }
-// );
 
 
 export function userRegister(
