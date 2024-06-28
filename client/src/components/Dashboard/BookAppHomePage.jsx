@@ -31,7 +31,7 @@ const BookAppHomePage = () => {
   }, []);
   return (
     <Layout>
-      <h1 className="m-2">HomePage</h1>
+      <h1 className="m-2 font-bold">Home Page</h1>
       <Row className="justify-between">
         {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
       </Row>

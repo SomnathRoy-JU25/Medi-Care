@@ -8,14 +8,10 @@ import { endpoints } from "../apis";
 import API from "../API"
 
 const {
-  // SENDOTP_API,
   SIGNUP_API,
   LOGIN_API,
-  RESETPASSTOKEN_API,
-  RESETPASSWORD_API,
   SIGNUP_API_DONATE_BLOOD,
   LOGIN_API_DONATE_BLOOD,
-  GET_USER_API,
 } = endpoints;
 
 export function signUp(
@@ -94,59 +90,6 @@ export function login(email, password, navigate) {
   };
 }
 
-export function getPasswordResetToken(email, setEmailSent) {
-  return async (dispatch) => {
-    const toastId = toast.loading("Loading...");
-    dispatch(setLoading(true));
-    try {
-      const response = await apiConnector("POST", RESETPASSTOKEN_API, {
-        email,
-      });
-
-      console.log("RESETPASSTOKEN RESPONSE............", response);
-
-      if (!response.data.success) {
-        throw new Error(response.data.message);
-      }
-
-      toast.success("Reset Email Sent");
-      setEmailSent(true);
-    } catch (error) {
-      console.log("RESETPASSTOKEN ERROR............", error);
-      toast.error("Failed To Send Reset Email");
-    }
-    toast.dismiss(toastId);
-    dispatch(setLoading(false));
-  };
-}
-
-export function resetPassword(password, confirmPassword, token, navigate) {
-  return async (dispatch) => {
-    const toastId = toast.loading("Loading...");
-    dispatch(setLoading(true));
-    try {
-      const response = await apiConnector("POST", RESETPASSWORD_API, {
-        password,
-        confirmPassword,
-        token,
-      });
-
-      console.log("RESETPASSWORD RESPONSE............", response);
-
-      if (!response.data.success) {
-        throw new Error(response.data.message);
-      }
-
-      toast.success("Password Reset Successfully");
-      navigate("/login");
-    } catch (error) {
-      console.log("RESETPASSWORD ERROR............", error);
-      toast.error("Failed To Reset Password");
-    }
-    toast.dismiss(toastId);
-    dispatch(setLoading(false));
-  };
-}
 
 export function logout(navigate) {
   return (dispatch) => {
@@ -249,16 +192,3 @@ export const getCurrentUser = async () => {
     throw error; // Rethrow the error so that the caller can handle it appropriately
   }
 };
-
-// export const getCurrentUser = createAsyncThunk(
-//   "auth/getCurrentUser",
-//   async () => {
-//     try {
-//       const res = await API.get("/auth/current-user");
-//       toast.success("User data fetched");
-//       return res.data;
-//     } catch (error) {
-//       return toast.error(error.message);
-//     }
-//   }
-// );

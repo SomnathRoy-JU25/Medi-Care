@@ -59,7 +59,10 @@ const DoctorAppointments = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to update status");
+      toast.error("You are Not a Doctor", { 
+        position: 'top-right', 
+        style: { padding: '5px' } 
+    });
     }
   };
 

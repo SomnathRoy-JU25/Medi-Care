@@ -5,12 +5,8 @@ export const endpoints = {
   SENDOTP_API: BASE_URL + "/auth/sendotp",
   SIGNUP_API: BASE_URL + "/user/signup",
   LOGIN_API: BASE_URL + "/user/login",
-  RESETPASSTOKEN_API: BASE_URL + "/user/reset-password-token",
-  RESETPASSWORD_API: BASE_URL + "/user/reset-password",
-
   SIGNUP_API_DONATE_BLOOD: BASE_URL + "/auth/register",
   LOGIN_API_DONATE_BLOOD: BASE_URL + "/auth/login",
-  GET_USER_API: BASE_URL + "/auth/current-user",
 };
 
 // PROFILE ENDPOINTS
@@ -53,7 +49,3 @@ export const doctorEndpoints = {
   UPDATE_DOCTOR_PROFILE : BASE_URL + "/doctor/updateProfile",
   GET_DOCTOR_INFO : BASE_URL + "/doctor/getDoctorInfo",
 };
-
-export const AIEndpoints = {
-  PREDICT_DISEASE : BASE_URL + "/user/predict_disease",
-}
