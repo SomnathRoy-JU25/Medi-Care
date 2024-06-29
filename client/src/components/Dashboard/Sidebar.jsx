@@ -9,7 +9,7 @@ import { GoHomeFill } from "react-icons/go";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 
-export default function SidebarFour() {
+export default function Sidebar() {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
   const dispatch = useDispatch();

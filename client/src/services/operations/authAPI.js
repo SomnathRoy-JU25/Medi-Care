@@ -69,7 +69,7 @@ export function login(email, password, navigate) {
         throw new Error(response.data.message);
       }
 
-      toast.success("Login Successful");
+      toast.success("Welcome to Medi-Care");
       dispatch(setToken(response.data.token)); // slice set token
       const userImage = response.data?.user?.image
         ? response.data.user.image

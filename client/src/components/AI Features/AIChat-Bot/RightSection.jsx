@@ -245,7 +245,7 @@ const RightSection = () => {
             <HashLoader color="#36d7b7" size={30} />
           )}
         </div>
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-sm text-red-500 mt-2">
           MEDICARE BOT can make mistakes. Consider checking important
           information.
         </p>

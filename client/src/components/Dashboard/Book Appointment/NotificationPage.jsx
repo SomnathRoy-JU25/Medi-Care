@@ -29,15 +29,7 @@ const NotificationPage = () => {
           // },
         }
       );
-      // const res = await axios.post(
-      //   "http://localhost:8080/api/v1/user/get-all-notification",
-      //   { userId: user._id },
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //     },
-      //   }
-      // );
+    
       dispatch(setLoading(false));
       if (res.data.success) {
         message.success(res.data.message);
@@ -64,15 +56,7 @@ const NotificationPage = () => {
           // },
         }
       );
-      // const res = await axios.post(
-      //   "http://localhost:8080/api/v1/user/delete-all-notification",
-      //   { userId: user._id },
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //     },
-      //   }
-      // );
+  
       dispatch(setLoading(false));
       if (res.data.success) {
         message.success(res.data.message);

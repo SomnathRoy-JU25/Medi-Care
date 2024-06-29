@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import SidebarFour from "../components/Dashboard/UserDashboard";
+import Sidebar from "../components/Dashboard/Sidebar";
 
 function Dashboard() {
   const { loading: profileLoading } = useSelector((state) => state.profile);
@@ -16,7 +16,7 @@ function Dashboard() {
 
   return (
     <div className="relative flex min-h-[calc(100vh-3.5rem)] overflow-y-auto">
-      <SidebarFour />
+      <Sidebar />
       <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto overflow-y-auto">
         <div className="mx-auto w-11/12 max-w-[1000px] py-10 overflow-y-auto">
           <Outlet />

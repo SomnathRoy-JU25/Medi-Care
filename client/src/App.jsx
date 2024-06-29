@@ -27,15 +27,14 @@ import PublicRoute from "./components/Routes/PublicRoute";
 
 // Doctor Appointments
 import Dashboard from "./pages/Dashboard";
-import UserDashboard from "./components/Dashboard/UserDashboard";
 import MyProfile from "./components/Dashboard/MyProfile";
-import BookAppHomePage from "./components/Dashboard/BookAppHomePage";
+import BookAppHomePage from "./components/Dashboard/DoctorCard";
 import BookAppointment from "./components/Dashboard/Book Appointment/BookAppointment";
 import Appointments from "./components/Dashboard/Book Appointment/Appointments";
 import NotificationPage from "./components/Dashboard/Book Appointment/NotificationPage";
 import ApplyDoctor from "./components/Dashboard/Book Appointment/ApplyDoctor";
 // Doctor Routes For Book Appointments
-import Profile from "./components/Dashboard/Doctor/Profile";
+import Profile from "./components/Dashboard/Doctor/DoctorProfile";
 import DoctorAppointments from "./components/Dashboard/Doctor/DoctorAppointments";
 import Settings from "./components/Dashboard/Settings/index";
 // Admin Routes For Book Appointments
@@ -78,7 +77,6 @@ function App() {
           <Route path="/dashboard/addtoCall" element={<LobbyScreen />} />
           <Route path="/dashboard/room/:roomId" element={<RoomPage />} />
           <Route path="/dashboard/settings" element={<Settings />} />
-          <Route path="/dashboard/user-dashboard" element={<UserDashboard />} />
           {/* AI Chat Bot */}
           <Route path="/dashboard/ai-chat_bot" element={<AIChatBot />} />
           {/* Booking Appointments Features */}

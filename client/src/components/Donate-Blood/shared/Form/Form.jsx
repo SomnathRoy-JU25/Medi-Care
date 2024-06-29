@@ -86,19 +86,6 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               Hospital
             </label>
           </div>
-          {/* <div className="flex items-center">
-            <input
-              type="radio"
-              className="form-radio h-5 w-5 text-indigo-600"
-              name="role"
-              id="organisationRadio"
-              value={"organisation"}
-              onChange={(e) => setRole(e.target.value)}
-            />
-            <label htmlFor="organisationRadio" className="ml-2 text-gray-700">
-              Organisation
-            </label>
-          </div> */}
         </div>
         {/* switch statement */}
         {(() => {
@@ -175,14 +162,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  {/* <InputType
-                    labelText={"Website"}
-                    labelFor={"forWebsite"}
-                    inputType={"text"}
-                    name={"website"}
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  /> */}
+                  
                   <InputType
                     labelText={"Address"}
                     labelFor={"forAddress"}
