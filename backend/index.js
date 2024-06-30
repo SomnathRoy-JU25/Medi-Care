@@ -37,18 +37,16 @@ cloudinaryConnect();
 
 app.use(morgan("dev"));
 
-//routes
+// routes
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/inventory", require("./routes/inventoryRoutes"));
-app.use("/api/v1/analytics", require("./routes/analyticsRoutes"));
-app.use("/api/v1/profile", require("./routes/profileRoutes"));
-
+// Book Appointment 
 app.use("/api/v1/doctor", require("./routes/doctorRoutes"));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
 app.use("/api/v1/user", require("./routes/userRoutes"));
+app.use("/api/v1/profile", require("./routes/profileRoutes"));
 
-
-//port
+// PORT
 const PORT = process.env.PORT || 8080;
 
 //listen

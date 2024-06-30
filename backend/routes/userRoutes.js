@@ -2,13 +2,11 @@
 const express = require("express");
 const router = express.Router();
 const { auth } = require("../middlewares/auth");
-// const authmw = require("../middlewares/authmw");
-// Import the required controllers and middleware functions
+
 const {
   login,
   signup,
-  // changePassword,
-} = require("../controllers/Auth");
+} = require("../controllers/AuthController");
 
 const {
   authcontroller,
@@ -19,7 +17,7 @@ const {
   bookAppointmentController,
   bookingAvailabilityController,
   userAppointmentsController,
-  PredictDiseaseController,
+  // PredictDiseaseController,
 } = require("../controllers/BookAppUserCtrl");
 
 // apply doctor || POST
