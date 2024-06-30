@@ -20,7 +20,7 @@ const {
   bookingAvailabilityController,
   userAppointmentsController,
   PredictDiseaseController,
-} = require("../controllers/userctrl");
+} = require("../controllers/BookAppUserCtrl");
 
 // apply doctor || POST
 router.post("/apply-doctor", auth, applyDoctorController);

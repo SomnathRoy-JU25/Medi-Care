@@ -1,6 +1,8 @@
 const doctorModel = require("../models/doctorModel");
 const userModel = require("../models/User");
 
+// BookAppointment Admin Controller
+
 const getAllUsersController = async (req, res) => {
   try {
     const users = await userModel.find({}); // all
@@ -19,6 +21,7 @@ const getAllUsersController = async (req, res) => {
     });
   }
 };
+
 const getAllDoctorsController = async (req, res) => {
   try {
     const doctors = await doctorModel.find({}); // all
@@ -36,7 +39,6 @@ const getAllDoctorsController = async (req, res) => {
     });
   }
 };
-
 
 const changeAccountStatusController = async (req, res) => {
   try {
@@ -83,7 +85,6 @@ const changeAccountStatusController = async (req, res) => {
     });
   }
 };
-
 
 
 module.exports = {

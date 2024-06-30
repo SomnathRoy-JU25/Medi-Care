@@ -7,7 +7,7 @@ const {
   getDoctorByIdController,
   doctorAppointmentController,
   updateStatusController,
-} = require("../controllers/doctorCtrl");
+} = require("../controllers/BookAppDoctorCtrl");
 
 const router = express.Router();
 

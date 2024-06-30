@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const inventoryModel = require("../models/inventoryModel");
 const userModel = require("../models/userModel");
 
@@ -207,8 +206,6 @@ module.exports = {
   getInventoryController,
   getDonarsController,
   getHospitalController,
-  // getOrgnaisationController,
-  // getOrgnaisationForHospitalController,
   getInventoryHospitalController,
   getRecentInventoryController,
 };
