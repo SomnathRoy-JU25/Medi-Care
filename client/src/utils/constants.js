@@ -3,9 +3,3 @@ export const ACCOUNT_TYPE = {
     DOCTOR: "Doctor",
     ADMIN: "Admin",
   }
-  
-  export const COURSE_STATUS = {
-    DRAFT: "Draft",
-    PUBLISHED: "Published",
-  }
-  

@@ -116,7 +116,7 @@ export function userLogin(role, email, password, navigate) {
       if (!data.success) {
         return toast.error(data.message);
       }
-      toast.success("Login Successful", { duration: 1000 });  
+      toast.success("Welcome to Medicare", { duration: 1000 });  
       // Assuming the user data is in data.usermodel
       dispatch(setUser({...data.usermodel}));
       localStorage.setItem("token", data.token);
