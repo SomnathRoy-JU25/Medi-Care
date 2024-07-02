@@ -6,7 +6,7 @@ const { auth } = require("../middlewares/auth");
 const {
   login,
   signup,
-} = require("../controllers/Auth");
+} = require("../controllers/AuthController");
 
 const {
   authcontroller,
