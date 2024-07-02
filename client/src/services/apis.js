@@ -42,3 +42,9 @@ export const adminEndpoints = {
   GET_ALL_DOCTORS: BASE_URL + "/admin/getAllDoctors",
   CHANGE_ACC_STATUS: BASE_URL + "/admin/changeAccountStatus",
 };
+
+// PAYMENTS ENDPOINTS
+export const paymentEndpoints = {
+  PAYMENT_API: BASE_URL + "/payment/capturePayment",
+  VERIFY_API: BASE_URL + "/payment/verifyPayment",
+}

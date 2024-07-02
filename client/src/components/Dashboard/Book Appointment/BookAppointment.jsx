@@ -1,46 +1,39 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { message } from "antd";
 import Layout from "../../Common/Layout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DatePicker, TimePicker } from "antd";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-// import { showLoading, hideLoading } from '../redux/features/alertSlice'
 import { setLoading } from "../../../slices/authSlice";
 import { apiConnector } from "../../../services/apiConnector";
-import {toast} from "react-hot-toast"
-
-
+import { toast } from "react-hot-toast";
+import { BuyCourse } from "../../../services/operations/Payments";
 import { doctorEndpoints, userEndpoints } from "../../../services/apis";
+
 const { GET_DOCTOR_BY_ID } = doctorEndpoints;
 const { BOOKING_AVAILABILITY, BOOK_APPOINTMENT } = userEndpoints;
 
 const BookAppointment = () => {
   const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const [doctor, setDoctor] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [isAvailable, setIsAvailable] = useState();
   const params = useParams();
-
   const dispatch = useDispatch();
 
-  // login user data
   const getUserData = async () => {
     try {
       const res = await apiConnector(
         "POST",
         GET_DOCTOR_BY_ID,
-        {
-          doctorId: params.doctorId,
-        },
-        {
-          Authorization: `Bearer ${token}`,
-        }
+        { doctorId: params.doctorId },
+        { Authorization: `Bearer ${token}` }
       );
-    
+
       if (res.data.success) {
         setDoctor(res.data.data);
       }
@@ -49,16 +42,23 @@ const BookAppointment = () => {
     }
   };
 
-  // booking funcntion
+  const handleBuyCourse = async () => {
+    try {
+      const total_fees = doctor.fees;
+      await BuyCourse(token, total_fees, navigate, dispatch, handleBooking);
+    } catch (error) {
+      console.log("Error during payment:", error);
+      toast.error("Payment failed. Please try again.");
+    }
+  };
+
   const handleBooking = async () => {
     try {
-      setIsAvailable(true);
-      if (!date && !time) {
+      if (!date || !time) {
         return alert("Date & Time Required");
       }
       dispatch(setLoading(true));
 
-      //const doctorName=doctor.firstName+" "+doctor.lastName
       const res = await apiConnector(
         "POST",
         BOOK_APPOINTMENT,
@@ -73,27 +73,26 @@ const BookAppointment = () => {
           date: date,
           time: time,
         },
-        {
-          Authorization: `Bearer ${token}`,
-        }
+        { Authorization: `Bearer ${token}` }
       );
-    
+
       dispatch(setLoading(false));
       if (res.data.success) {
-        toast.success("Appointment booked successfully");
-        window.location.reload();
-        navigate("/dashboard/home-page");
+        // toast.success("Appointment booked successfully");
+        // window.location.reload();
+        navigate("/dashboard/doctor-appointments");
+      } else {
+        toast.error(res.data.message);
       }
     } catch (err) {
       dispatch(setLoading(false));
-      toast.error(err);
+      toast.error("Booking failed. Please try again.");
       console.log(err);
     }
   };
 
   const handleAvailability = async () => {
     try {
-      //dispatch(showLoading())
       const res = await apiConnector(
         "POST",
         BOOKING_AVAILABILITY,
@@ -104,9 +103,7 @@ const BookAppointment = () => {
         },
         { Authorization: `Bearer ${token}` }
       );
-      //dispatch(hideLoading())
-      console.log(res);
-    
+
       if (res.data.success) {
         setIsAvailable(true);
         toast.success("Appointments available");
@@ -114,11 +111,11 @@ const BookAppointment = () => {
         message.error(res.data.message);
       }
     } catch (error) {
-      //dispatch(hideLoading())
-      toast.error(error);
+      toast.error(error.message);
       console.log(error);
     }
   };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -138,11 +135,11 @@ const BookAppointment = () => {
             </h6>
             <h6>Experience: {doctor.experience}</h6>
             <h6>Specialization: {doctor.specialization}</h6>
-            <div className="d-flex flex-column w-50" flex-column>
+            <div className="d-flex flex-column w-50">
               <DatePicker
                 className="m-2"
                 format="DD-MM-YYYY"
-                aria-required={"true"}
+                aria-required="true"
                 onChange={(value) => {
                   setDate(moment(value).format("DD-MM-YYYY"));
                 }}
@@ -150,7 +147,7 @@ const BookAppointment = () => {
               <TimePicker
                 className="m-2"
                 format="HH:mm"
-                aria-required={"true"}
+                aria-required="true"
                 onChange={(value) => {
                   setTime(moment(value).format("HH:mm"));
                 }}
@@ -161,7 +158,7 @@ const BookAppointment = () => {
               >
                 Check Availability
               </button>
-              <button className="btn btn-dark mt-2" onClick={handleBooking}>
+              <button className="btn btn-dark mt-2" onClick={handleBuyCourse}>
                 Book Now
               </button>
             </div>
