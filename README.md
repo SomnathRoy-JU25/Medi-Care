@@ -45,7 +45,7 @@ MVC, JWT, Redux toolkit, Web-RTC
    First:  cd backend
    To Run App : npm run dev
 ```
-## UI 
+## User Interfaces
 ![Home](<client/src/assets/screenshots/Screenshot 2024-07-02 225205.png>)
 ![Login](<client/src/assets/screenshots/Screenshot 2024-07-02 225314.png>)
 ![Dashboard](<client/src/assets/screenshots/Screenshot 2024-07-02 225335.png>)
@@ -54,5 +54,5 @@ MVC, JWT, Redux toolkit, Web-RTC
 ![AI Chat Bot](<client/src/assets/screenshots/Screenshot 2024-07-02 225459.png>)
 ![Video Call](<client/src/assets/screenshots/Screenshot 2024-07-02 225513.png>)
 ![Payment Gateway](<client/src/assets/screenshots/Screenshot 2024-07-02 225541.png>)
-![Blood Donation](<client/src/assets/screenshots/Screenshot 2024-07-02 225607.png>)
-![Blood Donation](<client/src/assets/screenshots/Screenshot 2024-07-02 225627.png>)
+![Blood Donation1](<client/src/assets/screenshots/Screenshot 2024-07-02 225607.png>)
+![Blood Donation2](<client/src/assets/screenshots/Screenshot 2024-07-02 225627.png>)
