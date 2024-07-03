@@ -12,7 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "@reduxjs/toolkit": "^2.2.2",
-    "antd": "^5.16.2",
+    "antd": "^5.19.0",
     "axios": "^1.6.8",
     "firebase": "^10.9.0",
     "lucide-react": "^0.361.0",
