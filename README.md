@@ -43,7 +43,7 @@ MVC, JWT, Redux toolkit, Web-RTC
 
 ```bash
    First:  cd backend
-   To Run App : npm run dev
+   To Run App: npm run dev
 ```
 ## User Interfaces
 ![Home](<client/src/assets/screenshots/Screenshot 2024-07-02 225205.png>)
