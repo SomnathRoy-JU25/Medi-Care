@@ -52,6 +52,7 @@ MVC, JWT, Redux toolkit, Web-RTC
 ![DoctorList](<client/src/assets/screenshots/Screenshot 2024-07-02 225357.png>)
 ![Appointments](<client/src/assets/screenshots/Screenshot 2024-07-02 225420.png>)
 ![AI Chat Bot](<client/src/assets/screenshots/Screenshot 2024-07-02 225459.png>)
+![image](https://github.com/SomnathRoy-JU25/Medi-Care/assets/107599122/8de85a77-9da0-46be-ba86-1cdb43cc737e)
 ![Video Call](<client/src/assets/screenshots/Screenshot 2024-07-02 225513.png>)
 ![Payment Gateway](<client/src/assets/screenshots/Screenshot 2024-07-02 225541.png>)
 ![Blood Donation1](<client/src/assets/screenshots/Screenshot 2024-07-02 225607.png>)
