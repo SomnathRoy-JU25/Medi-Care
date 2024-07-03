@@ -7,7 +7,6 @@ const ButtonsSection = ({
   getNextPage,
   getPreviousPage,
   buttonIsDisabled,
-  patient2NextButtonDisabled,
   userSymptomLength,
   buttonName,
 }) => {
@@ -23,11 +22,11 @@ const ButtonsSection = ({
         </button>
         <button
           className={`py-2 px-4 rounded ${
-            buttonIsDisabled || patient2NextButtonDisabled || userSymptomLength === 0
+            buttonIsDisabled || userSymptomLength === 0
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
               : "bg-purple-600 text-white hover:bg-purple-900"
           }`}
-          disabled={buttonIsDisabled || patient2NextButtonDisabled || userSymptomLength === 0}
+          disabled={buttonIsDisabled || userSymptomLength === 0}
           type="submit"
           onClick={getNextPage}
         >

@@ -16,10 +16,9 @@ const NavigationBar = ({ tabProgress, currentPage }) => {
             }`}
           ></div>
         </li>
-        <li className={`${currentPage === "Home" ? "active" : "done"}`}>Welcome</li>
-        <li className={`${tabProgress === 50 ? "active" : tabProgress < 50 ? "list" : "done"}`}>Patient</li>
-        <li className={`${tabProgress === 75 ? "active" : tabProgress < 75 ? "list" : "done"}`}>Symptom</li>
-        <li className={`${tabProgress === 100 ? "active" : tabProgress < 100 ? "list" : "done"}`}>Disease</li>
+        <li className={`${currentPage === "Home" ? "activeState" : "done"}`}>Welcome</li>
+        <li className={`${tabProgress === 50 ? "activeState" : tabProgress < 75 ? "list" : "done"}`}>Symptom</li>
+        <li className={`${tabProgress === 100 ? "activeState" : tabProgress < 100 ? "list" : "done"}`}>Disease</li>
       </ul>
     </div>
   );

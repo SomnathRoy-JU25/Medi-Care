@@ -44,11 +44,13 @@
   font-size: 1rem;
 }
 
-.active {
+.activeState {
   color: #000;
   font-weight: bold;
-  color: #0c5f96;
-  /* border-left: 2px solid #0c5f96; */
+  color: #031b2b;
+  border-left: 2px solid #0c5f96;
+  background-color: rgb(13, 228, 67);
+  
 }
 
 .done {
