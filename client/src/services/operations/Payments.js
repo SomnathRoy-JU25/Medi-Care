@@ -20,8 +20,8 @@ function loadScript(src) {
     document.body.appendChild(script);
   });
 }
-// Buy the Course
-export async function BuyCourse(
+// Book Appointment
+export async function PayFees(
     token,
     total_fees,
     navigate,

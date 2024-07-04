@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../../slices/authSlice";
 import { apiConnector } from "../../../services/apiConnector";
 import { toast } from "react-hot-toast";
-import { BuyCourse } from "../../../services/operations/Payments";
+import { PayFees } from "../../../services/operations/Payments";
 import { doctorEndpoints, userEndpoints } from "../../../services/apis";
 
 const { GET_DOCTOR_BY_ID } = doctorEndpoints;
@@ -45,7 +45,7 @@ const BookAppointment = () => {
   const handleBuyCourse = async () => {
     try {
       const total_fees = doctor.fees;
-      await BuyCourse(token, total_fees, navigate, dispatch, handleBooking);
+      await PayFees(token, total_fees, navigate, dispatch, handleBooking);
     } catch (error) {
       console.log("Error during payment:", error);
       toast.error("Payment failed. Please try again.");
