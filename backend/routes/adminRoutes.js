@@ -5,14 +5,14 @@ const {
   getDonarsListController,
   getHospitalListController,
   deleteDonarController,
-} = require("../controllers/AdminController");
+} = require("../controllers/adminController");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 
 const {
   getAllUsersController,
   getAllDoctorsController,
   changeAccountStatusController,
-} = require("../controllers/bookAppAdminCtrl");
+} = require("../controllers/BookAppAdminCtrl");
 
 
 //router object

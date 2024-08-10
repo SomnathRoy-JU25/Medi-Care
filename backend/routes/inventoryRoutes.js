@@ -7,12 +7,12 @@ const {
   getHospitalController,
   getInventoryHospitalController,
   getRecentInventoryController,
-} = require("../controllers/InventoryController");
+} = require("../controllers/inventoryController");
 
 
 const {
   bloodGroupDetailsContoller,
-} = require("../controllers/InventoryController");
+} = require("../controllers/inventoryController");
 
 const router = express.Router();
 
